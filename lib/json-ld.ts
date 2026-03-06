@@ -1,5 +1,19 @@
 const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
 
+export function generateWebSiteJsonLd(locale: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Mori Norman",
+    url: `${BASE_URL}/${locale}`,
+    inLanguage: locale,
+    publisher: {
+      "@type": "Person",
+      name: "Mori Norman",
+    },
+  };
+}
+
 export function generateBlogPostingJsonLd(
   post: {
     title: string;

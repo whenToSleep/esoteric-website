@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: Props) {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const post = result.docs[0] as any;
   const featuredImageUrl = post.featuredImage?.url;
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
 
   return {
     title: `${post.title} — Mori Norman`,
@@ -59,13 +60,18 @@ export async function generateMetadata({ params }: Props) {
         uk: `/uk/blog/${slug}`,
       },
     },
-    /* eslint-enable @typescript-eslint/no-explicit-any */
-    ...(featuredImageUrl && {
-      openGraph: {
-        images: [{ url: featuredImageUrl }],
-      },
-    }),
+    openGraph: {
+      title: `${post.title} — Mori Norman`,
+      description: (post.excerpt as string) || "",
+      url: `${baseUrl}/${locale}/blog/${slug}`,
+      siteName: "Mori Norman",
+      locale,
+      type: "article",
+      ...(post.publishedAt && { publishedTime: post.publishedAt }),
+      ...(featuredImageUrl && { images: [{ url: featuredImageUrl }] }),
+    },
   };
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 }
 
 export default async function BlogPostPage({ params }: Props) {

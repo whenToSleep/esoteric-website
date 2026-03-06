@@ -59,6 +59,7 @@ All text fields: localized: true, fallback: uk>ru>en
 - `npm run build` — must pass!
 - `npm run lint` — ESLint
 - `npm run seed` — fill test data
+- `npm run analyze` — bundle analysis (opens browser)
 
 ## Current Status
 - [x] Iteration 0: Project init
@@ -68,5 +69,5 @@ All text fields: localized: true, fallback: uk>ru>en
 - [x] Iteration 4: Section & service pages
 - [x] Iteration 5: Blog
 - [x] Iteration 5.1: Blog improvements & seed expansion
-- [ ] Iteration 6: SEO & performance
+- [x] Iteration 6: SEO & performance
 - [ ] Iteration 7: Polish & deploy

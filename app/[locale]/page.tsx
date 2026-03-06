@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import { HeroSection } from "@/components/home/hero-section";
@@ -8,10 +10,41 @@ import { LatestPostsSection } from "@/components/home/latest-posts-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { CTASection } from "@/components/home/cta-section";
 import { extractPlainText } from "@/lib/rich-text-utils";
+import { generateWebSiteJsonLd } from "@/lib/json-ld";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      languages: {
+        ru: `${baseUrl}/ru`,
+        en: `${baseUrl}/en`,
+        uk: `${baseUrl}/uk`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: `${baseUrl}/${locale}`,
+      siteName: "Mori Norman",
+      locale,
+      type: "website",
+    },
+  };
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
@@ -88,8 +121,14 @@ export default async function HomePage({ params }: Props) {
     : {};
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
+  const jsonLd = generateWebSiteJsonLd(locale);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection />
       <ServiceCategoriesSection categories={categories} />
       <AboutBriefSection {...aboutData} />

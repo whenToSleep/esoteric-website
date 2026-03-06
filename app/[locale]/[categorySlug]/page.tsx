@@ -41,6 +41,8 @@ export async function generateMetadata({ params }: Props) {
   const category = result.docs[0];
   const description = (category.shortDescription as string) || "";
 
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
   return {
     title: `${category.title} — Mori Norman`,
     description,
@@ -50,6 +52,14 @@ export async function generateMetadata({ params }: Props) {
         en: `/en/${categorySlug}`,
         uk: `/uk/${categorySlug}`,
       },
+    },
+    openGraph: {
+      title: `${category.title} — Mori Norman`,
+      description,
+      url: `${baseUrl}/${locale}/${categorySlug}`,
+      siteName: "Mori Norman",
+      locale,
+      type: "website",
     },
   };
 }

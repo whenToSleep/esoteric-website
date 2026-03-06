@@ -26,6 +26,8 @@ export async function generateMetadata({ params }: Props) {
   const page = result.docs[0];
   const description = page ? extractPlainText(page.content, 160) : "";
 
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
   return {
     title: `${page?.title || "About"} — Mori Norman`,
     description,
@@ -35,6 +37,14 @@ export async function generateMetadata({ params }: Props) {
         en: "/en/about",
         uk: "/uk/about",
       },
+    },
+    openGraph: {
+      title: `${page?.title || "About"} — Mori Norman`,
+      description,
+      url: `${baseUrl}/${locale}/about`,
+      siteName: "Mori Norman",
+      locale,
+      type: "profile",
     },
   };
 }

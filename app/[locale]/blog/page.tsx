@@ -19,6 +19,8 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
 
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
   return {
     title: `${t("title")} — Mori Norman`,
     alternates: {
@@ -27,6 +29,13 @@ export async function generateMetadata({ params }: Props) {
         en: `/en/blog`,
         uk: `/uk/blog`,
       },
+    },
+    openGraph: {
+      title: `${t("title")} — Mori Norman`,
+      url: `${baseUrl}/${locale}/blog`,
+      siteName: "Mori Norman",
+      locale,
+      type: "website",
     },
   };
 }

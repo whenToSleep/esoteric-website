@@ -6,6 +6,47 @@
 
 ---
 
+## Сессия 9 — 2026-03-06 — Итерация 6: SEO и производительность
+
+### Сделано:
+- Создан `app/robots.ts` — динамический robots.txt, разрешает всё кроме /admin и /api, ссылка на sitemap
+- Создан `app/sitemap.ts` — динамический sitemap.xml со всеми страницами × 3 локали, hreflang аннотации через alternates.languages, приоритеты и lastModified
+- Проверены hreflang на всех страницах — были на всех кроме главной, добавлен generateMetadata на home page
+- JSON-LD: добавлен WebSite schema на главную страницу, существующие BlogPosting/Person/ProfessionalService уже на месте
+- Open Graph: добавлены og:title, og:description, og:url, og:locale, og:site_name на ВСЕ страницы (home, blog list, blog post, about, category, service)
+- Blog post OG расширен: type: article, publishedTime, images
+- About page OG: type: profile
+- Базовый OG (siteName, locale) добавлен в layout.tsx как fallback
+- next/image: проверено — sizes и priority уже корректно настроены на всех LCP-критичных изображениях
+- next.config.ts: добавлены images.formats: ['image/avif', 'image/webp'] для современных форматов
+- Установлен @next/bundle-analyzer, добавлен скрипт `npm run analyze`
+- `npm run build` — 0 ошибок, sitemap.xml и robots.txt генерируются как static routes
+
+### Файлы созданы:
+- app/robots.ts — динамический robots.txt (disallow /admin, /api)
+- app/sitemap.ts — динамический sitemap с Payload CMS запросами, hreflang, priorities
+
+### Файлы изменены:
+- lib/json-ld.ts — добавлен generateWebSiteJsonLd
+- app/[locale]/page.tsx — добавлен generateMetadata (title, description, alternates, OG) + WebSite JSON-LD
+- app/[locale]/layout.tsx — добавлен базовый openGraph в metadata (siteName, locale)
+- app/[locale]/blog/page.tsx — добавлен openGraph в metadata
+- app/[locale]/blog/[slug]/page.tsx — расширен openGraph (type: article, publishedTime, images)
+- app/[locale]/about/page.tsx — добавлен openGraph (type: profile)
+- app/[locale]/[categorySlug]/page.tsx — добавлен openGraph
+- app/[locale]/[categorySlug]/[serviceSlug]/page.tsx — добавлен openGraph
+- next.config.ts — images.formats + @next/bundle-analyzer
+- package.json — добавлен скрипт analyze, devDep @next/bundle-analyzer
+- CLAUDE.md — отмечена Iteration 6, добавлен analyze скрипт
+
+### Проблемы:
+- Нет — всё скомпилировалось с первого раза
+
+### Следующая сессия:
+- Итерация 7: Polish & deploy (финальная полировка, deployment)
+
+---
+
 ## Сессия 8 — 2026-03-06 — Итерация 5.1: Улучшения блога и расширение seed
 
 ### Сделано:

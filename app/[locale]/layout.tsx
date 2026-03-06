@@ -30,6 +30,11 @@ export async function generateMetadata({
         routing.locales.map((loc) => [loc, `${baseUrl}/${loc}`])
       ),
     },
+    openGraph: {
+      siteName: "Mori Norman",
+      locale,
+      type: "website",
+    },
   };
 }
 

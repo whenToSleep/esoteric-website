@@ -56,6 +56,8 @@ export async function generateMetadata({ params }: Props) {
   const categorySlug = service.category?.slug || "";
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
   return {
     title: `${service.title} — Mori Norman`,
     description: (service.shortDescription as string) || "",
@@ -65,6 +67,14 @@ export async function generateMetadata({ params }: Props) {
         en: `/en/${categorySlug}/${serviceSlug}`,
         uk: `/uk/${categorySlug}/${serviceSlug}`,
       },
+    },
+    openGraph: {
+      title: `${service.title} — Mori Norman`,
+      description: (service.shortDescription as string) || "",
+      url: `${baseUrl}/${locale}/${categorySlug}/${serviceSlug}`,
+      siteName: "Mori Norman",
+      locale,
+      type: "website",
     },
   };
 }
