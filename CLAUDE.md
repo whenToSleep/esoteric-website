@@ -59,7 +59,7 @@ All text fields: localized: true, fallback: uk>ru>en
 - docs/api.md     — data schema (all collections and fields)
 
 ## Current Status
-- [ ] Iteration 0: Project init
+- [x] Iteration 0: Project init
 - [ ] Iteration 1: Data schema & CMS
 - [ ] Iteration 2: Layout & navigation
 - [ ] Iteration 3: Home page
