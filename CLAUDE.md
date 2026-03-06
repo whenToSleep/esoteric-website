@@ -67,5 +67,6 @@ All text fields: localized: true, fallback: uk>ru>en
 - [x] Iteration 3: Home page
 - [x] Iteration 4: Section & service pages
 - [x] Iteration 5: Blog
+- [x] Iteration 5.1: Blog improvements & seed expansion
 - [ ] Iteration 6: SEO & performance
 - [ ] Iteration 7: Polish & deploy

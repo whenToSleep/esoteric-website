@@ -5,7 +5,6 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { CategoryFilter } from "@/components/blog/category-filter";
 import { BlogPagination } from "@/components/blog/blog-pagination";
-import { FeaturedBlogCard } from "@/components/blog/featured-blog-card";
 import { BlogCard } from "@/components/home/blog-card";
 import { calculateReadingTime } from "@/lib/reading-time";
 
@@ -80,7 +79,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
     },
     sort: "-publishedAt",
     page: currentPage,
-    limit: 3,
+    limit: 6,
     depth: 2,
   });
 
@@ -97,10 +96,6 @@ export default async function BlogPage({ params, searchParams }: Props) {
       (post.readingTime as number) || calculateReadingTime(post.content),
   }));
   /* eslint-enable @typescript-eslint/no-explicit-any */
-
-  const isFirstPage = currentPage === 1 && !categorySlug;
-  const featuredPost = isFirstPage ? posts[0] : undefined;
-  const gridPosts = isFirstPage ? posts.slice(1) : posts;
 
   const pageLabel = t("page_of", {
     current: String(currentPage),
@@ -127,29 +122,16 @@ export default async function BlogPage({ params, searchParams }: Props) {
             {t("no_posts")}
           </p>
         ) : (
-          <>
-            {featuredPost && (
-              <div className="mb-6">
-                <FeaturedBlogCard
-                  {...featuredPost}
-                  readMoreLabel={t("read_more")}
-                  minReadLabel={t("min_read")}
-                />
-              </div>
-            )}
-            {gridPosts.length > 0 && (
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {gridPosts.map((post) => (
-                  <BlogCard
-                    key={post.id}
-                    {...post}
-                    readMoreLabel={t("read_more")}
-                    minReadLabel={t("min_read")}
-                  />
-                ))}
-              </div>
-            )}
-          </>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <BlogCard
+                key={post.id}
+                {...post}
+                readMoreLabel={t("read_more")}
+                minReadLabel={t("min_read")}
+              />
+            ))}
+          </div>
         )}
 
         <div className="mt-10">
