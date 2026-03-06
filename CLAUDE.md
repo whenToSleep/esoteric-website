@@ -58,11 +58,11 @@ All text fields: localized: true, fallback: uk>ru>en
 - `npm run dev` — localhost:3000
 - `npm run build` — must pass!
 - `npm run lint` — ESLint
-- `npx tsx scripts/seed.ts` — fill test data
+- `npm run seed` — fill test data
 
 ## Current Status
 - [x] Iteration 0: Project init
-- [ ] Iteration 1: Data schema & CMS
+- [x] Iteration 1: Data schema & CMS
 - [ ] Iteration 2: Layout & navigation
 - [ ] Iteration 3: Home page
 - [ ] Iteration 4: Section & service pages

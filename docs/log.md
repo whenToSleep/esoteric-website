@@ -47,6 +47,44 @@
 
 ---
 
+## Сессия 3 — 2026-03-06 — Итерация 1: Схема данных и CMS
+
+### Сделано:
+- Все коллекции Payload CMS созданы и работают: ServiceCategories, Services, Posts, PostCategories, Pages, Testimonials, Media, Users
+- @payloadcms/plugin-seo подключён для service-categories, services, posts, pages
+- Исправлена двойная локализация в Services.faq (array localized + children localized)
+- Seed-скрипт сделан самозапускаемым через `npx tsx` с патчем @next/env
+- Seed заполнил: 5 категорий, 10 услуг, 5 категорий блога, 3 поста, 6 отзывов, страницу "Обо мне", админа
+- `npm run build` — 0 ошибок
+
+### Файлы созданы:
+- collections/ServiceCategories.ts — 5 разделов услуг с локализацией
+- collections/Services.ts — услуги с faq, category, price, duration, format
+- collections/Posts.ts — блог с versions/drafts/autosave, status-based access
+- collections/PostCategories.ts — категории блога
+- collections/Testimonials.ts — отзывы клиентов
+- scripts/seed.ts — seed-скрипт с данными на 3 языках
+- scripts/patch-next-env.cjs — патч для совместимости @next/env с tsx
+
+### Файлы изменены:
+- collections/Media.ts — добавлены imageSizes (thumbnail, card, hero), upload config
+- collections/Pages.ts — добавлены gallery, featuredImage, status
+- collections/Users.ts — добавлены name, role fields
+- payload.config.ts — подключены все коллекции, seoPlugin, localization config
+- package.json — добавлен script "seed"
+
+### Проблемы:
+- @next/env несовместим с tsx (ESM/CJS interop) → решено через --require патч в patch-next-env.cjs
+- DB migration prompt при первом запуске → решено через PAYLOAD_DROP_DATABASE=true
+- Revalidation hooks (afterChange) отложены до Итерации 2+ когда появятся страницы
+
+### Следующая сессия:
+- Итерация 2: Layout и навигация (Header, Footer, мобильное меню)
+- Применить Cosmic Night Theme CSS-переменные в globals.css
+- Установить Framer Motion и Aceternity UI
+
+---
+
 ## Сессия 2 — 2026-03-06 — Итерация 0: Финализация и проверка
 
 ### Сделано:
