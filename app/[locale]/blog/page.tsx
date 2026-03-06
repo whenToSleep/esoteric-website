@@ -127,9 +127,9 @@ export default async function BlogPage({ params, searchParams }: Props) {
             {t("no_posts")}
           </p>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <>
             {featuredPost && (
-              <div className="md:col-span-2">
+              <div className="mb-6">
                 <FeaturedBlogCard
                   {...featuredPost}
                   readMoreLabel={t("read_more")}
@@ -137,15 +137,19 @@ export default async function BlogPage({ params, searchParams }: Props) {
                 />
               </div>
             )}
-            {gridPosts.map((post) => (
-              <BlogCard
-                key={post.id}
-                {...post}
-                readMoreLabel={t("read_more")}
-                minReadLabel={t("min_read")}
-              />
-            ))}
-          </div>
+            {gridPosts.length > 0 && (
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {gridPosts.map((post) => (
+                  <BlogCard
+                    key={post.id}
+                    {...post}
+                    readMoreLabel={t("read_more")}
+                    minReadLabel={t("min_read")}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         )}
 
         <div className="mt-10">

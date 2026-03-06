@@ -310,13 +310,13 @@ const seed = async (payload: Payload) => {
     console.log(`Created service: ${svc.title.ru}`)
   }
 
-  // --- Post Categories ---
+  // --- Post Categories (aligned with service categories) ---
   const postCatData = [
     { slug: 'tarot', order: 1, title: { ru: 'Таро', en: 'Tarot', uk: 'Таро' } },
     { slug: 'rituals', order: 2, title: { ru: 'Ритуалы', en: 'Rituals', uk: 'Ритуали' } },
-    { slug: 'development', order: 3, title: { ru: 'Развитие', en: 'Development', uk: 'Розвиток' } },
+    { slug: 'support', order: 3, title: { ru: 'Сопровождение', en: 'Support', uk: 'Супровід' } },
     { slug: 'education', order: 4, title: { ru: 'Обучение', en: 'Education', uk: 'Навчання' } },
-    { slug: 'regression', order: 5, title: { ru: 'Регрессия', en: 'Regression', uk: 'Регресія' } },
+    { slug: 'regress', order: 5, title: { ru: 'Регресс', en: 'Regression', uk: 'Регрес' } },
   ]
 
   const postCatIds: Record<string, number> = {}
@@ -489,7 +489,7 @@ const seed = async (payload: Payload) => {
     },
     {
       slug: 'past-lives-regression',
-      category: 'regression',
+      category: 'regress',
       readingTime: 6,
       publishedAt: '2026-03-03T10:00:00.000Z',
       title: {
