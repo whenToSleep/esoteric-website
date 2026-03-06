@@ -47,6 +47,39 @@
 
 ---
 
+## Сессия 2 — 2026-03-06 — Итерация 0: Финализация и проверка
+
+### Сделано:
+- PostgreSQL 16 запущен локально через Docker (`mori-norman-db`)
+- Создан `.env` и `.env.local` с локальными credentials
+- Placeholder SVG-лого «Mori Norman» в `public/images/logo.svg`
+- Payload CMS auto-generated `importMap.js` с Lexical editor features
+- Проверены все маршруты: `/ru`, `/en`, `/uk` → 200, `/admin` → 307 (login), `/` → 307 → `/ru`
+- `npm run build` — 0 ошибок, 0 warnings
+- docs/design.md и docs/api.md закоммичены
+
+### Файлы созданы:
+- public/images/logo.svg — placeholder лого «Mori Norman» (Cinzel gold SVG)
+- .env.local — локальные переменные для Docker PostgreSQL
+- docs/design.md — полная спецификация Cosmic Night Theme
+- docs/api.md — документация схемы данных
+
+### Файлы изменены:
+- app/(payload)/admin/importMap.js — auto-generated Payload Lexical imports
+- .env — обновлён пароль под Docker контейнер `mori-norman-db`
+
+### Проблемы:
+- Нет — всё заработало с первого раза после настройки Docker
+
+### Следующая сессия:
+- Итерация 1: Расширить коллекции (ServiceCategories, Services, Posts, PostCategories, Testimonials)
+- Добавить `localized: true` на все текстовые поля, fallback uk → ru → en
+- Применить Cosmic Night Theme CSS-переменные в globals.css
+- Установить Framer Motion и Aceternity UI
+- Или сразу Итерация 2: Layout и навигация (Header, Footer, мобильное меню)
+
+---
+
 ## Сессия 1 — 2026-03-06 — Итерация 0: Инициализация проекта
 
 ### Сделано:
