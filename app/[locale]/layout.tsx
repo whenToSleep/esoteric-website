@@ -4,6 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { cinzel, inter } from "@/lib/fonts";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import "../globals.css";
 
 type Props = {
@@ -18,9 +20,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
   return {
     title: t("title"),
     description: t("description"),
+    alternates: {
+      languages: Object.fromEntries(
+        routing.locales.map((loc) => [loc, `${baseUrl}/${loc}`])
+      ),
+    },
   };
 }
 
@@ -42,7 +51,11 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${inter.variable} ${cinzel.variable} font-sans antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          <main className="pt-16 lg:pt-[72px]">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

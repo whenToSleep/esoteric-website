@@ -1,13 +1,32 @@
 {
   "metadata": {
-    "title": "Езотерика — Таємниці Всесвіту",
-    "description": "Досліджуйте стародавню мудрість астрології, таро, нумерології та духовних практик"
+    "title": "Морі Норман — Езотерика та духовні практики",
+    "description": "Таро, ритуалістика, супровід, навчання та регресивний гіпноз"
   },
-  "common": {
+  "nav": {
     "home": "Головна",
-    "about": "Про нас",
-    "services": "Послуги",
+    "tarot": "Таро",
+    "rituals": "Ритуалістика",
+    "guidance": "Супровід",
+    "education": "Навчання",
+    "regression": "Регрес",
     "blog": "Блог",
-    "contact": "Контакти"
+    "about": "Про мене"
+  },
+  "footer": {
+    "navigation": "Навігація",
+    "social": "Соціальні мережі",
+    "contact": "Зв'язатися",
+    "cta": "Написати в Telegram",
+    "copyright": "\u00a9 2026 Mori Norman",
+    "tiktok": "TikTok",
+    "instagram": "Instagram",
+    "telegram": "Telegram канал",
+    "youtube": "YouTube"
+  },
+  "languages": {
+    "ru": "RU",
+    "en": "EN",
+    "uk": "UK"
   }
 }

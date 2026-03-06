@@ -1,13 +1,32 @@
 {
   "metadata": {
-    "title": "Esoteric — Mysteries of the Universe",
-    "description": "Explore the ancient wisdom of astrology, tarot, numerology and spiritual practices"
+    "title": "Mori Norman — Esoteric & Spiritual Practices",
+    "description": "Tarot, rituals, guidance, education and regressive hypnosis"
   },
-  "common": {
+  "nav": {
     "home": "Home",
-    "about": "About",
-    "services": "Services",
+    "tarot": "Tarot",
+    "rituals": "Rituals",
+    "guidance": "Guidance",
+    "education": "Education",
+    "regression": "Regression",
     "blog": "Blog",
-    "contact": "Contact"
+    "about": "About Me"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "social": "Social Media",
+    "contact": "Get in Touch",
+    "cta": "Message on Telegram",
+    "copyright": "\u00a9 2026 Mori Norman",
+    "tiktok": "TikTok",
+    "instagram": "Instagram",
+    "telegram": "Telegram Channel",
+    "youtube": "YouTube"
+  },
+  "languages": {
+    "ru": "RU",
+    "en": "EN",
+    "uk": "UK"
   }
 }

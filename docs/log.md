@@ -47,6 +47,51 @@
 
 ---
 
+## Сессия 4 — 2026-03-06 — Итерация 2: Layout и навигация
+
+### Сделано:
+- Установлен framer-motion для анимаций
+- Добавлены Cosmic Night Theme цвета в globals.css (@theme inline): cosmic-black, midnight-navy, mystic-purple, astral-violet, celestial-gold, star-white, silver-mist
+- Обновлён .dark блок: --background → cosmic-black, --foreground → star-white
+- Добавлено правило prefers-reduced-motion в CSS
+- Создан i18n/navigation.ts с createNavigation (Link, useRouter, usePathname)
+- Создан lib/navigation.ts — конфиг навигации (8 пунктов + 4 соцсети)
+- Обновлены messages/{ru,en,uk}.json — добавлены nav, footer, languages ключи
+- Header: фиксированный, midnight-navy/80 backdrop-blur, лого + 8 nav links + language switcher
+- Footer: cosmic-black, 3 колонки (навигация, соцсети, CTA Telegram), копирайт
+- Language Switcher: 3 кнопки RU/EN/UK, сохраняет путь при переключении
+- Mobile Menu: hamburger → fullscreen overlay, fade-in анимация, stagger links
+- Locale layout обновлён: Header + Footer обёрнуты, hreflang alternates в metadata
+- `npm run build` — 0 ошибок
+
+### Файлы созданы:
+- i18n/navigation.ts — createNavigation helper (Link, useRouter, usePathname)
+- lib/navigation.ts — navItems (8 routes) + socialLinks (4 items)
+- components/header.tsx — client, fixed навигация с лого, меню, language switcher
+- components/footer.tsx — server, 3-col grid, соцсети, CTA, копирайт
+- components/language-switcher.tsx — client, переключатель RU/EN/UK
+- components/mobile-menu.tsx — client, fullscreen overlay с Framer Motion
+
+### Файлы изменены:
+- app/globals.css — cosmic theme цвета, dark mode background/foreground, reduced-motion
+- app/[locale]/layout.tsx — Header + Footer + hreflang metadata
+- messages/ru.json — nav, footer, languages ключи (обновлены metadata)
+- messages/en.json — то же самое
+- messages/uk.json — то же самое
+- package.json — добавлен framer-motion
+
+### Проблемы:
+- Cinzel не имеет кириллицы — nav items в кириллице fallback на serif. Допустимо для эстетики.
+- lucide-react не имеет TikTok/Telegram иконок — используются Music2 и Send как заглушки
+- Lint ошибки в scripts/patch-next-env.cjs — pre-existing, не связаны с этой итерацией
+
+### Следующая сессия:
+- Итерация 3: Главная страница (Hero, карточки разделов, секция "Обо мне", блог-превью, отзывы, CTA)
+- Установить/настроить Aceternity UI компоненты (Aurora Background, Sparkles, Infinite Moving Cards)
+- Создать страницы-заглушки для маршрутов навигации (/tarot, /rituals, /guidance, /education, /regression, /blog, /about)
+
+---
+
 ## Сессия 3 — 2026-03-06 — Итерация 1: Схема данных и CMS
 
 ### Сделано:
