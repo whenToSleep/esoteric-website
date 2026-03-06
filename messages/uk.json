@@ -85,6 +85,15 @@
   },
   "blog": {
     "title": "Блог",
-    "coming_soon": "Незабаром тут з'являться статті"
+    "coming_soon": "Незабаром тут з'являться статті",
+    "all_categories": "Всі",
+    "no_posts": "Статей не знайдено",
+    "prev_post": "Попередня",
+    "next_post": "Наступна",
+    "related_posts": "Схожі статті",
+    "back_to_blog": "Назад до блогу",
+    "page_of": "Стор. {current} з {total}",
+    "read_more": "Читати далі",
+    "min_read": "хв читання"
   }
 }

@@ -85,6 +85,15 @@
   },
   "blog": {
     "title": "Blog",
-    "coming_soon": "Articles coming soon"
+    "coming_soon": "Articles coming soon",
+    "all_categories": "All",
+    "no_posts": "No posts found",
+    "prev_post": "Previous",
+    "next_post": "Next",
+    "related_posts": "Related Posts",
+    "back_to_blog": "Back to Blog",
+    "page_of": "Page {current} of {total}",
+    "read_more": "Read More",
+    "min_read": "min read"
   }
 }

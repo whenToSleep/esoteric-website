@@ -85,6 +85,15 @@
   },
   "blog": {
     "title": "Блог",
-    "coming_soon": "Скоро здесь появятся статьи"
+    "coming_soon": "Скоро здесь появятся статьи",
+    "all_categories": "Все",
+    "no_posts": "Статей не найдено",
+    "prev_post": "Предыдущая",
+    "next_post": "Следующая",
+    "related_posts": "Похожие статьи",
+    "back_to_blog": "Назад к блогу",
+    "page_of": "Стр. {current} из {total}",
+    "read_more": "Читать далее",
+    "min_read": "мин чтения"
   }
 }

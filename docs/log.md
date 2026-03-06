@@ -6,6 +6,47 @@
 
 ---
 
+## Сессия 7 — 2026-03-06 — Итерация 5: Блог
+
+### Сделано:
+- Страница блога /[locale]/blog с фильтрацией по категориям, пагинацией (3 поста/стр), featured пост (span-2)
+- Страница поста /[locale]/blog/[slug] с featured image, мета (дата, категория, время чтения), rich text, prev/next навигация, похожие посты
+- Автоматический расчёт времени чтения из длины content (200 слов/мин), fallback на ручное значение из CMS
+- Фильтр по категориям через search params (?category=slug&page=N), серверный рендеринг
+- JSON-LD BlogPosting для каждого поста
+- RSS фид /[locale]/blog/rss.xml для каждого языка
+- ISR revalidate: 3600 для списка блога
+- SSG через generateStaticParams для постов (3 поста × 3 локали = 9 страниц)
+- hreflang alternates в generateMetadata для всех новых страниц
+- i18n: расширен namespace blog на 3 языках
+- `npm run build` — 0 ошибок
+
+### Файлы созданы:
+- lib/reading-time.ts — calculateReadingTime из Lexical content
+- components/blog/category-filter.tsx — server, фильтр по категориям (pill-кнопки)
+- components/blog/blog-pagination.tsx — server, пагинация prev/next
+- components/blog/featured-blog-card.tsx — server, большая карточка featured поста (горизонтальная на desktop)
+- components/blog/post-navigation.tsx — server, навигация prev/next между постами
+- components/blog/related-posts.tsx — server, секция похожих постов (переиспользует BlogCard)
+- app/[locale]/blog/[slug]/page.tsx — страница поста (server component)
+- app/[locale]/blog/rss.xml/route.ts — RSS route handler
+
+### Файлы изменены:
+- app/[locale]/blog/page.tsx — полная переработка: placeholder → список с фильтрацией и пагинацией
+- lib/json-ld.ts — добавлен generateBlogPostingJsonLd
+- messages/ru.json — расширен blog namespace (all_categories, no_posts, prev/next_post, related_posts, back_to_blog, page_of, read_more, min_read)
+- messages/en.json — то же
+- messages/uk.json — то же
+- CLAUDE.md — отмечена Iteration 5
+
+### Проблемы:
+- @typescript-eslint/no-explicit-any для Payload docs.map — решено через eslint-disable блоки (как в category page)
+
+### Следующая сессия:
+- Итерация 6: SEO & performance (sitemap, robots.txt, OG images, Core Web Vitals)
+
+---
+
 ## Сессия 6 — 2026-03-06 — Итерация 4: Страницы разделов, услуг и "Обо мне"
 
 ### Сделано:
