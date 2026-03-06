@@ -7,9 +7,9 @@
     "home": "Home",
     "tarot": "Tarot",
     "rituals": "Rituals",
-    "guidance": "Guidance",
+    "support": "Guidance",
     "education": "Education",
-    "regression": "Regression",
+    "regress": "Regression",
     "blog": "Blog",
     "about": "About Me"
   },
@@ -56,5 +56,35 @@
       "subtitle": "Book a consultation and discover new dimensions of your life",
       "button": "Message on Telegram"
     }
+  },
+  "category": {
+    "services_title": "Services",
+    "book_service": "Learn More",
+    "cta_title": "Ready to Start?",
+    "cta_subtitle": "Book a consultation via Telegram",
+    "cta_button": "Message on Telegram"
+  },
+  "service": {
+    "book_title": "Book \"{title}\"",
+    "book_button": "Book via Telegram",
+    "faq_title": "FAQ",
+    "back_to_category": "Back to \"{category}\"",
+    "price_label": "Price",
+    "duration_label": "Duration",
+    "format_label": "Format",
+    "format_online": "Online",
+    "format_offline": "Offline",
+    "format_both": "Online & Offline",
+    "description_title": "Description"
+  },
+  "about": {
+    "title": "About Me",
+    "timeline_title": "My Journey",
+    "cta_title": "Shall We Work Together?",
+    "cta_button": "Message on Telegram"
+  },
+  "blog": {
+    "title": "Blog",
+    "coming_soon": "Articles coming soon"
   }
 }

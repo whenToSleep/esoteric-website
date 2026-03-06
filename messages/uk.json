@@ -7,9 +7,9 @@
     "home": "Головна",
     "tarot": "Таро",
     "rituals": "Ритуалістика",
-    "guidance": "Супровід",
+    "support": "Супровід",
     "education": "Навчання",
-    "regression": "Регрес",
+    "regress": "Регрес",
     "blog": "Блог",
     "about": "Про мене"
   },
@@ -56,5 +56,35 @@
       "subtitle": "Запишіться на консультацію та відкрийте нові грані свого життя",
       "button": "Написати в Telegram"
     }
+  },
+  "category": {
+    "services_title": "Послуги",
+    "book_service": "Детальніше",
+    "cta_title": "Готові розпочати?",
+    "cta_subtitle": "Запишіться на консультацію через Telegram",
+    "cta_button": "Написати в Telegram"
+  },
+  "service": {
+    "book_title": "Записатися на \"{title}\"",
+    "book_button": "Записатися через Telegram",
+    "faq_title": "Часті запитання",
+    "back_to_category": "Назад до \"{category}\"",
+    "price_label": "Вартість",
+    "duration_label": "Тривалість",
+    "format_label": "Формат",
+    "format_online": "Онлайн",
+    "format_offline": "Офлайн",
+    "format_both": "Онлайн та офлайн",
+    "description_title": "Опис"
+  },
+  "about": {
+    "title": "Про мене",
+    "timeline_title": "Мій шлях",
+    "cta_title": "Почнемо працювати разом?",
+    "cta_button": "Написати в Telegram"
+  },
+  "blog": {
+    "title": "Блог",
+    "coming_soon": "Незабаром тут з'являться статті"
   }
 }

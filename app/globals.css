@@ -143,3 +143,69 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+.prose-cosmic {
+  color: #C0C0D0;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+.prose-cosmic h1,
+.prose-cosmic h2,
+.prose-cosmic h3,
+.prose-cosmic h4 {
+  font-family: var(--font-heading), serif;
+  color: #F0EAD6;
+  line-height: 1.2;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+.prose-cosmic h1 { font-size: 2rem; font-weight: 700; }
+.prose-cosmic h2 { font-size: 1.5rem; font-weight: 600; }
+.prose-cosmic h3 { font-size: 1.25rem; font-weight: 600; }
+.prose-cosmic p {
+  margin-bottom: 1.25em;
+}
+.prose-cosmic a {
+  color: #7C3AED;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-cosmic a:hover {
+  color: #D4AF37;
+}
+.prose-cosmic blockquote {
+  border-left: 3px solid #D4AF37;
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: #F0EAD6;
+  font-style: italic;
+}
+.prose-cosmic ul,
+.prose-cosmic ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+.prose-cosmic li {
+  margin-bottom: 0.5em;
+}
+.prose-cosmic code {
+  background: #0D1137;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+.prose-cosmic pre {
+  background: #0D1137;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.prose-cosmic hr {
+  border-color: rgba(212, 175, 55, 0.2);
+  margin: 2em 0;
+}
+.prose-cosmic strong {
+  color: #F0EAD6;
+  font-weight: 600;
+}

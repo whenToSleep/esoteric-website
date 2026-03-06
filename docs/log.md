@@ -6,6 +6,53 @@
 
 ---
 
+## Сессия 6 — 2026-03-06 — Итерация 4: Страницы разделов, услуг и "Обо мне"
+
+### Сделано:
+- Исправлен мисматч nav slugs: guidance→support, regression→regress (теперь совпадают с CMS)
+- Создана страница раздела /[locale]/[categorySlug] с Hero, сеткой карточек услуг и CTA
+- Создана страница услуги /[locale]/[categorySlug]/[serviceSlug] с rich text, info block (цена/длительность/формат), FAQ аккордеон, CTA
+- Создана страница "Обо мне" /[locale]/about с hero, rich text контент, timeline, CTA
+- Создана placeholder-страница /[locale]/blog (предотвращает конфликт с [categorySlug])
+- Rich text renderer — обёртка над @payloadcms/richtext-lexical/react с .prose-cosmic стилями
+- FAQ аккордеон с Framer Motion AnimatePresence (плавное раскрытие)
+- Timeline "Мой путь" с placeholder данными, вертикальная линия, stagger-анимация
+- JSON-LD: Person для /about, ProfessionalService для услуг
+- generateStaticParams для SSG: 5 категорий × 3 локали = 15, ~10 услуг × 3 = 30, about × 3, blog × 3
+- hreflang alternates в generateMetadata всех новых страниц
+- i18n: добавлены namespaces category, service, about, blog на 3 языках
+- `npm run build` — 0 ошибок
+
+### Файлы созданы:
+- app/[locale]/[categorySlug]/page.tsx — страница раздела (server component)
+- app/[locale]/[categorySlug]/[serviceSlug]/page.tsx — страница услуги (server component)
+- app/[locale]/about/page.tsx — страница "Обо мне" (server component)
+- app/[locale]/blog/page.tsx — placeholder блога (server component)
+- components/category/category-hero.tsx — client, hero раздела с Framer Motion + icon
+- components/category/service-card.tsx — server, карточка услуги с ценой и длительностью
+- components/service/service-info-block.tsx — server, 3 карточки: цена/длительность/формат
+- components/service/service-faq.tsx — client, FAQ аккордеон с AnimatePresence
+- components/service/service-cta.tsx — server, CTA "Записаться на {title}"
+- components/about/about-hero.tsx — client, hero с фото и fade-in
+- components/about/about-timeline.tsx — client, вертикальный timeline с placeholder данными
+- components/rich-text-renderer.tsx — обёртка Payload RichText с cosmic стилями
+- lib/json-ld.ts — генераторы Person и ProfessionalService JSON-LD
+
+### Файлы изменены:
+- lib/navigation.ts — guidance→support, regression→regress
+- messages/ru.json — исправлены nav ключи, добавлены category/service/about/blog namespaces
+- messages/en.json — то же
+- messages/uk.json — то же
+- app/globals.css — добавлены .prose-cosmic стили
+
+### Проблемы:
+- @ts-expect-error для async server components не нужен в Next.js 15.4 — убраны
+
+### Следующая сессия:
+- Итерация 5: Блог (список постов, фильтр по категориям, пагинация, страница поста)
+
+---
+
 ## Сессия 5 — 2026-03-06 — Итерация 3: Главная страница
 
 ### Сделано:

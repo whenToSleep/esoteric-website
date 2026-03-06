@@ -65,7 +65,7 @@ All text fields: localized: true, fallback: uk>ru>en
 - [x] Iteration 1: Data schema & CMS
 - [x] Iteration 2: Layout & navigation
 - [x] Iteration 3: Home page
-- [ ] Iteration 4: Section & service pages
+- [x] Iteration 4: Section & service pages
 - [ ] Iteration 5: Blog
 - [ ] Iteration 6: SEO & performance
 - [ ] Iteration 7: Polish & deploy

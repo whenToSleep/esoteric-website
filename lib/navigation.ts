@@ -2,9 +2,9 @@ export const navItems = [
   { key: "home", href: "/" },
   { key: "tarot", href: "/tarot" },
   { key: "rituals", href: "/rituals" },
-  { key: "guidance", href: "/guidance" },
+  { key: "support", href: "/support" },
   { key: "education", href: "/education" },
-  { key: "regression", href: "/regression" },
+  { key: "regress", href: "/regress" },
   { key: "blog", href: "/blog" },
   { key: "about", href: "/about" },
 ] as const;
