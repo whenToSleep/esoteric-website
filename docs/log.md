@@ -6,6 +6,54 @@
 
 ---
 
+## Сессия 5 — 2026-03-06 — Итерация 3: Главная страница
+
+### Сделано:
+- Создана полная главная страница из 6 секций: Hero, Карточки разделов, Обо мне, Блог-превью, Отзывы, CTA
+- Aceternity UI компоненты реализованы кастомно: Aurora Background, Sparkles (canvas), Infinite Moving Cards
+- Все анимации обёрнуты в `useReducedMotion()` — при prefers-reduced-motion показываются статичные альтернативы
+- Данные загружаются из CMS через Payload Local API (параллельные запросы через Promise.all)
+- Hero секция: полноэкранная с Aurora фоном, Sparkles, 2 CTA кнопки (Telegram + scroll к услугам)
+- 5 карточек категорий услуг из CMS с Lucide иконками, CSS hover glow + scale
+- Секция "Обо мне" с Framer Motion fade-in on scroll, данные из Pages (slug: about)
+- 3 последних поста блога с карточками (featured image, категория badge, дата, excerpt)
+- Отзывы: бесконечный горизонтальный скролл (Infinite Moving Cards), данные из CMS
+- CTA секция: градиент mystic-purple → midnight-navy, кнопка Telegram
+- i18n: все тексты через next-intl на 3 языках (RU/EN/UK)
+- `npm run build` — 0 ошибок, 0 warnings
+
+### Файлы созданы:
+- components/ui/aceternity/aurora-background.tsx — кастомный Aurora фон с космическими градиентами
+- components/ui/aceternity/sparkles.tsx — canvas-based мерцающие звёзды (celestial-gold)
+- components/ui/aceternity/infinite-moving-cards.tsx — бесконечный карусель отзывов
+- components/home/hero-section.tsx — client, Hero с Aurora + Sparkles + CTA
+- components/home/service-categories-section.tsx — server, секция карточек категорий
+- components/home/service-category-card.tsx — server, карточка категории с иконкой
+- components/home/about-brief-section.tsx — client, секция "Обо мне" с fade-in
+- components/home/latest-posts-section.tsx — server, секция последних постов
+- components/home/blog-card.tsx — server, карточка блога
+- components/home/testimonials-section.tsx — client, секция отзывов
+- components/home/cta-section.tsx — server, CTA секция
+- components/home/scroll-button.tsx — client, smooth scroll к секции
+- components/home/icon-map.tsx — маппинг icon keywords → Lucide компоненты
+- lib/rich-text-utils.ts — extractPlainText() из Lexical JSON
+
+### Файлы изменены:
+- app/[locale]/page.tsx — полная переработка: Server Component с Payload API запросами и композицией секций
+- messages/ru.json — добавлен namespace "home" (hero, services, about, blog, testimonials, cta)
+- messages/en.json — то же
+- messages/uk.json — то же
+
+### Проблемы:
+- Lint ошибки в scripts/patch-next-env.cjs — pre-existing, не связаны с этой итерацией
+
+### Следующая сессия:
+- Итерация 4: Страницы разделов и услуг (/[categorySlug], /[categorySlug]/[serviceSlug])
+- Создать страницы-заглушки для маршрутов навигации (/tarot, /rituals, /guidance, /education, /regression, /blog, /about)
+- Rich text рендеринг для описаний услуг и страниц
+
+---
+
 ## Как заполнять
 
 В конце каждой сессии попросите Claude Code:

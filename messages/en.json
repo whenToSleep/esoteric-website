@@ -28,5 +28,33 @@
     "ru": "RU",
     "en": "EN",
     "uk": "UK"
+  },
+  "home": {
+    "hero": {
+      "title": "Guide to the Esoteric World",
+      "subtitle": "Tarot, rituals, spiritual guidance and education. Discover new dimensions of your life.",
+      "cta_primary": "Book a Consultation",
+      "cta_secondary": "View Services"
+    },
+    "services": {
+      "section_title": "Services"
+    },
+    "about": {
+      "section_title": "About Me",
+      "learn_more": "Learn More"
+    },
+    "blog": {
+      "section_title": "Latest Posts",
+      "read_more": "Read More",
+      "min_read": "min read"
+    },
+    "testimonials": {
+      "section_title": "Client Testimonials"
+    },
+    "cta": {
+      "title": "Ready to Begin Your Journey?",
+      "subtitle": "Book a consultation and discover new dimensions of your life",
+      "button": "Message on Telegram"
+    }
   }
 }
