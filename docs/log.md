@@ -6,6 +6,18 @@
 
 ---
 
+## Сессия 29 — 2026-03-07 — Infinite scroll on mobile too
+
+### Сделано:
+- Убран Embla Carousel и desktop/mobile split
+- InfiniteMovingCards (marquee) теперь на всех экранах — и desktop, и mobile
+- Убран неиспользуемый import embla-carousel-react
+
+### Файлы изменены:
+- components/home/testimonials-section.tsx — единый InfiniteMovingCards для всех breakpoints
+
+---
+
 ## Сессия 28 — 2026-03-07 — Fix testimonial card initials + color names
 
 ### Сделано:
