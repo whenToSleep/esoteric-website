@@ -111,6 +111,12 @@ All text fields: localized: true, fallback: uk>ru>en
 - docs/design.md  — design spec (⚡ UPDATED with design audit results)
 - docs/api.md     — data schema + API examples
 
+## Rules
+- After adding/removing any plugin in payload.config.ts:
+  npx payload generate:importmap
+  Commit the updated importMap.js
+- update EVERY session docs/log.md
+
 ## Commands
 - `npm run dev` — localhost:3000
 - `npm run build` — must pass!
