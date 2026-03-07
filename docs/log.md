@@ -6,6 +6,21 @@
 
 ---
 
+## Сессия 21 — 2026-03-07 — Fix: Hero mobile issues (logo, buttons)
+
+### Сделано:
+- Убран дублирующийся логотип: logo.svg уже содержит текст "Mori Norman", удалён лишний `<span>`, увеличен размер SVG (120x24)
+- CTA кнопка: bg-astral-violet → bg-astral-violet/90 (убрана кислотная яркость на мобильном)
+- Обе кнопки: padding px-6 py-2.5 на мобильном, sm:px-8 sm:py-3 на desktop (компактнее)
+- Вторая кнопка: добавлен bg-celestial-gold/5 (лёгкий золотистый тинт)
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/header.tsx — убран дубль логотипа, увеличен SVG
+- components/home/hero-section.tsx — обновлены стили CTA кнопок
+
+---
+
 ## Сессия 20 — 2026-03-07 — Hero: pure CSS cosmic background (aurora + starfield)
 
 ### Сделано:

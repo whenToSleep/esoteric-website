@@ -14,16 +14,13 @@ export function Header() {
     <header className="fixed top-0 w-full z-50 bg-midnight-navy/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-[72px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center">
           <Image
             src="/images/logo.svg"
             alt="Mori Norman"
-            width={32}
-            height={32}
+            width={120}
+            height={24}
           />
-          <span className="font-heading text-lg text-celestial-gold">
-            Mori Norman
-          </span>
         </Link>
 
         {/* Desktop nav */}

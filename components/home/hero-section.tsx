@@ -32,13 +32,13 @@ export function HeroSection() {
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#"
-            className="inline-flex items-center justify-center min-h-12 px-8 py-3 rounded-full bg-astral-violet text-star-white font-body font-medium transition-all duration-300 hover:bg-astral-violet/80 hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)] active:scale-[0.97]"
+            className="inline-flex items-center justify-center min-h-12 px-6 py-2.5 sm:px-8 sm:py-3 rounded-full bg-astral-violet/90 text-star-white font-body font-medium transition-all duration-300 hover:bg-astral-violet/80 hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)] active:scale-[0.97]"
           >
             {t("cta_primary")}
           </a>
           <ScrollButton
             targetId="services"
-            className="inline-flex items-center justify-center min-h-12 px-8 py-3 rounded-full border border-celestial-gold/40 text-celestial-gold font-body font-medium transition-colors duration-300 hover:bg-celestial-gold/10 active:scale-[0.97]"
+            className="inline-flex items-center justify-center min-h-12 px-6 py-2.5 sm:px-8 sm:py-3 rounded-full border border-celestial-gold/40 text-celestial-gold bg-celestial-gold/5 font-body font-medium transition-colors duration-300 hover:bg-celestial-gold/10 active:scale-[0.97]"
           >
             {t("cta_secondary")}
           </ScrollButton>
