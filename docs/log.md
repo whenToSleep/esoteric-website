@@ -6,6 +6,29 @@
 
 ---
 
+## Сессия 17 — 2026-03-07 — Итерация 8.3: Spacing — увеличение padding секций на 20–30%
+
+### Сделано:
+- Все секции главной страницы: py-12 md:py-16 lg:py-20 → py-16 md:py-20 lg:py-30
+- CTA секция: py-16 md:py-20 lg:py-24 → py-20 md:py-25 lg:py-40
+- Container padding-x: добавлен sm:px-6 lg:px-8 ко всем секциям (кроме hero/testimonials)
+- Grid gap: gap-6 → gap-4 md:gap-6 lg:gap-8 (services, blog)
+- H2 margin-bottom: добавлен lg:mb-16 ко всем заголовкам секций
+- Card padding: service cards p-6 → p-5 md:p-6 lg:p-8, blog cards p-5 → p-5 md:p-6 lg:p-8
+- About grid gap: gap-8 md:gap-12 → gap-8 md:gap-12 lg:gap-16
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/home/service-categories-section.tsx — section py, px, h2 mb, grid gap
+- components/home/about-brief-section.tsx — section py, px, h2 mb, grid gap
+- components/home/latest-posts-section.tsx — section py, px, h2 mb, grid gap
+- components/home/testimonials-section.tsx — section py, h2 mb
+- components/home/cta-section.tsx — section py, px (hero/cta spacing)
+- components/home/service-category-card.tsx — card padding responsive
+- components/home/blog-card.tsx — card content padding responsive
+
+---
+
 ## Сессия 16 — 2026-03-07 — Итерация 8.2: Elevation surfaces + gold tokens + section bg alternation
 
 ### Сделано:

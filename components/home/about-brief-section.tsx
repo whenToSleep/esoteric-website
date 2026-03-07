@@ -21,9 +21,9 @@ export function AboutBriefSection({
   const t = useTranslations("home.about");
 
   return (
-    <section className="bg-surface-1 px-4 py-12 md:py-16 lg:py-20">
+    <section className="bg-surface-1 px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold md:mb-12 md:text-3xl lg:text-4xl">
+        <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold md:mb-12 md:text-3xl lg:mb-16 lg:text-4xl">
           {t("section_title")}
         </h2>
         <motion.div
@@ -31,7 +31,7 @@ export function AboutBriefSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="grid items-center gap-8 md:grid-cols-2 md:gap-12"
+          className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-16"
         >
           {imageUrl ? (
             <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-xl">

@@ -44,7 +44,7 @@ export function BlogCard({
           <div className="h-full w-full bg-gradient-to-br from-midnight-navy to-mystic-purple" />
         )}
       </div>
-      <div className="p-5">
+      <div className="p-5 md:p-6 lg:p-8">
         <div className="flex items-center gap-3">
           {categoryTitle && (
             <span className="rounded-md bg-astral-violet/10 px-3 py-1 text-xs font-medium text-astral-violet">

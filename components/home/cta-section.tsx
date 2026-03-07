@@ -5,7 +5,7 @@ export async function CTASection() {
 
   return (
     <section
-      className="px-4 py-16 md:py-20 lg:py-24"
+      className="px-4 py-20 sm:px-6 md:py-25 lg:px-8 lg:py-40"
       style={{
         background:
           "linear-gradient(135deg, #2D1B69 0%, #0D1137 100%)",

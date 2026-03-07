@@ -17,7 +17,7 @@ export function ServiceCategoryCard({
   return (
     <Link
       href={`/${slug}`}
-      className="group block w-full rounded-xl border border-celestial-gold/20 bg-midnight-navy p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+      className="group block w-full rounded-xl border border-celestial-gold/20 bg-midnight-navy p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] md:p-6 lg:p-8"
     >
       <CategoryIcon
         name={icon}
