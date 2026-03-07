@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from './hooks/slugField.ts'
+import { revalidateAfterChange, revalidateAfterDelete } from './hooks/revalidate.ts'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -14,6 +15,10 @@ export const Pages: CollectionConfig = {
     create: ({ req }) => !!req.user,
     update: ({ req }) => !!req.user,
     delete: ({ req }) => !!req.user,
+  },
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
   },
   fields: [
     {
@@ -60,6 +65,32 @@ export const Pages: CollectionConfig = {
           localized: true,
           admin: {
             description: 'Подпись к фото (необязательно)',
+          },
+        },
+      ],
+    },
+    {
+      name: 'timeline',
+      type: 'array',
+      admin: {
+        description: 'Таймлайн «Мой путь». Отображается на странице «Обо мне» в виде вертикальной линии с событиями.',
+      },
+      fields: [
+        {
+          name: 'year',
+          type: 'text',
+          required: true,
+          admin: {
+            description: 'Год или период. Например: «2018» или «2020-2022»',
+          },
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          localized: true,
+          admin: {
+            description: 'Краткое описание события. Например: «Начало пути в эзотерике»',
           },
         },
       ],

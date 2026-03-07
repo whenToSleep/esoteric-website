@@ -1,5 +1,6 @@
 import * as migration_20260307_024232 from './20260307_024232';
 import * as migration_20260307_025052 from './20260307_025052';
+import * as migration_20260307_135946_add_timeline_to_pages from './20260307_135946_add_timeline_to_pages';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20260307_025052.up,
     down: migration_20260307_025052.down,
-    name: '20260307_025052'
+    name: '20260307_025052',
+  },
+  {
+    up: migration_20260307_135946_add_timeline_to_pages.up,
+    down: migration_20260307_135946_add_timeline_to_pages.down,
+    name: '20260307_135946_add_timeline_to_pages'
   },
 ];

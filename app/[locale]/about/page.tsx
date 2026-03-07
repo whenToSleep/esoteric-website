@@ -93,7 +93,7 @@ export default async function AboutPage({ params }: Props) {
         </section>
       )}
 
-      <AboutTimeline locale={locale} />
+      <AboutTimeline locale={locale} items={page.timeline} />
 
       <section
         className="px-4 py-16 md:py-20 lg:py-24"

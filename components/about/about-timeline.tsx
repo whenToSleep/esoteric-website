@@ -3,46 +3,37 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-const timelinePlaceholders = [
-  { year: "2018", titleKey: "started" },
-  { year: "2019", titleKey: "first_clients" },
-  { year: "2020", titleKey: "online_practice" },
-  { year: "2022", titleKey: "expanded" },
-  { year: "2024", titleKey: "current" },
-];
-
-const timelineData: Record<string, { ru: string; en: string; uk: string }> = {
-  started: {
-    ru: "Начало пути в эзотерике",
-    en: "Started the esoteric journey",
-    uk: "Початок шляху в езотериці",
-  },
-  first_clients: {
-    ru: "Первые клиенты и консультации",
-    en: "First clients and consultations",
-    uk: "Перші клієнти та консультації",
-  },
-  online_practice: {
-    ru: "Переход к онлайн-практике",
-    en: "Transition to online practice",
-    uk: "Перехід до онлайн-практики",
-  },
-  expanded: {
-    ru: "Расширение направлений: ритуалистика, регресс",
-    en: "Expanded services: rituals, regression",
-    uk: "Розширення напрямків: ритуалістика, регрес",
-  },
-  current: {
-    ru: "Полный спектр эзотерических услуг",
-    en: "Full spectrum of esoteric services",
-    uk: "Повний спектр езотеричних послуг",
-  },
+type TimelineItem = {
+  year: string;
+  title: string;
+  id?: string;
 };
 
-export function AboutTimeline({ locale }: { locale: string }) {
+const fallbackData: Record<string, { year: string; title: Record<string, string> }[]> = {
+  default: [
+    { year: "2018", title: { ru: "Начало пути в эзотерике", en: "Started the esoteric journey", uk: "Початок шляху в езотериці" } },
+    { year: "2019", title: { ru: "Первые клиенты и консультации", en: "First clients and consultations", uk: "Перші клієнти та консультації" } },
+    { year: "2020", title: { ru: "Переход к онлайн-практике", en: "Transition to online practice", uk: "Перехід до онлайн-практики" } },
+    { year: "2022", title: { ru: "Расширение направлений: ритуалистика, регресс", en: "Expanded services: rituals, regression", uk: "Розширення напрямків: ритуалістика, регрес" } },
+    { year: "2024", title: { ru: "Полный спектр эзотерических услуг", en: "Full spectrum of esoteric services", uk: "Повний спектр езотеричних послуг" } },
+  ],
+};
+
+export function AboutTimeline({
+  locale,
+  items,
+}: {
+  locale: string;
+  items?: TimelineItem[] | null;
+}) {
   const t = useTranslations("about");
   const prefersReducedMotion = useReducedMotion();
   const lang = (locale as "ru" | "en" | "uk") || "ru";
+
+  const timelineItems: { year: string; text: string }[] =
+    items && items.length > 0
+      ? items.map((item) => ({ year: item.year, text: item.title }))
+      : fallbackData.default.map((item) => ({ year: item.year, text: item.title[lang] || item.title.ru }));
 
   return (
     <section className="px-4 py-12 md:py-16 lg:py-20">
@@ -54,13 +45,12 @@ export function AboutTimeline({ locale }: { locale: string }) {
         <div className="relative">
           <div className="absolute left-4 top-0 h-full w-0.5 bg-celestial-gold/30 md:left-1/2 md:-translate-x-0.5" />
 
-          {timelinePlaceholders.map((item, index) => {
-            const text = timelineData[item.titleKey]?.[lang] || item.titleKey;
+          {timelineItems.map((item, index) => {
             const isEven = index % 2 === 0;
 
             return (
               <motion.div
-                key={item.year}
+                key={`${item.year}-${index}`}
                 initial={
                   prefersReducedMotion
                     ? {}
@@ -84,7 +74,7 @@ export function AboutTimeline({ locale }: { locale: string }) {
                     <p className="text-sm font-semibold text-celestial-gold">
                       {item.year}
                     </p>
-                    <p className="mt-1 text-sm text-silver-mist">{text}</p>
+                    <p className="mt-1 text-sm text-silver-mist">{item.text}</p>
                   </div>
                 </div>
 
@@ -95,7 +85,7 @@ export function AboutTimeline({ locale }: { locale: string }) {
                     <p className="text-sm font-semibold text-celestial-gold">
                       {item.year}
                     </p>
-                    <p className="mt-1 text-sm text-silver-mist">{text}</p>
+                    <p className="mt-1 text-sm text-silver-mist">{item.text}</p>
                   </div>
                 </div>
 

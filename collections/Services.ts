@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from './hooks/slugField.ts'
+import { revalidateAfterChange, revalidateAfterDelete } from './hooks/revalidate.ts'
 
 export const Services: CollectionConfig = {
   slug: 'services',
@@ -14,6 +15,10 @@ export const Services: CollectionConfig = {
     create: ({ req }) => !!req.user,
     update: ({ req }) => !!req.user,
     delete: ({ req }) => !!req.user,
+  },
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
   },
   fields: [
     {

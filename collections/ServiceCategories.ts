@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from './hooks/slugField.ts'
+import { revalidateAfterChange, revalidateAfterDelete } from './hooks/revalidate.ts'
 
 export const ServiceCategories: CollectionConfig = {
   slug: 'service-categories',
@@ -16,6 +17,8 @@ export const ServiceCategories: CollectionConfig = {
     delete: ({ req }) => !!req.user,
   },
   hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
     beforeDelete: [
       async ({ id, req }) => {
         await req.payload.delete({
