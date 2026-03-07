@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { AuroraBackground } from "@/components/ui/aceternity/aurora-background";
 import { ScrollButton } from "@/components/home/scroll-button";
 
 export function HeroSection() {
@@ -9,17 +8,18 @@ export function HeroSection() {
 
   return (
     <section className="relative -mt-16 lg:-mt-[72px] min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
-      {/* Aurora Background */}
-      <AuroraBackground className="-z-10" />
+      {/* Layer 1: Aurora — animated color blobs */}
+      <div className="hero-aurora" />
+      <div className="hero-aurora-accent" />
 
-      {/* CSS Starfield */}
-      <div className="starfield absolute inset-0 pointer-events-none" />
+      {/* Layer 2: Starfield */}
+      <div className="hero-stars" />
 
-      {/* Floating gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-mystic-purple/15 blur-[128px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-80 h-80 rounded-full bg-astral-violet/10 blur-[100px] pointer-events-none" />
+      {/* Layer 3: Gradient orbs for depth */}
+      <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-mystic-purple/20 blur-[150px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-astral-violet/15 blur-[120px] pointer-events-none z-0" />
 
-      {/* Content */}
+      {/* Layer 4: Content */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-16 lg:pt-[72px]">
         <p className="font-body text-small tracking-[0.3em] uppercase text-celestial-gold mb-6">
           {t("tagline")}

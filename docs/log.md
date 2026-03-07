@@ -6,6 +6,24 @@
 
 ---
 
+## Сессия 20 — 2026-03-07 — Hero: pure CSS cosmic background (aurora + starfield)
+
+### Сделано:
+- Удалён Aceternity AuroraBackground из Hero — заменён на чистый CSS
+- Добавлены CSS-классы: .hero-aurora (animated purple blobs), .hero-aurora-accent (gold blob), .hero-stars (22 radial-gradient star dots с twinkle)
+- @keyframes aurora-drift (20-30s, translate+scale+opacity) — плавное движение пятен
+- @keyframes twinkle (4-5s) — мерцание звёзд
+- Gradient orbs увеличены (500px/400px) с blur-[150px]/blur-[120px]
+- prefers-reduced-motion: отключает все анимации aurora и звёзд
+- CTA кнопки: rounded-full (без изменений — уже были)
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- app/globals.css — заменён .starfield на .hero-aurora + .hero-aurora-accent + .hero-stars + @keyframes aurora-drift + twinkle
+- components/home/hero-section.tsx — удалён импорт AuroraBackground, новые CSS-слои
+
+---
+
 ## Сессия 19 — 2026-03-07 — Итерация 8.5: Service cards — grid 3+2, violet hover glow + lift
 
 ### Сделано:
