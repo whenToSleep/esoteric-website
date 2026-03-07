@@ -6,6 +6,26 @@
 
 ---
 
+## Сессия 27 — 2026-03-07 — Testimonials: desktop marquee + mobile Embla carousel
+
+### Сделано:
+- **Desktop (lg+)**: Aceternity InfiniteMovingCards marquee, direction=left, speed=slow, pauseOnHover
+- **Mobile (<lg)**: Embla Carousel (swipe), loop, align center, 85% card width
+- **Карточка отзыва**: новый дизайн — gradient bg (#0D1137 -> #0A0A1E), border cosmic-purple/20, italic blockquote, avatar circle с инициалом, rounded-2xl
+- **Reduced motion**: motion-reduce:[animation-play-state:paused] на marquee `<ul>`
+- **Cleanup**: удалён дублирующий `<style jsx>` блок из infinite-moving-cards (keyframes уже в globals.css)
+- Установлен `embla-carousel-react`
+- TypeScript — 0 ошибок
+
+### Файлы изменены:
+- components/ui/aceternity/infinite-moving-cards.tsx — новый дизайн карточки (TestimonialCard), убран style jsx, motion-reduce, className prop
+- components/home/testimonials-section.tsx — desktop/mobile split, Embla carousel для мобильных
+
+### Зависимости:
+- +embla-carousel-react
+
+---
+
 ## Сессия 26 — 2026-03-07 — Service detail page: full redesign
 
 ### Сделано:

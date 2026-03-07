@@ -4,16 +4,43 @@ import { cn } from "@/lib/utils";
 import { useReducedMotion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
+interface TestimonialItem {
+  clientName: string;
+  text: string;
+}
+
 interface InfiniteMovingCardsProps {
-  items: {
-    clientName: string;
-    text: string;
-  }[];
+  items: TestimonialItem[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
   className?: string;
 }
+
+function TestimonialCard({ item, className }: { item: TestimonialItem; className?: string }) {
+  return (
+    <div
+      className={cn("max-w-full shrink-0 rounded-2xl border border-cosmic-purple/20 px-8 py-6", className)}
+      style={{ background: "linear-gradient(180deg, #0D1137, #0A0A1E)" }}
+    >
+      <blockquote className="font-body text-[0.9375rem] leading-relaxed text-cosmic-white/80 italic">
+        &ldquo;{item.text}&rdquo;
+      </blockquote>
+      <footer className="mt-5 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cosmic-purple/40 font-heading text-sm text-cosmic-gold">
+          {item.clientName[0]}
+        </div>
+        <div>
+          <p className="text-[0.9375rem] font-medium text-cosmic-white">
+            {item.clientName}
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export { TestimonialCard };
 
 export function InfiniteMovingCards({
   items,
@@ -57,17 +84,7 @@ export function InfiniteMovingCards({
     return (
       <div className={cn("flex gap-4 overflow-x-auto pb-4", className)}>
         {items.map((item, idx) => (
-          <div
-            key={idx}
-            className="w-[350px] max-w-full shrink-0 rounded-xl border border-celestial-gold/20 bg-midnight-navy p-6 md:w-[450px]"
-          >
-            <p className="font-heading text-base text-celestial-gold">
-              {item.clientName}
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-star-white">
-              {item.text}
-            </p>
-          </div>
+          <TestimonialCard key={idx} item={item} className="w-[350px] md:w-[450px]" />
         ))}
       </div>
     );
@@ -84,39 +101,17 @@ export function InfiniteMovingCards({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 gap-4 py-4",
+          "flex w-max min-w-full shrink-0 gap-4 py-4 motion-reduce:[animation-play-state:paused]",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
-          <li
-            key={idx}
-            className="w-[350px] max-w-full shrink-0 rounded-xl border border-celestial-gold/20 bg-midnight-navy p-6 md:w-[450px]"
-          >
-            <p className="font-heading text-base text-celestial-gold">
-              {item.clientName}
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-star-white">
-              {item.text}
-            </p>
+          <li key={idx} className="contents">
+            <TestimonialCard item={item} className="w-[350px] md:w-[450px]" />
           </li>
         ))}
       </ul>
-      <style jsx>{`
-        @keyframes scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(calc(-50% - 0.5rem));
-          }
-        }
-        .animate-scroll {
-          animation: scroll var(--animation-duration, 40s)
-            var(--animation-direction, forwards) linear infinite;
-        }
-      `}</style>
     </div>
   );
 }
