@@ -6,6 +6,31 @@
 
 ---
 
+## Сессия 19 — 2026-03-07 — Итерация 8.5: Service cards — grid 3+2, violet hover glow + lift
+
+### Сделано:
+- Grid карточек услуг: 6-колоночный layout (lg:grid-cols-6, col-span-2), нижний ряд из 2 карточек центрирован (col-start-2)
+- Hover: фиолетовый glow (cosmic-violet/20) + lift (-translate-y-1), НЕ золотой как раньше
+- Active: scale-[0.98] для мобильных
+- border-radius: rounded-2xl (16px) вместо rounded-xl (12px)
+- Border: cosmic-purple/20 вместо celestial-gold/20
+- Bg: cosmic-card вместо midnight-navy
+- Иконка: w-12 h-12 в контейнере rounded-xl bg-cosmic-purple/30 text-cosmic-violet
+- Заголовок карточки: font-heading text-card-title text-cosmic-white
+- Описание: text-small text-cosmic-white/70
+- Добавлена стрелка-ссылка "Подробнее →" с group-hover:translate-x-1
+- Заголовок секции: text-section text-cosmic-gold (fluid typography)
+- i18n: добавлен ключ home.services.learn_more (ru/en/uk)
+- focus-visible стили для accessibility
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/home/service-category-card.tsx — полная переделка карточки
+- components/home/service-categories-section.tsx — 6-col grid + обёртки col-span
+- messages/ru.json, messages/en.json, messages/uk.json — добавлен learn_more
+
+---
+
 ## Сессия 18 — 2026-03-07 — Итерация 8.4: Hero — Aurora Background + CSS starfield + gradient orbs + CTA rounded-full
 
 ### Сделано:

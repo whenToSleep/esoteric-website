@@ -19,18 +19,23 @@ export async function ServiceCategoriesSection({
   return (
     <section id="services" className="px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold md:mb-12 md:text-3xl lg:mb-16 lg:text-4xl">
+        <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
           {t("section_title")}
         </h2>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
-          {categories.map((cat) => (
-            <ServiceCategoryCard
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-6 lg:gap-8">
+          {categories.map((cat, index) => (
+            <div
               key={cat.id}
-              title={cat.title}
-              shortDescription={cat.shortDescription}
-              icon={cat.icon}
-              slug={cat.slug}
-            />
+              className={`lg:col-span-2${index === 3 ? " lg:col-start-2" : ""}`}
+            >
+              <ServiceCategoryCard
+                title={cat.title}
+                shortDescription={cat.shortDescription}
+                icon={cat.icon}
+                slug={cat.slug}
+                learnMoreText={t("learn_more")}
+              />
+            </div>
           ))}
         </div>
       </div>

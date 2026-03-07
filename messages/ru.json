@@ -38,7 +38,8 @@
       "cta_secondary": "Смотреть услуги"
     },
     "services": {
-      "section_title": "Направления"
+      "section_title": "Направления",
+      "learn_more": "Подробнее"
     },
     "about": {
       "section_title": "Обо мне",
