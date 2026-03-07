@@ -19,10 +19,7 @@ export function AuroraBackground({
 
   return (
     <div
-      className={cn(
-        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden",
-        className
-      )}
+      className={cn("absolute inset-0", className)}
       style={{
         background:
           "linear-gradient(180deg, #0A0A0F 0%, #0D1137 40%, #2D1B69 70%, #0D1137 100%)",
@@ -51,7 +48,7 @@ export function AuroraBackground({
           }}
         />
       )}
-      <div className="relative z-10">{children}</div>
+      {children}
       <style jsx>{`
         @keyframes aurora {
           0% {

@@ -6,6 +6,29 @@
 
 ---
 
+## Сессия 18 — 2026-03-07 — Итерация 8.4: Hero — Aurora Background + CSS starfield + gradient orbs + CTA rounded-full
+
+### Сделано:
+- Hero секция полностью переделана: убран Canvas-based Sparkles (Tier 3), добавлены CSS-only эффекты
+- Aurora Background рефакторинг: компонент теперь работает как абсолютный фоновый слой (не обёртка)
+- CSS starfield: radial-gradient звёзды с twinkle анимацией (4s alternate)
+- Floating gradient orbs: два blur-элемента (cosmic-purple/15, astral-violet/10)
+- CTA кнопки: rounded-full, primary — violet с glow hover, secondary — gold border
+- Tagline (подзаголовок): uppercase tracking-[0.3em] gold текст над заголовком
+- Typography: h1 использует text-hero (fluid clamp), font-heading
+- Высота hero: min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] (тизер контента ниже fold)
+- i18n: добавлен ключ home.hero.tagline во все 3 языка (ru/en/uk)
+- prefers-reduced-motion: глобальное правило в globals.css отключает все анимации
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/home/hero-section.tsx — полная переделка Hero
+- components/ui/aceternity/aurora-background.tsx — рефакторинг в background layer
+- app/globals.css — добавлен .starfield + @keyframes twinkle
+- messages/ru.json, messages/en.json, messages/uk.json — добавлен tagline
+
+---
+
 ## Сессия 17 — 2026-03-07 — Итерация 8.3: Spacing — увеличение padding секций на 20–30%
 
 ### Сделано:
