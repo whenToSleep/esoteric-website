@@ -6,6 +6,24 @@
 
 ---
 
+## Сессия 24 — 2026-03-07 — Category page redesign (mini-hero, styled cards, CTA)
+
+### Сделано:
+- **CategoryHero**: полная переработка — gradient orbs, breadcrumb (Home -> Category), fluid text-hero, убран framer-motion (теперь server component)
+- **ServiceCard**: редизайн под стиль главной — gradient bg (#1A1A24 -> #141419), highlight line, hover glow + lift, active:scale, цена (gold) + время внизу через border-t
+- **Page layout**: секции чередуют bg (cosmic-bg -> surface-1), gradient divider между hero и услугами, celestial gold line между услугами и CTA
+- **CTA**: gradient фон (cosmic-purple/30), pill-shaped кнопка (rounded-full, bg-cosmic-violet/90, hover glow)
+- Убрана иконка из карточек услуг (есть только у категорий)
+- JS бандл страницы: снизился (убран framer-motion из hero)
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/category/category-hero.tsx — полная переработка
+- components/category/service-card.tsx — полная переработка
+- app/[locale]/[categorySlug]/page.tsx — layout, dividers, CTA
+
+---
+
 ## Сессия 23 — 2026-03-07 — Service cards: equal height, centering, visible bg
 
 ### Сделано:
