@@ -21,7 +21,7 @@ export function AboutBriefSection({
   const t = useTranslations("home.about");
 
   return (
-    <section className="px-4 py-12 md:py-16 lg:py-20">
+    <section className="bg-surface-1 px-4 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold md:mb-12 md:text-3xl lg:text-4xl">
           {t("section_title")}

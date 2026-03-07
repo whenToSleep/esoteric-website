@@ -6,6 +6,23 @@
 
 ---
 
+## Сессия 16 — 2026-03-07 — Итерация 8.2: Elevation surfaces + gold tokens + section bg alternation
+
+### Сделано:
+- Добавлены elevation surface цвета в @theme: surface-1 (#0E0E14), surface-2 (#121218), surface-3 (#16161E), surface-4 (#1A1A24)
+- Добавлены gold gradient токены: cosmic-gold-light (#F5E6A3), cosmic-gold-dark (#B8860B)
+- Добавлены animation tokens в @theme: animate-aurora, animate-float, animate-scroll, animate-gold-shimmer, animate-gold-glow
+- Добавлены @keyframes: aurora, float, scroll, gold-shimmer, gold-glow-pulse
+- Чередование фонов секций: About Brief -> bg-surface-1, Footer -> bg-surface-1
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- app/globals.css — @theme tokens (surfaces, gold, animations) + @keyframes
+- components/home/about-brief-section.tsx — bg-surface-1
+- components/footer.tsx — bg-cosmic-black -> bg-surface-1
+
+---
+
 ## Сессия 15 — 2026-03-07 — Итерация 8.1: Замена шрифтов + типографическая шкала
 
 ### Сделано:

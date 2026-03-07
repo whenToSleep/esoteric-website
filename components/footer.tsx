@@ -15,7 +15,7 @@ export async function Footer() {
   const navT = await getTranslations("nav");
 
   return (
-    <footer className="bg-cosmic-black border-t border-celestial-gold/20">
+    <footer className="bg-surface-1 border-t border-celestial-gold/20">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:py-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Column 1: Navigation */}
