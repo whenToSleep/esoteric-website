@@ -32,7 +32,7 @@ export function CategoryHero({ title, description, icon }: CategoryHeroProps) {
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading text-3xl font-bold text-star-white md:text-4xl lg:text-5xl"
+          className="font-heading text-3xl font-semibold text-star-white md:text-4xl lg:text-5xl"
         >
           {title}
         </motion.h1>

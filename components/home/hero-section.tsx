@@ -13,7 +13,7 @@ export function HeroSection() {
       <AuroraBackground className="min-h-screen px-4 pt-16 lg:pt-[72px]">
         <Sparkles className="z-0" particleCount={60} />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="font-heading text-4xl font-bold text-star-white md:text-5xl lg:text-6xl">
+          <h1 className="font-heading text-4xl font-semibold text-star-white md:text-5xl lg:text-6xl">
             {t("title")}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-silver-mist md:text-xl">

@@ -143,7 +143,7 @@ export default async function ServicePage({ params }: Props) {
 
       <section className="px-4 py-8 md:py-12">
         <div className="mx-auto max-w-4xl">
-          <h1 className="font-heading text-3xl font-bold text-star-white md:text-4xl lg:text-5xl">
+          <h1 className="font-heading text-3xl font-semibold text-star-white md:text-4xl lg:text-5xl">
             {service.title as string}
           </h1>
 

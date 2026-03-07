@@ -6,6 +6,34 @@
 
 ---
 
+## Сессия 15 — 2026-03-07 — Итерация 8.1: Замена шрифтов + типографическая шкала
+
+### Сделано:
+- Заменён heading font: Cormorant_SC -> Cormorant Garamond (полная поддержка кириллицы)
+- Заменён body font: Inter -> Commissioner (качественная кириллица)
+- CSS-переменные: --font-sans -> --font-body, утилита font-sans -> font-body
+- Добавлены fluid typography токены в @theme: text-hero, text-section, text-card-title, text-body, text-small
+- Исправлены веса заголовков: font-bold (700) -> font-semibold (600) на всех h1 (6 файлов)
+- prose-cosmic: h1/h2 weight 700->600, h3 weight 700->500
+- font-heading утилита: weight 700->600
+- Body: 17px, line-height 1.7, letter-spacing 0.02em, antialiased
+- Удалена тестовая страница font-test
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- lib/fonts.ts — Cormorant_Garamond + Commissioner
+- app/[locale]/layout.tsx — headingFont/bodyFont переменные, font-body
+- app/globals.css — @theme tokens, @layer base, font-heading utility, prose-cosmic weights
+- components/home/hero-section.tsx — font-bold -> font-semibold
+- components/category/category-hero.tsx — font-bold -> font-semibold
+- components/about/about-hero.tsx — font-bold -> font-semibold
+- app/[locale]/blog/[slug]/page.tsx — font-bold -> font-semibold
+- app/[locale]/blog/page.tsx — font-bold -> font-semibold
+- app/[locale]/[categorySlug]/[serviceSlug]/page.tsx — font-bold -> font-semibold
+- app/[locale]/font-test/page.tsx — удалён
+
+---
+
 ## Сессия 14 — 2026-03-07 — Итерация 7 (продолжение): Revalidation fix for About section
 
 ### Сделано:
