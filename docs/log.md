@@ -6,6 +6,23 @@
 
 ---
 
+## Сессия 23 — 2026-03-07 — Service cards: visible background + styling overhaul
+
+### Сделано:
+- Фон карточек: bg-cosmic-card (#0D1137) → gradient surface-3 (#16161E → #111118) — теперь Δ12 от body, чётко видны
+- Border: cosmic-purple/20 → white/[0.08] — ярче на near-black фоне
+- Добавлена тень shadow-lg shadow-purple-900/10 для глубины
+- Hover glow: двухслойный фиолетовый (30px + 60px spread)
+- Тонкая highlight-линия сверху (via-white/[0.06]) для стеклянного эффекта
+- Иконки: добавлен border border-cosmic-purple/30 в контейнер
+- Grid 3+2 уже был реализован ранее — подтверждено
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/home/service-category-card.tsx — полный редизайн стилей карточки
+
+---
+
 ## Сессия 22 — 2026-03-07 — Fix: Hero mobile height and spacing
 
 ### Сделано:
