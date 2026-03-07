@@ -83,15 +83,9 @@ export default async function AboutPage({ params }: Props) {
         title={(page.title as string) || t("title")}
         imageUrl={page.featuredImage?.url || undefined}
         imageAlt={page.featuredImage?.alt || undefined}
-      />
-
-      {page.content && (
-        <section className="px-4 py-8 md:py-12">
-          <div className="mx-auto max-w-3xl">
-            <RichTextRenderer content={page.content} />
-          </div>
-        </section>
-      )}
+      >
+        {page.content && <RichTextRenderer content={page.content} />}
+      </AboutHero>
 
       <AboutTimeline locale={locale} items={page.timeline} />
 

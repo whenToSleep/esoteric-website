@@ -70,4 +70,4 @@ All text fields: localized: true, fallback: uk>ru>en
 - [x] Iteration 5: Blog
 - [x] Iteration 5.1: Blog improvements & seed expansion
 - [x] Iteration 6: SEO & performance
-- [ ] Iteration 7: Polish & deploy (admin panel fixed, slug sanitizer, cascade delete hooks)
+- [x] Iteration 7: Polish & deploy (admin panel fixed, slug sanitizer, cascade delete hooks, about page layout fix)
