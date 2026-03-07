@@ -10,7 +10,6 @@ export function HeroSection() {
     <section className="relative -mt-16 lg:-mt-[72px] min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
       {/* Layer 1: Aurora — animated color blobs */}
       <div className="hero-aurora" />
-      <div className="hero-aurora-accent" />
 
       {/* Layer 2: Starfield */}
       <div className="hero-stars" />
