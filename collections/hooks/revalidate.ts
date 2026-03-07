@@ -18,7 +18,7 @@ export const revalidateAfterDelete: CollectionAfterDeleteHook = ({ collection })
 function getPathsForCollection(slug: string): string[] {
   switch (slug) {
     case 'pages':
-      return ['/[locale]/about']
+      return ['/[locale]/about', '/[locale]']
     case 'services':
       return ['/[locale]/[categorySlug]', '/[locale]/[categorySlug]/[serviceSlug]', '/[locale]']
     case 'service-categories':
