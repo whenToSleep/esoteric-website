@@ -64,7 +64,8 @@
     "book_service": "Learn More",
     "cta_title": "Ready to Start?",
     "cta_subtitle": "Book a consultation via Telegram",
-    "cta_button": "Message on Telegram"
+    "cta_button": "Message on Telegram",
+    "coming_soon": "Services coming soon"
   },
   "service": {
     "book_title": "Book \"{title}\"",

@@ -6,6 +6,30 @@
 
 ---
 
+## Сессия 25 — 2026-03-07 — Category page: heroImage support, CTA glow, i18n fix
+
+### Сделано:
+- **CategoryHero**: добавлена поддержка heroImage — next/image fill + gradient overlay (from-cosmic-bg via-cosmic-bg/70 to-cosmic-bg/30), fallback gradient + orbs когда фото нет
+- **Hero layout**: min-h-[40vh] md:min-h-[50vh] с items-end (контент прижат к низу как на киноафишах), pt-32 md:pt-40 для пространства под навигацией
+- **ServiceCategories CMS**: добавлено поле heroImage (upload, relationTo: media) с описанием для админки
+- **Migration**: создана 20260307_203346_add_hero_image — ALTER TABLE hero_image_id + FK + INDEX
+- **CTA section**: переработана — абсолютный gradient фон (from-cosmic-bg via-cosmic-purple/20 to-cosmic-bg) + декоративный violet glow blur, кнопка с hover:bg-cosmic-violet
+- **i18n**: добавлен ключ `category.coming_soon` на 3 языках (ru/en/uk) — ранее использовался несуществующий ключ
+- TypeScript + ESLint — 0 ошибок
+
+### Файлы изменены:
+- components/category/category-hero.tsx — heroImage prop, next/image, gradient overlay, fallback orbs, items-end layout
+- app/[locale]/[categorySlug]/page.tsx — heroImage prop передача, CTA с absolute gradient + glow
+- collections/ServiceCategories.ts — добавлено поле heroImage (upload)
+- migrations/index.ts — подключена миграция add_hero_image
+- messages/ru.json, en.json, uk.json — добавлен category.coming_soon
+
+### Файлы созданы:
+- migrations/20260307_203346_add_hero_image.ts — SQL миграция для hero_image_id
+- migrations/20260307_203346_add_hero_image.json — метаданные миграции
+
+---
+
 ## Сессия 24 — 2026-03-07 — Category page redesign (mini-hero, styled cards, CTA)
 
 ### Сделано:

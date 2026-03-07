@@ -64,7 +64,8 @@
     "book_service": "Детальніше",
     "cta_title": "Готові розпочати?",
     "cta_subtitle": "Запишіться на консультацію через Telegram",
-    "cta_button": "Написати в Telegram"
+    "cta_button": "Написати в Telegram",
+    "coming_soon": "Незабаром тут з'являться послуги"
   },
   "service": {
     "book_title": "Записатися на \"{title}\"",

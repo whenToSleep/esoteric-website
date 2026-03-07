@@ -113,6 +113,16 @@ export default async function CategoryPage({ params }: Props) {
         title={(category.title as string) || ""}
         description={descriptionText}
         locale={locale}
+        heroImage={
+          category.heroImage &&
+          typeof category.heroImage === "object" &&
+          "url" in category.heroImage
+            ? {
+                url: category.heroImage.url as string,
+                alt: (category.heroImage.alt as string) || undefined,
+              }
+            : null
+        }
       />
 
       {/* Gradient divider: hero → services */}
@@ -156,17 +166,22 @@ export default async function CategoryPage({ params }: Props) {
       </div>
 
       {/* CTA section */}
-      <section className="bg-linear-to-br from-cosmic-purple/30 via-cosmic-bg to-cosmic-bg py-16 md:py-20 lg:py-30">
-        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <h2 className="font-heading text-section text-cosmic-white">
+      <section className="relative overflow-hidden py-16 md:py-20 lg:py-28">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-cosmic-bg via-cosmic-purple/20 to-cosmic-bg" />
+        {/* Decorative glow */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cosmic-violet/10 blur-[100px]" />
+
+        <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
+          <h2 className="font-heading text-section text-cosmic-white mb-4">
             {t("cta_title")}
           </h2>
-          <p className="mt-4 font-body text-body text-cosmic-white/60">
+          <p className="font-body text-body text-cosmic-white/60 mb-10">
             {t("cta_subtitle")}
           </p>
           <a
             href="#"
-            className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-cosmic-violet/90 px-8 py-3 font-body font-medium text-cosmic-white transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)] active:scale-[0.97]"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-cosmic-violet/90 px-8 py-3 font-body font-medium text-base text-cosmic-white transition-all duration-300 hover:bg-cosmic-violet hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)] active:scale-[0.97] sm:px-10 sm:py-3.5"
           >
             {t("cta_button")}
           </a>

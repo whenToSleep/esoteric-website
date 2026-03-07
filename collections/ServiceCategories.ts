@@ -73,6 +73,14 @@ export const ServiceCategories: CollectionConfig = {
       relationTo: 'media',
     },
     {
+      name: 'heroImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Фоновое изображение для Hero секции раздела (рекомендуемый размер: 1920x800)',
+      },
+    },
+    {
       name: 'order',
       type: 'number',
       admin: {
