@@ -7,7 +7,7 @@ export function HeroSection() {
   const t = useTranslations("home.hero");
 
   return (
-    <section className="relative -mt-16 lg:-mt-[72px] min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
+    <section className="relative -mt-16 lg:-mt-[72px] min-h-svh md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
       {/* Layer 1: Aurora — animated color blobs */}
       <div className="hero-aurora" />
 
@@ -19,7 +19,7 @@ export function HeroSection() {
       <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-astral-violet/15 blur-[120px] pointer-events-none z-0" />
 
       {/* Layer 4: Content */}
-      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-16 lg:pt-[72px]">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-20 pb-12 md:pt-0 md:pb-0">
         <p className="font-body text-small tracking-[0.3em] uppercase text-celestial-gold mb-6">
           {t("tagline")}
         </p>

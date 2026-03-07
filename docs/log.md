@@ -6,6 +6,18 @@
 
 ---
 
+## Сессия 22 — 2026-03-07 — Fix: Hero mobile height and spacing
+
+### Сделано:
+- Hero min-height на мобильном: 70vh → 100svh (полный экран с учётом адресной строки)
+- Контент Hero: добавлен pt-20 pb-12 на мобильном, md:pt-0 md:pb-0 на desktop
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- components/home/hero-section.tsx — min-height + content padding
+
+---
+
 ## Сессия 21 — 2026-03-07 — Fix: Hero mobile issues (logo, buttons)
 
 ### Сделано:
