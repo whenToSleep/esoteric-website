@@ -51,8 +51,8 @@ export default buildConfig({
   localization: {
     locales: [
       { label: 'Русский', code: 'ru' },
-      { label: 'English', code: 'en' },
-      { label: 'Українська', code: 'uk' },
+      { label: 'English', code: 'en', fallbackLocale: 'ru' },
+      { label: 'Українська', code: 'uk', fallbackLocale: 'ru' },
     ],
     defaultLocale: 'ru',
     fallback: true,

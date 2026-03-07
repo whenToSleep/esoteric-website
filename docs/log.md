@@ -6,6 +6,35 @@
 
 ---
 
+## Сессия 13 — 2026-03-07 — Итерация 7 (продолжение): Localization audit & fallback fix
+
+### Сделано:
+- Полный аудит мультиязычности Payload CMS: localization конфиг УЖЕ был настроен в payload.config.ts, переключатель языков в админке работает (появляется в edit view документа)
+- Добавлен `fallbackLocale: 'ru'` для локалей EN и UK — теперь если контент на EN/UK не заполнен, показывается RU (ранее fallback был только глобальный)
+- Локализованы поля `price` и `duration` в Services (содержат текст на естественном языке: "60 минут" vs "60 minutes")
+- Создана и применена миграция БД: перенос price/duration из services в services_locales с сохранением существующих данных
+- Обновлена документация docs/api.md: price/duration отмечены как localized, конфиг локалей обновлён
+- `npm run build` — 0 ошибок (после clean rebuild с rm -rf .next)
+
+### Файлы изменены:
+- payload.config.ts — добавлен fallbackLocale: 'ru' для EN и UK локалей
+- collections/Services.ts — добавлен localized: true для price и duration
+- docs/api.md — обновлена таблица полей Services (price, duration → localized), обновлён конфиг локалей
+
+### Файлы созданы:
+- migrations/20260307_145738.ts — миграция: перенос price/duration в services_locales с копированием данных
+
+### Проблемы:
+- Build ломался после добавления localized: true к price/duration — БД ожидала старую структуру (колонки в services, а не services_locales) → решено миграцией
+- Автосгенерированная миграция DROP'ала данные → исправлена вручную: добавлен UPDATE для копирования данных перед DROP
+
+### Следующая сессия:
+- Деплой на Vercel: подключить Blob Store, добавить BLOB_READ_WRITE_TOKEN
+- Заполнить контент на EN и UK через админку (переключатель языков теперь работает)
+- Финальная полировка UI
+
+---
+
 ## Сессия 12 — 2026-03-07 — Итерация 7 (продолжение): About page layout fix
 
 ### Сделано:

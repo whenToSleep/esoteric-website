@@ -40,11 +40,11 @@
 localization: {
   locales: [
     { label: 'Русский', code: 'ru' },
-    { label: 'English', code: 'en' },
-    { label: 'Українська', code: 'uk' },
+    { label: 'English', code: 'en', fallbackLocale: 'ru' },
+    { label: 'Українська', code: 'uk', fallbackLocale: 'ru' },
   ],
   defaultLocale: 'ru',
-  fallback: true,   // uk → ru → en
+  fallback: true,
 }
 ```
 
@@ -176,8 +176,8 @@ admin: {
 | `shortDescription` | textarea | ✅ | — | — | 1–2 предложения для карточки |
 | `fullDescription` | richText (Lexical) | ✅ | — | — | Полное описание: что это, кому подходит, что входит |
 | `category` | relationship → ServiceCategories | ❌ | ✅ | — | К какому разделу относится |
-| `price` | text | ❌ | — | — | Цена: число, «от ...», «по договорённости» |
-| `duration` | text | ❌ | — | — | Длительность: «60 мин», «2–3 часа» |
+| `price` | text | ✅ | — | — | Цена: число, «от ...», «по договорённости» |
+| `duration` | text | ✅ | — | — | Длительность: «60 мин», «2–3 часа» |
 | `format` | select | ❌ | — | — | Варианты: `online`, `offline`, `both` |
 | `icon` | text | ❌ | — | — | Ключевое слово для SVG-иконки |
 | `image` | relationship → Media | ❌ | — | — | Изображение услуги |

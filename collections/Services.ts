@@ -59,6 +59,7 @@ export const Services: CollectionConfig = {
     {
       name: 'price',
       type: 'text',
+      localized: true,
       admin: {
         description: 'Цена. Можно написать число, «от 50€» или «по договорённости»',
       },
@@ -66,6 +67,7 @@ export const Services: CollectionConfig = {
     {
       name: 'duration',
       type: 'text',
+      localized: true,
       admin: {
         description: 'Длительность. Например: «60 минут», «1.5-2 часа»',
       },
