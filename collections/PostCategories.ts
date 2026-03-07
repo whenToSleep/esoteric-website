@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { slugField } from './hooks/slugField'
 
 export const PostCategories: CollectionConfig = {
   slug: 'post-categories',
@@ -13,6 +14,17 @@ export const PostCategories: CollectionConfig = {
     update: ({ req }) => !!req.user,
     delete: ({ req }) => !!req.user,
   },
+  hooks: {
+    beforeDelete: [
+      async ({ id, req }) => {
+        await req.payload.update({
+          collection: 'posts',
+          where: { category: { equals: id } },
+          data: { category: null as unknown as string },
+        })
+      },
+    ],
+  },
   fields: [
     {
       name: 'title',
@@ -20,15 +32,7 @@ export const PostCategories: CollectionConfig = {
       required: true,
       localized: true,
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
+    slugField(),
     {
       name: 'description',
       type: 'textarea',

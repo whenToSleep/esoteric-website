@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { slugField } from './hooks/slugField'
 
 export const ServiceCategories: CollectionConfig = {
   slug: 'service-categories',
@@ -13,6 +14,21 @@ export const ServiceCategories: CollectionConfig = {
     update: ({ req }) => !!req.user,
     delete: ({ req }) => !!req.user,
   },
+  hooks: {
+    beforeDelete: [
+      async ({ id, req }) => {
+        await req.payload.delete({
+          collection: 'services',
+          where: { category: { equals: id } },
+        })
+        await req.payload.update({
+          collection: 'testimonials',
+          where: { serviceCategory: { equals: id } },
+          data: { serviceCategory: null as unknown as string },
+        })
+      },
+    ],
+  },
   fields: [
     {
       name: 'title',
@@ -20,15 +36,7 @@ export const ServiceCategories: CollectionConfig = {
       required: true,
       localized: true,
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
+    slugField(),
     {
       name: 'description',
       type: 'richText',

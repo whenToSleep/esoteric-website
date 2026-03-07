@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { slugField } from './hooks/slugField'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -30,15 +31,7 @@ export const Posts: CollectionConfig = {
       required: true,
       localized: true,
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
+    slugField(),
     {
       name: 'content',
       type: 'richText',

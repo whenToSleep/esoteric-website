@@ -6,6 +6,39 @@
 
 ---
 
+## Сессия 10 — 2026-03-07 — Итерация 7: Исправление админ-панели и CMS
+
+### Сделано:
+- Исправлена критическая ошибка Payload CMS: админ-панель не загружалась ("Loading chunk failed" + "Cannot destructure property 'config'")
+- Корневая причина: `app/(payload)/layout.tsx` был голым HTML-обёрткой без Payload `RootLayout` — контекст конфигурации не инициализировался
+- Исправлен `@next/bundle-analyzer` version mismatch: ^16.1.6 (Next 16) → ^15.4.0 (Next 15)
+- Добавлен slug sanitizer: пробелы → дефисы, lowercase, удаление спецсимволов — для всех 5 коллекций с slug-полями
+- Исправлена ошибка удаления записей (FK constraint ломал транзакцию PostgreSQL): добавлены `beforeDelete` хуки на ServiceCategories и PostCategories для каскадного удаления/обнуления связей
+
+### Файлы созданы:
+- collections/hooks/slugField.ts — shared slug field с beforeValidate хуком (sanitize: trim, lowercase, spaces→dashes, remove specials)
+
+### Файлы изменены:
+- app/(payload)/layout.tsx — полная переработка: голый HTML → Payload RootLayout с config, importMap, serverFunction
+- package.json — @next/bundle-analyzer ^16.1.6 → ^15.4.0
+- collections/ServiceCategories.ts — slugField(), beforeDelete хук (каскадное удаление services, обнуление testimonials)
+- collections/PostCategories.ts — slugField(), beforeDelete хук (обнуление category в posts)
+- collections/Services.ts — slugField()
+- collections/Posts.ts — slugField()
+- collections/Pages.ts — slugField()
+
+### Проблемы:
+- `app/(payload)/layout.tsx` был сгенерирован как простой HTML layout вместо Payload RootLayout — это ломало весь admin UI (useConfig() → undefined)
+- `@next/bundle-analyzer@16` в цепочке webpack config мог влиять на генерацию чанков
+- Удаление ServiceCategory с привязанными Services вызывало FK constraint error → aborted transaction → каскадный отказ последующих запросов
+
+### Следующая сессия:
+- Итерация 7 (продолжение): Polish & deploy
+- Проверить все CRUD операции в админ-панели
+- Финальная полировка UI, deployment
+
+---
+
 ## Сессия 9 — 2026-03-06 — Итерация 6: SEO и производительность
 
 ### Сделано:
