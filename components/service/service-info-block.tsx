@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import { DollarSign, Clock, Monitor } from "lucide-react";
 
 interface ServiceInfoBlockProps {
   price?: string;
@@ -24,29 +23,31 @@ export async function ServiceInfoBlock({
           : null;
 
   const items = [
-    { icon: DollarSign, label: t("price_label"), value: price },
-    { icon: Clock, label: t("duration_label"), value: duration },
-    { icon: Monitor, label: t("format_label"), value: formatLabel },
+    { label: t("price_label"), value: price, accent: true },
+    { label: t("duration_label"), value: duration, accent: false },
+    { label: t("format_label"), value: formatLabel, accent: false },
   ].filter((item) => item.value);
 
   if (items.length === 0) return null;
 
   return (
-    <div className="grid gap-4 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       {items.map((item) => (
         <div
           key={item.label}
-          className="flex items-center gap-4 rounded-xl border border-celestial-gold/20 bg-midnight-navy p-5"
+          className="rounded-xl border border-white/[0.06] p-5 text-center"
+          style={{
+            background: "linear-gradient(180deg, #16161E 0%, #111118 100%)",
+          }}
         >
-          <item.icon className="h-6 w-6 shrink-0 text-celestial-gold" />
-          <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-silver-mist">
-              {item.label}
-            </p>
-            <p className="mt-1 text-base font-semibold text-star-white">
-              {item.value}
-            </p>
-          </div>
+          <p className="text-small text-cosmic-white/50">{item.label}</p>
+          <p
+            className={`mt-1 text-lg font-medium ${
+              item.accent ? "text-cosmic-gold" : "text-cosmic-white"
+            }`}
+          >
+            {item.value}
+          </p>
         </div>
       ))}
     </div>

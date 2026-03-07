@@ -6,6 +6,30 @@
 
 ---
 
+## Сессия 26 — 2026-03-07 — Service detail page: full redesign
+
+### Сделано:
+- **Hero секция**: atmospheric gradient orb, breadcrumb (Home -> Category -> Service), font-heading text-hero, shortDescription, info-карточки внизу
+- **ServiceInfoBlock**: полная переработка — убраны lucide иконки, centered text layout, gradient bg (surface-3 -> #111118), border white/[0.06], цена золотая
+- **ServiceFaq**: переработка — individual cards per FAQ item (вместо единого контейнера), gold "+" toggle с rotate-45, обновлены цвета (cosmic-white, cosmic-gold)
+- **CTA**: инлайнен в page.tsx (удалён ServiceCta компонент) — gradient bg from-cosmic-purple/30, violet glow orb, pill button rounded-full bg-cosmic-violet/90
+- **Full Description**: секция на bg-surface-1 с gold H2, RichTextRenderer
+- **Разделители**: gradient divider (cosmic-bg -> surface-1) между hero и описанием, celestial gold line перед FAQ
+- **Background alternation**: cosmic-bg (hero) -> surface-1 (description) -> cosmic-bg (FAQ) -> gradient (CTA)
+- **i18n**: добавлен `service.book_subtitle` на 3 языках
+- TypeScript + ESLint — 0 ошибок
+
+### Файлы изменены:
+- app/[locale]/[categorySlug]/[serviceSlug]/page.tsx — полная переработка layout: hero с breadcrumb, dividers, inline CTA
+- components/service/service-info-block.tsx — убраны иконки, centered gradient cards, gold price accent
+- components/service/service-faq.tsx — individual cards, gold "+" toggle, обновлены цвета
+- messages/ru.json, en.json, uk.json — добавлен service.book_subtitle
+
+### Файлы удалены:
+- components/service/service-cta.tsx — CTA инлайнен в page.tsx
+
+---
+
 ## Сессия 25 — 2026-03-07 — Category page: heroImage support, CTA glow, i18n fix
 
 ### Сделано:

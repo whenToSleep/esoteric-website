@@ -7,9 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { RichTextRenderer } from "@/components/rich-text-renderer";
 import { ServiceInfoBlock } from "@/components/service/service-info-block";
 import { ServiceFaq } from "@/components/service/service-faq";
-import { ServiceCta } from "@/components/service/service-cta";
 import { generateServiceJsonLd } from "@/lib/json-ld";
-import { ChevronLeft } from "lucide-react";
 
 type Props = {
   params: Promise<{ locale: string; categorySlug: string; serviceSlug: string }>;
@@ -85,6 +83,7 @@ export default async function ServicePage({ params }: Props) {
 
   const payload = await getPayload({ config });
   const t = await getTranslations("service");
+  const tNav = await getTranslations("nav");
 
   const serviceResult = await payload.find({
     collection: "services",
@@ -129,62 +128,113 @@ export default async function ServicePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section className="px-4 pt-8 md:pt-12">
-        <div className="mx-auto max-w-4xl">
-          <Link
-            href={`/${categorySlug}`}
-            className="inline-flex items-center gap-1 text-sm text-astral-violet transition-colors hover:text-celestial-gold"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            {t("back_to_category", { category: categoryTitle })}
-          </Link>
-        </div>
-      </section>
+      {/* ===== Hero ===== */}
+      <section className="relative overflow-hidden bg-cosmic-bg py-16 md:py-24 lg:py-32">
+        <div className="pointer-events-none absolute right-1/4 top-0 h-[350px] w-[350px] rounded-full bg-cosmic-purple/10 blur-[120px]" />
 
-      <section className="px-4 py-8 md:py-12">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="font-heading text-3xl font-semibold text-star-white md:text-4xl lg:text-5xl">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-small text-cosmic-white/40">
+            <Link
+              href="/"
+              className="transition-colors hover:text-cosmic-white/70"
+            >
+              {tNav("home")}
+            </Link>
+            <span className="mx-2">&rarr;</span>
+            <Link
+              href={`/${categorySlug}`}
+              className="transition-colors hover:text-cosmic-white/70"
+            >
+              {categoryTitle}
+            </Link>
+            <span className="mx-2">&rarr;</span>
+            <span className="text-cosmic-white/70">
+              {service.title as string}
+            </span>
+          </nav>
+
+          {/* Title */}
+          <h1 className="font-heading text-hero text-cosmic-white">
             {service.title as string}
           </h1>
 
+          {/* Short description */}
           {service.shortDescription && (
-            <p className="mt-4 text-lg text-silver-mist">
+            <p className="mt-4 max-w-2xl font-body text-body text-cosmic-white/70">
               {service.shortDescription as string}
             </p>
           )}
+
+          {/* Info cards */}
+          <div className="mt-10">
+            <ServiceInfoBlock
+              price={service.price as string}
+              duration={service.duration as string}
+              format={service.format as string}
+            />
+          </div>
         </div>
       </section>
 
-      <section className="px-4 pb-8">
-        <div className="mx-auto max-w-4xl">
-          <ServiceInfoBlock
-            price={service.price as string}
-            duration={service.duration as string}
-            format={service.format as string}
-          />
-        </div>
-      </section>
-
+      {/* ===== Full Description ===== */}
       {service.fullDescription && (
-        <section className="px-4 py-8">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-6 font-heading text-2xl font-semibold text-star-white">
-              {t("description_title")}
-            </h2>
-            <RichTextRenderer content={service.fullDescription} />
-          </div>
-        </section>
+        <>
+          {/* Gradient divider: cosmic-bg -> surface-1 */}
+          <div
+            className="h-16 md:h-20"
+            style={{
+              background: "linear-gradient(to bottom, #0A0A0F, #0E0E14)",
+            }}
+          />
+
+          <section className="bg-surface-1 py-16 md:py-20">
+            <div className="mx-auto max-w-3xl px-4 sm:px-6">
+              <h2 className="mb-8 font-heading text-section text-cosmic-gold">
+                {t("description_title")}
+              </h2>
+              <RichTextRenderer content={service.fullDescription} />
+            </div>
+          </section>
+        </>
       )}
 
+      {/* ===== FAQ ===== */}
       {faqItems.length > 0 && (
-        <section className="px-4 py-8 md:py-12">
-          <div className="mx-auto max-w-4xl">
-            <ServiceFaq items={faqItems} />
+        <>
+          {/* Celestial divider */}
+          <div className="flex justify-center bg-cosmic-bg py-8 md:py-10">
+            <div className="h-px w-20 bg-linear-to-r from-transparent via-cosmic-gold/50 to-transparent" />
           </div>
-        </section>
+
+          <section className="bg-cosmic-bg py-16 md:py-20">
+            <div className="mx-auto max-w-3xl px-4 sm:px-6">
+              <ServiceFaq items={faqItems} />
+            </div>
+          </section>
+        </>
       )}
 
-      <ServiceCta serviceTitle={(service.title as string) || ""} />
+      {/* ===== CTA ===== */}
+      <section className="relative overflow-hidden py-16 md:py-20 lg:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-cosmic-purple/30 via-cosmic-bg to-cosmic-bg" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cosmic-violet/10 blur-[100px]" />
+
+        <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
+          <h2 className="mb-4 font-heading text-section text-cosmic-white">
+            {t("book_title", { title: service.title as string })}
+          </h2>
+          <p className="mb-10 font-body text-body text-cosmic-white/60">
+            {t("book_subtitle")}
+          </p>
+          <a
+            href="#"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-cosmic-violet/90 px-8 py-3 font-body text-base font-medium text-cosmic-white transition-all duration-300 hover:bg-cosmic-violet hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)] active:scale-[0.97] sm:px-10 sm:py-3.5"
+          >
+            {t("book_button")}
+          </a>
+        </div>
+      </section>
     </>
   );
 }

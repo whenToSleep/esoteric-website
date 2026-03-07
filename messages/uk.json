@@ -78,7 +78,8 @@
     "format_online": "Онлайн",
     "format_offline": "Офлайн",
     "format_both": "Онлайн та офлайн",
-    "description_title": "Опис"
+    "description_title": "Опис",
+    "book_subtitle": "Зв'яжіться зі мною через Telegram для запису"
   },
   "about": {
     "title": "Про мене",

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 interface FaqItem {
@@ -19,28 +18,39 @@ function FaqAccordionItem({ question, answer }: FaqItem) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className="border-b border-celestial-gold/20 last:border-b-0">
+    <div
+      className="overflow-hidden rounded-xl border border-white/[0.06]"
+      style={{
+        background: "linear-gradient(180deg, #16161E 0%, #111118 100%)",
+      }}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-mystic-purple/10"
+        className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-white/[0.03]"
       >
-        <span className="text-base font-medium text-star-white">
-          {question}
+        <span className="font-medium text-cosmic-white">{question}</span>
+        <span
+          className={`ml-4 text-xl font-light text-cosmic-gold transition-transform duration-300 ${
+            isOpen ? "rotate-45" : ""
+          }`}
+        >
+          +
         </span>
-        <ChevronDown
-          className={`h-5 w-5 shrink-0 text-celestial-gold transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-        />
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
-            initial={prefersReducedMotion ? { height: "auto" } : { height: 0, opacity: 0 }}
+            initial={
+              prefersReducedMotion
+                ? { height: "auto" }
+                : { height: 0, opacity: 0 }
+            }
             animate={{ height: "auto", opacity: 1 }}
             exit={prefersReducedMotion ? {} : { height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-4 text-sm leading-relaxed text-silver-mist">
+            <p className="px-5 pb-5 text-small leading-relaxed text-cosmic-white/70">
               {answer}
             </p>
           </motion.div>
@@ -57,10 +67,10 @@ export function ServiceFaq({ items }: ServiceFaqProps) {
 
   return (
     <div>
-      <h2 className="mb-6 font-heading text-2xl font-semibold text-star-white">
+      <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold">
         {t("faq_title")}
       </h2>
-      <div className="overflow-hidden rounded-xl border border-celestial-gold/20 bg-midnight-navy">
+      <div className="space-y-3">
         {items.map((item, index) => (
           <FaqAccordionItem
             key={index}
