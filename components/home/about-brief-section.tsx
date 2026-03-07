@@ -23,7 +23,7 @@ export function AboutBriefSection({
   return (
     <section className="bg-surface-1 px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold md:mb-12 md:text-3xl lg:mb-16 lg:text-4xl">
+        <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
           {t("section_title")}
         </h2>
         <motion.div
@@ -46,18 +46,18 @@ export function AboutBriefSection({
           ) : (
             <div className="mx-auto aspect-[3/4] w-full max-w-sm rounded-xl bg-gradient-to-br from-midnight-navy to-mystic-purple" />
           )}
-          <div>
+          <div className="max-w-3xl">
             {title && (
-              <h3 className="mb-4 font-heading text-xl text-star-white md:text-2xl">
+              <h3 className="mb-4 font-heading text-xl text-cosmic-white md:text-2xl">
                 {title}
               </h3>
             )}
             {content && (
-              <p className="leading-relaxed text-silver-mist">{content}</p>
+              <p className="leading-relaxed text-cosmic-white/70">{content}</p>
             )}
             <Link
               href="/about"
-              className="mt-6 inline-flex items-center justify-center rounded-lg border border-celestial-gold bg-transparent px-6 py-2.5 text-sm font-semibold text-celestial-gold transition-all duration-300 hover:bg-celestial-gold/10"
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-cosmic-gold/40 bg-transparent px-8 py-3 text-sm font-medium text-cosmic-gold transition-all duration-300 hover:bg-cosmic-gold/10"
             >
               {t("learn_more")}
             </Link>

@@ -21,58 +21,39 @@ export function BlogCard({
   featuredImageUrl,
   featuredImageAlt,
   categoryTitle,
-  publishedAt,
-  readingTime,
-  readMoreLabel,
-  minReadLabel,
 }: BlogCardProps) {
   return (
     <Link
       href={`/blog/${slug}`}
-      className="group block overflow-hidden rounded-xl border border-celestial-gold/20 bg-midnight-navy transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+      className="group block overflow-hidden rounded-2xl border border-cosmic-purple/15 bg-cosmic-card hover:border-cosmic-violet/40 transition-colors duration-300"
     >
-      <div className="relative aspect-video w-full">
+      <div className="aspect-video overflow-hidden">
         {featuredImageUrl ? (
           <Image
             src={featuredImageUrl}
             alt={featuredImageAlt || title}
             fill
-            className="object-cover"
+            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-midnight-navy to-mystic-purple" />
+          <div className="h-full w-full bg-linear-to-br from-cosmic-card to-cosmic-purple" />
         )}
       </div>
-      <div className="p-5 md:p-6 lg:p-8">
-        <div className="flex items-center gap-3">
-          {categoryTitle && (
-            <span className="rounded-md bg-astral-violet/10 px-3 py-1 text-xs font-medium text-astral-violet">
-              {categoryTitle}
-            </span>
-          )}
-          {publishedAt && (
-            <time className="text-sm text-silver-mist">
-              {new Date(publishedAt).toLocaleDateString()}
-            </time>
-          )}
-          {readingTime && (
-            <span className="text-sm text-silver-mist">
-              {readingTime} {minReadLabel}
-            </span>
-          )}
-        </div>
-        <h3 className="mt-3 font-heading text-lg text-star-white line-clamp-2">
+      <div className="p-5 lg:p-6">
+        {categoryTitle && (
+          <span className="text-small font-body text-cosmic-violet">
+            {categoryTitle}
+          </span>
+        )}
+        <h3 className="font-heading text-card-title text-cosmic-white mt-2 line-clamp-2">
           {title}
         </h3>
         {excerpt && (
-          <p className="mt-2 text-sm leading-relaxed text-silver-mist line-clamp-3">
+          <p className="font-body text-small text-cosmic-white/60 mt-2 line-clamp-3">
             {excerpt}
           </p>
         )}
-        <span className="mt-4 inline-block text-sm font-medium text-celestial-gold">
-          {readMoreLabel}
-        </span>
       </div>
     </Link>
   );

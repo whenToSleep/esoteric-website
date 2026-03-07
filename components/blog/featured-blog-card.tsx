@@ -17,63 +17,37 @@ interface FeaturedBlogCardProps {
 export function FeaturedBlogCard({
   title,
   slug,
-  excerpt,
   featuredImageUrl,
   featuredImageAlt,
   categoryTitle,
-  publishedAt,
-  readingTime,
-  readMoreLabel,
-  minReadLabel,
 }: FeaturedBlogCardProps) {
   return (
     <Link
       href={`/blog/${slug}`}
-      className="group block overflow-hidden rounded-xl border border-celestial-gold/20 bg-midnight-navy transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] md:grid md:grid-cols-2"
+      className="group block md:col-span-2 overflow-hidden rounded-2xl border border-cosmic-purple/15 bg-cosmic-card hover:border-cosmic-violet/40 transition-colors duration-300"
     >
-      <div className="relative aspect-video w-full md:aspect-auto md:min-h-[280px]">
+      <div className="aspect-video lg:aspect-[21/9] relative overflow-hidden">
         {featuredImageUrl ? (
           <Image
             src={featuredImageUrl}
             alt={featuredImageAlt || title}
             fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
+            sizes="(max-width: 768px) 100vw, 66vw"
             priority
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-midnight-navy to-mystic-purple" />
+          <div className="h-full w-full bg-linear-to-br from-cosmic-card to-cosmic-purple" />
         )}
-      </div>
-      <div className="flex flex-col justify-center p-6 md:p-8">
-        <div className="flex items-center gap-3">
-          {categoryTitle && (
-            <span className="rounded-md bg-astral-violet/10 px-3 py-1 text-xs font-medium text-astral-violet">
-              {categoryTitle}
-            </span>
-          )}
-          {publishedAt && (
-            <time className="text-sm text-silver-mist">
-              {new Date(publishedAt).toLocaleDateString()}
-            </time>
-          )}
-          {readingTime && (
-            <span className="text-sm text-silver-mist">
-              {readingTime} {minReadLabel}
-            </span>
-          )}
+        <div className="absolute inset-0 bg-linear-to-t from-cosmic-bg/90 via-cosmic-bg/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-5 lg:p-8">
+          <span className="text-small font-body text-cosmic-gold uppercase tracking-wider">
+            {categoryTitle || "Featured"}
+          </span>
+          <h3 className="font-heading text-card-title text-cosmic-white mt-2">
+            {title}
+          </h3>
         </div>
-        <h3 className="mt-3 font-heading text-xl font-semibold text-star-white md:text-2xl">
-          {title}
-        </h3>
-        {excerpt && (
-          <p className="mt-3 text-sm leading-relaxed text-silver-mist line-clamp-4">
-            {excerpt}
-          </p>
-        )}
-        <span className="mt-4 inline-block text-sm font-medium text-celestial-gold">
-          {readMoreLabel}
-        </span>
       </div>
     </Link>
   );

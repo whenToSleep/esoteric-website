@@ -6,6 +6,24 @@
 
 ---
 
+## Сессия 30 — 2026-03-07 — Blog cards restyling + About Me update (8.7)
+
+### Сделано:
+- **Blog cards**: rounded-2xl, bg-cosmic-card, border cosmic-purple/15, hover:border-cosmic-violet/40 (no scale/shadow animation)
+- **Featured post**: first post in grid gets md:col-span-2 with gradient overlay (from-cosmic-bg/90 via-cosmic-bg/40 to-transparent), title overlaid on image
+- **BlogCard**: updated typography tokens (text-card-title, text-small, text-cosmic-white/60)
+- **FeaturedBlogCard**: updated to match new design pattern with gradient overlay
+- **About Me**: max-w-3xl on text column, heading uses text-section fluid token, button rounded-full with cosmic-gold styling
+- Color tokens updated: star-white → cosmic-white, silver-mist → cosmic-white/70, celestial-gold → cosmic-gold
+
+### Файлы изменены:
+- components/home/blog-card.tsx — restyled regular blog card
+- components/home/latest-posts-section.tsx — featured post with gradient overlay + fluid heading
+- components/blog/featured-blog-card.tsx — updated to match new design
+- components/home/about-brief-section.tsx — max-w-3xl, text-section, rounded-full button
+
+---
+
 ## Сессия 29 — 2026-03-07 — Infinite scroll on mobile too
 
 ### Сделано:
