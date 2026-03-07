@@ -20,18 +20,18 @@ interface InfiniteMovingCardsProps {
 function TestimonialCard({ item, className }: { item: TestimonialItem; className?: string }) {
   return (
     <div
-      className={cn("max-w-full shrink-0 rounded-2xl border border-cosmic-purple/20 px-8 py-6", className)}
+      className={cn("max-w-full shrink-0 rounded-2xl border border-mystic-purple/20 px-8 py-6", className)}
       style={{ background: "linear-gradient(180deg, #0D1137, #0A0A1E)" }}
     >
-      <blockquote className="font-body text-[0.9375rem] leading-relaxed text-cosmic-white/80 italic">
+      <blockquote className="font-body text-[0.9375rem] leading-relaxed text-star-white/80 italic">
         &ldquo;{item.text}&rdquo;
       </blockquote>
       <footer className="mt-5 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cosmic-purple/40 font-heading text-sm text-cosmic-gold">
-          {item.clientName[0]}
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-mystic-purple/30 font-heading text-sm font-medium text-celestial-gold">
+          {item.clientName.charAt(0)}
         </div>
         <div>
-          <p className="text-[0.9375rem] font-medium text-cosmic-white">
+          <p className="text-[0.9375rem] font-medium text-star-white">
             {item.clientName}
           </p>
         </div>

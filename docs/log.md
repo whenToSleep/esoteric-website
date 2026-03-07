@@ -6,12 +6,25 @@
 
 ---
 
+## Сессия 28 — 2026-03-07 — Fix testimonial card initials + color names
+
+### Сделано:
+- **Инициалы**: исправлена стилизация аватара — `shrink-0` + `font-medium` для правильного отображения круга
+- **Цвета**: исправлены несуществующие CSS-классы: `cosmic-purple` → `mystic-purple`, `cosmic-gold` → `celestial-gold`, `cosmic-white` → `star-white`
+- Инициал теперь в фиолетовом круге (bg-mystic-purple/30) с золотой буквой (text-celestial-gold)
+- TypeScript — 0 ошибок
+
+### Файлы изменены:
+- components/ui/aceternity/infinite-moving-cards.tsx — fix color class names, avatar shrink-0
+
+---
+
 ## Сессия 27 — 2026-03-07 — Testimonials: desktop marquee + mobile Embla carousel
 
 ### Сделано:
 - **Desktop (lg+)**: Aceternity InfiniteMovingCards marquee, direction=left, speed=slow, pauseOnHover
 - **Mobile (<lg)**: Embla Carousel (swipe), loop, align center, 85% card width
-- **Карточка отзыва**: новый дизайн — gradient bg (#0D1137 -> #0A0A1E), border cosmic-purple/20, italic blockquote, avatar circle с инициалом, rounded-2xl
+- **Карточка отзыва**: новый дизайн — gradient bg (#0D1137 -> #0A0A1E), border mystic-purple/20, italic blockquote, avatar circle с инициалом, rounded-2xl
 - **Reduced motion**: motion-reduce:[animation-play-state:paused] на marquee `<ul>`
 - **Cleanup**: удалён дублирующий `<style jsx>` блок из infinite-moving-cards (keyframes уже в globals.css)
 - Установлен `embla-carousel-react`
