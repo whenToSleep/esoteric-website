@@ -1,4 +1,4 @@
-import { Cinzel, Inter } from "next/font/google";
+import { Cormorant_SC, Inter } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -6,8 +6,9 @@ export const inter = Inter({
   display: "swap",
 });
 
-export const cinzel = Cinzel({
-  subsets: ["latin"],
+export const heading = Cormorant_SC({
+  subsets: ["cyrillic", "latin"],
+  weight: "700",
   variable: "--font-heading",
   display: "swap",
 });

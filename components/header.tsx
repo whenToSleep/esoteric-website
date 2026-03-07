@@ -39,8 +39,13 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right: Language switcher (desktop) + Mobile menu */}
-        <div className="flex items-center gap-4">
+        {/* Right: Language switcher + Mobile menu */}
+        <div className="flex items-center gap-3">
+          {/* Mobile language switcher (compact) */}
+          <div className="lg:hidden">
+            <LanguageSwitcher compact />
+          </div>
+          {/* Desktop language switcher */}
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>

@@ -7,10 +7,11 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   className?: string;
+  compact?: boolean;
   onNavigate?: () => void;
 };
 
-export function LanguageSwitcher({ className, onNavigate }: Props) {
+export function LanguageSwitcher({ className, compact, onNavigate }: Props) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -25,12 +26,12 @@ export function LanguageSwitcher({ className, onNavigate }: Props) {
       {locales.map((loc, i) => (
         <span key={loc} className="flex items-center">
           {i > 0 && (
-            <span className="mx-1 text-silver-mist/50 text-sm">/</span>
+            <span className={cn("mx-1 text-silver-mist/50", compact ? "text-xs" : "text-sm")}>/</span>
           )}
           <button
             onClick={() => handleSwitch(loc)}
             className={cn(
-              "text-sm font-medium transition-colors",
+              compact ? "text-xs font-medium transition-colors" : "text-sm font-medium transition-colors",
               loc === locale
                 ? "text-celestial-gold"
                 : "text-silver-mist hover:text-star-white"

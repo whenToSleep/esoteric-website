@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { navItems } from "@/lib/navigation";
-import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,17 +39,19 @@ export function MobileMenu() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-cosmic-black"
+            className="fixed inset-0 z-[100] flex flex-col bg-[#0A0A0F] w-screen h-screen"
           >
+            {/* Close button */}
             <button
               onClick={() => setIsOpen(false)}
               aria-label="Close menu"
-              className="absolute top-4 right-4 p-2 text-star-white"
+              className="absolute top-4 right-4 p-2 text-celestial-gold z-10"
             >
-              <X size={24} />
+              <X size={28} />
             </button>
 
-            <nav className="flex flex-col items-center gap-6">
+            {/* Navigation items */}
+            <nav className="flex flex-col gap-7 pt-24 pl-9">
               {navItems.map((item, i) => (
                 <motion.div
                   key={item.key}
@@ -61,17 +62,13 @@ export function MobileMenu() {
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-2xl font-heading text-star-white transition-colors hover:text-celestial-gold"
+                    className="text-[22px] font-heading text-celestial-gold transition-colors hover:text-star-white"
                   >
                     {t(item.key)}
                   </Link>
                 </motion.div>
               ))}
             </nav>
-
-            <div className="mt-10">
-              <LanguageSwitcher onNavigate={() => setIsOpen(false)} />
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

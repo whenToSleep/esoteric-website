@@ -3,7 +3,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { cinzel, inter } from "@/lib/fonts";
+import { heading, inter } from "@/lib/fonts";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import "../globals.css";
@@ -54,7 +54,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className="dark">
       <body
-        className={`${inter.variable} ${cinzel.variable} font-sans antialiased`}
+        className={`${inter.variable} ${heading.variable} font-sans antialiased`}
       >
         <NextIntlClientProvider>
           <Header />
