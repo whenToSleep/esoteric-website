@@ -6,6 +6,43 @@
 
 ---
 
+## Сессия 11 — 2026-03-07 — Итерация 7 (продолжение): Vercel Blob + Admin UX
+
+### Сделано:
+- Подключён @payloadcms/storage-vercel-blob для загрузки медиа на Vercel (serverless-совместимость)
+- Плагин подключается условно: только при наличии BLOB_READ_WRITE_TOKEN (локально — сохранение на диск как обычно)
+- clientUploads: true — поддержка файлов >4.5MB
+- Добавлены admin.description на русском для КАЖДОГО поля во ВСЕХ коллекциях (ServiceCategories, Services, Posts, PostCategories, Pages, Media, Testimonials)
+- Добавлены admin.description на уровне коллекций
+- slugField() теперь принимает опциональный параметр description
+- Исправлены типы в cascade delete hooks: `null as unknown as string` → `null as unknown as number` (Payload 3 использует числовые ID)
+- Исправлена типизация Lexical richText в seed.ts: direction/format теперь используют `as const`
+- `npm run build` — 0 ошибок
+
+### Файлы изменены:
+- payload.config.ts — добавлен vercelBlobStorage плагин (условный)
+- collections/hooks/slugField.ts — добавлен опциональный параметр description
+- collections/ServiceCategories.ts — admin.description для всех полей + коллекции, fix type cast
+- collections/Services.ts — admin.description для всех полей + коллекции
+- collections/Posts.ts — admin.description для всех полей + коллекции
+- collections/PostCategories.ts — admin.description для всех полей + коллекции, fix type cast
+- collections/Pages.ts — admin.description для всех полей + коллекции
+- collections/Media.ts — admin.description для всех полей + коллекции
+- collections/Testimonials.ts — admin.description для всех полей + коллекции
+- scripts/seed.ts — fix Lexical richText типизация (direction: as const)
+- .env.example — добавлен BLOB_READ_WRITE_TOKEN
+
+### Проблемы:
+- Type error в PostCategories/ServiceCategories: cascade delete hooks использовали `null as unknown as string`, но Payload 3 с postgres использует числовые ID → исправлено на `number`
+- Type error в seed.ts: Lexical richText `direction: 'ltr'` выводился как `string` вместо литерального типа → исправлено через `as const`
+
+### Следующая сессия:
+- Деплой на Vercel: подключить Blob Store, добавить BLOB_READ_WRITE_TOKEN
+- Тестирование загрузки медиа через админку на Vercel
+- Финальная полировка UI
+
+---
+
 ## Сессия 10 — 2026-03-07 — Итерация 7: Исправление админ-панели и CMS
 
 ### Сделано:

@@ -7,6 +7,7 @@ export const Services: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'price', 'isActive'],
     group: 'Услуги',
+    description: 'Все услуги, которые вы предоставляете. Каждая услуга принадлежит одному из разделов.',
   },
   access: {
     read: () => true,
@@ -20,31 +21,49 @@ export const Services: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        description: 'Название услуги. Например: «Персональный расклад Таро»',
+      },
     },
-    slugField(),
+    slugField('URL-адрес услуги (латиницей). Например: personal-reading'),
     {
       name: 'shortDescription',
       type: 'textarea',
       localized: true,
+      admin: {
+        description: 'Краткое описание для карточки (1-2 предложения). Видно на странице раздела.',
+      },
     },
     {
       name: 'fullDescription',
       type: 'richText',
       localized: true,
+      admin: {
+        description: 'Полное описание услуги. Видно на отдельной странице услуги.',
+      },
     },
     {
       name: 'category',
       type: 'relationship',
       relationTo: 'service-categories',
       required: true,
+      admin: {
+        description: 'К какому разделу относится эта услуга',
+      },
     },
     {
       name: 'price',
       type: 'text',
+      admin: {
+        description: 'Цена. Можно написать число, «от 50€» или «по договорённости»',
+      },
     },
     {
       name: 'duration',
       type: 'text',
+      admin: {
+        description: 'Длительность. Например: «60 минут», «1.5-2 часа»',
+      },
     },
     {
       name: 'format',
@@ -54,10 +73,16 @@ export const Services: CollectionConfig = {
         { label: 'Offline', value: 'offline' },
         { label: 'Both', value: 'both' },
       ],
+      admin: {
+        description: 'Формат проведения: онлайн, оффлайн или оба варианта',
+      },
     },
     {
       name: 'icon',
       type: 'text',
+      admin: {
+        description: 'Ключевое слово для иконки (необязательно)',
+      },
     },
     {
       name: 'image',
@@ -68,14 +93,23 @@ export const Services: CollectionConfig = {
       name: 'faq',
       type: 'array',
       localized: true,
+      admin: {
+        description: 'Вопросы и ответы. Отображаются как аккордеон на странице услуги.',
+      },
       fields: [
         {
           name: 'question',
           type: 'text',
+          admin: {
+            description: 'Вопрос',
+          },
         },
         {
           name: 'answer',
           type: 'textarea',
+          admin: {
+            description: 'Ответ',
+          },
         },
       ],
     },
@@ -85,6 +119,7 @@ export const Services: CollectionConfig = {
       defaultValue: true,
       admin: {
         position: 'sidebar',
+        description: 'Снимите галочку, чтобы скрыть услугу с сайта (не удаляя её)',
       },
     },
     {
@@ -92,6 +127,7 @@ export const Services: CollectionConfig = {
       type: 'number',
       admin: {
         position: 'sidebar',
+        description: 'Порядок отображения внутри раздела (1 = первая)',
       },
     },
   ],

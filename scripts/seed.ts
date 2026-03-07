@@ -347,21 +347,22 @@ const seed = async (payload: Payload) => {
 
   // --- Helper: build Lexical rich text ---
   function lexical(blocks: Array<{ type: 'heading' | 'paragraph' | 'quote'; text: string; tag?: string }>) {
+    const dir = 'ltr' as const
     return {
       root: {
         type: 'root',
         children: blocks.map((b) => {
           const textNode = { type: 'text', text: b.text, version: 1 }
           if (b.type === 'heading') {
-            return { type: 'heading', tag: b.tag || 'h2', children: [textNode], direction: 'ltr', format: '', indent: 0, version: 1 }
+            return { type: 'heading', tag: b.tag || 'h2', children: [textNode], direction: dir, format: '' as const, indent: 0, version: 1 }
           }
           if (b.type === 'quote') {
-            return { type: 'quote', children: [textNode], direction: 'ltr', format: '', indent: 0, version: 1 }
+            return { type: 'quote', children: [textNode], direction: dir, format: '' as const, indent: 0, version: 1 }
           }
-          return { type: 'paragraph', children: [textNode], direction: 'ltr', format: '', indent: 0, version: 1, textFormat: 0, textStyle: '' }
+          return { type: 'paragraph', children: [textNode], direction: dir, format: '' as const, indent: 0, version: 1, textFormat: 0, textStyle: '' }
         }),
-        direction: 'ltr',
-        format: '',
+        direction: dir,
+        format: '' as const,
         indent: 0,
         version: 1,
       },

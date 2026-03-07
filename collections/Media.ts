@@ -5,6 +5,7 @@ export const Media: CollectionConfig = {
   admin: {
     useAsTitle: 'alt',
     group: 'Контент',
+    description: 'Все изображения сайта. Загружайте сюда фото для статей, услуг и страниц.',
   },
   access: {
     read: () => true,
@@ -43,11 +44,17 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        description: 'Описание изображения для SEO и доступности. Например: «Расклад Таро на деревянном столе». ОБЯЗАТЕЛЬНО заполняйте!',
+      },
     },
     {
       name: 'caption',
       type: 'text',
       localized: true,
+      admin: {
+        description: 'Подпись к изображению (необязательно)',
+      },
     },
   ],
 }

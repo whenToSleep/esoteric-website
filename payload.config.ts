@@ -2,6 +2,7 @@ import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -57,6 +58,13 @@ export default buildConfig({
     fallback: true,
   },
   plugins: [
+    ...(process.env.BLOB_READ_WRITE_TOKEN
+      ? [vercelBlobStorage({
+          collections: { media: true },
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+          clientUploads: true,
+        })]
+      : []),
     seoPlugin({
       collections: ['service-categories', 'services', 'posts', 'pages'],
       generateTitle: ({ doc }) =>

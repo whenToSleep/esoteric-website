@@ -7,6 +7,7 @@ export const PostCategories: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug'],
     group: 'Блог',
+    description: 'Категории для статей блога (для фильтрации).',
   },
   access: {
     read: () => true,
@@ -20,7 +21,7 @@ export const PostCategories: CollectionConfig = {
         await req.payload.update({
           collection: 'posts',
           where: { category: { equals: id } },
-          data: { category: null as unknown as string },
+          data: { category: null as unknown as number },
         })
       },
     ],
@@ -31,18 +32,25 @@ export const PostCategories: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        description: 'Название категории блога',
+      },
     },
-    slugField(),
+    slugField('URL-адрес категории (латиницей)'),
     {
       name: 'description',
       type: 'textarea',
       localized: true,
+      admin: {
+        description: 'Описание категории (необязательно)',
+      },
     },
     {
       name: 'order',
       type: 'number',
       admin: {
         position: 'sidebar',
+        description: 'Порядок отображения (1 = первая)',
       },
     },
   ],

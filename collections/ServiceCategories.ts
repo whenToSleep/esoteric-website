@@ -7,6 +7,7 @@ export const ServiceCategories: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'order'],
     group: 'Услуги',
+    description: 'Разделы услуг (Таро, Ритуалистика и др.). Каждый раздел содержит несколько услуг.',
   },
   access: {
     read: () => true,
@@ -24,7 +25,7 @@ export const ServiceCategories: CollectionConfig = {
         await req.payload.update({
           collection: 'testimonials',
           where: { serviceCategory: { equals: id } },
-          data: { serviceCategory: null as unknown as string },
+          data: { serviceCategory: null as unknown as number },
         })
       },
     ],
@@ -35,23 +36,32 @@ export const ServiceCategories: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        description: 'Название раздела. Отображается в меню и на странице раздела.',
+      },
     },
-    slugField(),
+    slugField('URL-адрес раздела (латиницей, без пробелов). Например: tarot, rituals'),
     {
       name: 'description',
       type: 'richText',
       localized: true,
+      admin: {
+        description: 'Подробное описание раздела. Отображается на странице раздела.',
+      },
     },
     {
       name: 'shortDescription',
       type: 'textarea',
       localized: true,
+      admin: {
+        description: 'Краткое описание для карточки на главной странице (1-2 предложения).',
+      },
     },
     {
       name: 'icon',
       type: 'text',
       admin: {
-        description: 'Icon keyword: cards, candle, compass, book, spiral',
+        description: 'Ключевое слово для иконки (cards, candle, compass, book, spiral)',
       },
     },
     {
@@ -64,6 +74,7 @@ export const ServiceCategories: CollectionConfig = {
       type: 'number',
       admin: {
         position: 'sidebar',
+        description: 'Порядок отображения на сайте (1 = первый)',
       },
     },
   ],

@@ -7,6 +7,7 @@ export const Pages: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'status'],
     group: 'Контент',
+    description: 'Статические страницы сайта (Обо мне и др.)',
   },
   access: {
     read: () => true,
@@ -20,21 +21,33 @@ export const Pages: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        description: 'Название страницы',
+      },
     },
-    slugField(),
+    slugField('URL-адрес страницы (латиницей)'),
     {
       name: 'content',
       type: 'richText',
       localized: true,
+      admin: {
+        description: 'Содержание страницы. Для «Обо мне»: расскажите о себе, вашем пути и опыте.',
+      },
     },
     {
       name: 'featuredImage',
       type: 'relationship',
       relationTo: 'media',
+      admin: {
+        description: 'Главное фото. Для «Обо мне» — ваш портрет. Рекомендуемый размер: 800×800px',
+      },
     },
     {
       name: 'gallery',
       type: 'array',
+      admin: {
+        description: 'Дополнительные фото (сертификаты, рабочее место, атмосфера)',
+      },
       fields: [
         {
           name: 'image',
@@ -45,6 +58,9 @@ export const Pages: CollectionConfig = {
           name: 'caption',
           type: 'text',
           localized: true,
+          admin: {
+            description: 'Подпись к фото (необязательно)',
+          },
         },
       ],
     },
@@ -58,6 +74,7 @@ export const Pages: CollectionConfig = {
       ],
       admin: {
         position: 'sidebar',
+        description: 'Черновик или опубликовано',
       },
     },
   ],
