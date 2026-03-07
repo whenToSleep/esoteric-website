@@ -6,16 +6,16 @@
 
 ---
 
-## Сессия 23 — 2026-03-07 — Service cards: visible background + styling overhaul
+## Сессия 23 — 2026-03-07 — Service cards: equal height, centering, visible bg
 
 ### Сделано:
-- Фон карточек: bg-cosmic-card (#0D1137) → gradient surface-3 (#16161E → #111118) — теперь Δ12 от body, чётко видны
-- Border: cosmic-purple/20 → white/[0.08] — ярче на near-black фоне
-- Добавлена тень shadow-lg shadow-purple-900/10 для глубины
-- Hover glow: двухслойный фиолетовый (30px + 60px spread)
-- Тонкая highlight-линия сверху (via-white/[0.06]) для стеклянного эффекта
-- Иконки: добавлен border border-cosmic-purple/30 в контейнер
-- Grid 3+2 уже был реализован ранее — подтверждено
+- Фон карточек: bg-cosmic-card (#0D1137) → gradient surface-4 (#1A1A24 → #141419) — Δ16 от body, чётко видны
+- Равная высота: h-full flex flex-col на карточке, flex-1 на описании
+- Описание: line-clamp-3 для единообразия (длинный текст обрезается ...)
+- Ссылка "Подробнее": mt-auto pt-4 — всегда внизу карточки
+- Border: white/[0.08], highlight-линия сверху via-white/[0.06]
+- Hover: двухслойный фиолетовый glow + lift
+- Grid 3+2 с lg:col-start-2 на index 3 — нижний ряд центрирован
 - `npm run build` — 0 ошибок
 
 ### Файлы изменены:
