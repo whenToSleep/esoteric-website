@@ -6,14 +6,14 @@ import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { Users } from '@/collections/Users'
-import { Pages } from '@/collections/Pages'
-import { Media } from '@/collections/Media'
-import { ServiceCategories } from '@/collections/ServiceCategories'
-import { Services } from '@/collections/Services'
-import { Posts } from '@/collections/Posts'
-import { PostCategories } from '@/collections/PostCategories'
-import { Testimonials } from '@/collections/Testimonials'
+import { Users } from './collections/Users.ts'
+import { Pages } from './collections/Pages.ts'
+import { Media } from './collections/Media.ts'
+import { ServiceCategories } from './collections/ServiceCategories.ts'
+import { Services } from './collections/Services.ts'
+import { Posts } from './collections/Posts.ts'
+import { PostCategories } from './collections/PostCategories.ts'
+import { Testimonials } from './collections/Testimonials.ts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)

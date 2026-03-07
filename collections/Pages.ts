@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { slugField } from './hooks/slugField'
+import { slugField } from './hooks/slugField.ts'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
