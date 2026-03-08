@@ -7,8 +7,8 @@ type Direction = "up" | "left" | "right" | "fade";
 const hiddenVariants: Record<Direction, TargetAndTransition> = {
   fade: { opacity: 0 },
   up: { opacity: 0, y: 40 },
-  left: { opacity: 0, x: -60 },
-  right: { opacity: 0, x: 60 },
+  left: { opacity: 0, x: -30 },
+  right: { opacity: 0, x: 30 },
 };
 
 export function ScrollReveal({

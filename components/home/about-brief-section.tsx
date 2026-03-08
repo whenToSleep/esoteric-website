@@ -28,7 +28,7 @@ export function AboutBriefSection({
             {t("section_title")}
           </h2>
         </ScrollReveal>
-        <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
+        <div className="grid items-center gap-8 overflow-hidden md:grid-cols-2 md:gap-12 lg:gap-16">
           <ScrollReveal direction="left">
             {imageUrl ? (
               <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-xl">

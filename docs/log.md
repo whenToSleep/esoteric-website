@@ -6,28 +6,31 @@
 
 ---
 
-## Сессия 42 — 2026-03-08 — Fix header horizontal scroll on mobile
+## Сессия 42 — 2026-03-08 — Fix mobile horizontal scroll
 
 ### Проблема:
-На мобильных устройствах (375px) header вызывал горизонтальный скролл. Логотип "Mori Norman" обрезался слева.
+На мобильных (375px) горизонтальный скролл. Пропадает после прокрутки мимо секции "Обо мне".
 
-### Сделано (три коммита):
-1. Flex-shrink настройки: лого `shrink min-w-0`, правая часть `shrink-0`, `gap-2`
-2. Header `w-full` → `inset-x-0`, mobile-menu убран `w-screen h-screen`
-3. **Ключевой фикс:** `overflow-x: hidden` на `<html>` в globals.css
-   - Fixed-элементы (header) игнорируют overflow на `<body>` — нужно именно на `<html>`
-   - Убран `overflow-hidden` с header — он ломал mobile-menu overlay (backdrop-filter создаёт containing block для fixed потомков, overlay клиппится)
-   - overflow-x-hidden с body перенесён на html
+### Root Cause:
+`ScrollReveal` с `direction="left|right"` в about-brief-section.tsx применяет initial `x: -60 / x: 60` через framer-motion. До срабатывания `whileInView` контент сдвинут на 60px за viewport. После анимации (x → 0) overflow пропадает — отсюда и поведение "исчезает после about".
+
+Header не был причиной (хотя визуально казалось иначе из-за расширения page width).
+
+### Сделано:
+1. **ScrollReveal.tsx**: `x: ±60` → `x: ±30` — меньший offset, меньше риска overflow
+2. **about-brief-section.tsx**: `overflow-hidden` на grid wrapper — клиппирует горизонтальные трансформы
+3. **globals.css**: убран hack `overflow-x-hidden` с html (маскировал проблему, ненадёжен на iOS Safari)
+4. Header: `w-full` → `inset-x-0`, лого `shrink min-w-0` — разумные улучшения, оставлены
+5. Mobile-menu: убран `w-screen h-screen` (inset-0 достаточно)
 
 ### Файлы изменены:
-- components/header.tsx — `inset-x-0` вместо `w-full`, без overflow-hidden
-- components/mobile-menu.tsx — убран избыточный w-screen h-screen
-- app/globals.css — `overflow-x-hidden` на html
-- app/[locale]/layout.tsx — убран overflow-x-hidden с body
-- docs/log.md — этот лог
-
-### Примечание:
-- `npm run build` не проходит из-за ECONNREFUSED PostgreSQL (не связано с изменениями)
+- components/animations/ScrollReveal.tsx
+- components/home/about-brief-section.tsx
+- components/header.tsx (ранее)
+- components/mobile-menu.tsx (ранее)
+- app/globals.css
+- app/[locale]/layout.tsx (ранее)
+- docs/log.md
 
 ---
 
