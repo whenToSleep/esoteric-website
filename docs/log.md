@@ -6,6 +6,20 @@
 
 ---
 
+## Сессия 40 — 2026-03-08 — Fix 3 homepage bugs
+
+### Сделано:
+- **About section** — убрана дублирующаяся секция. TracingBeam + mobile fallback заменены на единый grid (фото слева, текст + кнопка справа)
+- **Blog grid** — убраны StaggerContainer/StaggerItem обёртки и gradient-border с featured карточки. Карточки теперь в простом grid, featured span-2
+- **CTA section** — убран CTAHeading с TypewriterEffectSmooth. Заменён на простой h2 (белый, без shimmer). Gradient bg через CSS, pill-кнопка с violet glow
+
+### Файлы изменены:
+- components/home/about-brief-section.tsx — убран TracingBeam + дубль, один grid
+- components/home/latest-posts-section.tsx — убраны Stagger обёртки + gradient-border
+- components/home/cta-section.tsx — полная замена на простую CTA секцию
+
+---
+
 ## Сессия 39 — 2026-03-08 — Fix Hero: aurora-accent + remove shimmer
 
 ### Сделано:
