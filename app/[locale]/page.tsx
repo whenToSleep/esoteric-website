@@ -9,6 +9,8 @@ import { AboutBriefSection } from "@/components/home/about-brief-section";
 import { LatestPostsSection } from "@/components/home/latest-posts-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { CTASection } from "@/components/home/cta-section";
+import { GradientDivider } from "@/components/ui/gradient-divider";
+import { CelestialDivider } from "@/components/ui/celestial-divider";
 import { extractPlainText } from "@/lib/rich-text-utils";
 import { generateWebSiteJsonLd } from "@/lib/json-ld";
 
@@ -130,8 +132,11 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HeroSection />
+      <GradientDivider from="#0A0A0F" to="#0A0A0F" />
       <ServiceCategoriesSection categories={categories} />
+      <CelestialDivider />
       <AboutBriefSection {...aboutData} />
+      <GradientDivider from="#0E0E14" to="#0A0A0F" />
       <LatestPostsSection posts={posts} />
       <TestimonialsSection testimonials={testimonials} />
       <CTASection />

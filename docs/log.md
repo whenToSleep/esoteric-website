@@ -6,6 +6,26 @@
 
 ---
 
+## Сессия 31 — 2026-03-08 — Section dividers + Footer update (8.8)
+
+### Сделано:
+- **GradientDivider**: компонент плавного перехода между секциями (h-16 md:h-20, linear-gradient)
+- **CelestialDivider**: золотая линия-разделитель (h-px w-20, via-cosmic-gold/50)
+- Разделители расставлены на главной: Hero→GradientDivider→Services→CelestialDivider→About→GradientDivider→Blog
+- **Footer полностью переделан**: 4 колонки (Brand, Navigation, Services, Contacts), border-white/[0.06], bg-surface-1
+- Copyright bar с social icons справа, text-white/40
+- CTA кнопка в футере: rounded-full, bg-cosmic-violet
+- Добавлены i18n ключи: footer.brand, footer.services (ru/en/uk)
+
+### Файлы изменены:
+- components/ui/gradient-divider.tsx — NEW
+- components/ui/celestial-divider.tsx — NEW
+- app/[locale]/page.tsx — добавлены разделители между секциями
+- components/footer.tsx — полный редизайн (4 колонки)
+- messages/ru.json, en.json, uk.json — новые ключи footer
+
+---
+
 ## Сессия 30 — 2026-03-07 — Blog cards restyling + About Me update (8.7)
 
 ### Сделано:
