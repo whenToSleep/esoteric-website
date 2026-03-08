@@ -7,7 +7,7 @@ export function HeroSection() {
   const t = useTranslations("home.hero");
 
   return (
-    <section className="relative -mt-16 lg:-mt-[72px] min-h-svh md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
+    <section className="noise-overlay relative -mt-16 lg:-mt-[72px] min-h-svh md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
       {/* Layer 1: Aurora — animated color blobs */}
       <div className="hero-aurora" />
 

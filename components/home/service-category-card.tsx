@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { CategoryIcon } from "@/components/home/icon-map";
+import { Meteors } from "@/components/ui/aceternity/meteors";
 
 interface ServiceCategoryCardProps {
   title: string;
@@ -36,6 +37,7 @@ export function ServiceCategoryCard({
       <span className="mt-auto inline-flex items-center pt-4 text-small font-medium text-cosmic-violet transition-transform group-hover:translate-x-1">
         {learnMoreText} →
       </span>
+      <Meteors number={8} />
     </Link>
   );
 }

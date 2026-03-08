@@ -6,6 +6,25 @@
 
 ---
 
+## Сессия 34 — 2026-03-08 — Meteor Effect + Noise Overlay (8.12)
+
+### Сделано:
+- **Meteors** компонент в `components/ui/aceternity/meteors.tsx` — CSS-only падающие звёзды (Tier 1)
+- Детерминированные позиции (без hydration mismatch), настраиваемый `number` prop
+- Добавлены метеоры (`number={8}`) на карточки услуг
+- CSS `@keyframes meteor-fall` в globals.css
+- **Noise overlay** — тонкая плёночная текстура через SVG feTurbulence (opacity 0.03, mix-blend-mode: overlay)
+- `.noise-overlay` класс добавлен на Hero section (z-index: 2, между stars и content)
+- `prefers-reduced-motion`: метеоры скрыты (opacity: 0)
+
+### Файлы изменены:
+- components/ui/aceternity/meteors.tsx — новый компонент
+- components/home/service-category-card.tsx — добавлен `<Meteors number={8} />`
+- components/home/hero-section.tsx — добавлен `noise-overlay` класс
+- app/globals.css — `.meteor`, `@keyframes meteor-fall`, `.noise-overlay::after`, reduced-motion
+
+---
+
 ## Сессия 33 — 2026-03-08 — Gold shimmer effect (8.10)
 
 ### Сделано:
