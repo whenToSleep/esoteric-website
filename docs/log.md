@@ -6,6 +6,19 @@
 
 ---
 
+## Сессия 39 — 2026-03-08 — Fix Hero: aurora-accent + remove shimmer
+
+### Сделано:
+- **hero-aurora-accent** — добавлен недостающий CSS класс (золотистый radial-gradient blob, blur 80px, 30s animation) и div в hero-section.tsx
+- **gold-shimmer удалён** с H1 заголовка Hero — заменён на статичный text-shadow (мягкое золотое свечение без анимации)
+- Обновлён reduced-motion блок для hero-aurora-accent
+
+### Файлы изменены:
+- app/globals.css — добавлен .hero-aurora-accent, обновлён prefers-reduced-motion
+- components/home/hero-section.tsx — добавлен aurora-accent div, H1: gold-shimmer -> text-shadow
+
+---
+
 ## Сессия 38 — 2026-03-08 — Page transitions via next-view-transitions (8.16)
 
 ### Сделано:

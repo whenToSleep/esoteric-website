@@ -239,6 +239,21 @@
   animation-duration: 25s;
 }
 
+.hero-aurora-accent {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent 70%);
+  filter: blur(80px);
+  animation: aurora-drift 30s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+
 @keyframes aurora-drift {
   0% {
     transform: translate(0, 0) scale(1);
@@ -392,7 +407,8 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-aurora::before,
-  .hero-aurora::after {
+  .hero-aurora::after,
+  .hero-aurora-accent {
     animation: none !important;
   }
   .hero-stars::before,

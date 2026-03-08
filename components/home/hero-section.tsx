@@ -11,6 +11,7 @@ export function HeroSection() {
     <section className="noise-overlay relative -mt-16 lg:-mt-[72px] min-h-svh md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-cosmic-black">
       {/* Layer 1: Aurora — animated color blobs */}
       <div className="hero-aurora" />
+      <div className="hero-aurora-accent" />
 
       {/* Layer 2: Starfield */}
       <div className="hero-stars" />
@@ -37,7 +38,12 @@ export function HeroSection() {
         <p className="font-body text-small tracking-[0.3em] uppercase text-celestial-gold mb-6">
           {t("tagline")}
         </p>
-        <h1 className="font-heading text-hero gold-shimmer">
+        <h1
+          className="font-heading text-hero text-star-white font-semibold"
+          style={{
+            textShadow: '0 0 40px rgba(212,175,55,0.15), 0 0 80px rgba(212,175,55,0.08)'
+          }}
+        >
           {t("title")}
         </h1>
         <p className="font-body text-body text-star-white/80 mt-6 max-w-2xl mx-auto">
