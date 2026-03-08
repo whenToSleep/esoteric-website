@@ -366,6 +366,29 @@
   mix-blend-mode: overlay;
 }
 
+/* Animated gradient border */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(var(--border-angle, 0deg),
+    #D4AF37, #7C3AED, #2D1B69, #D4AF37);
+  animation: border-rotate 4s linear infinite;
+}
+.gradient-border > * {
+  background: #0D1137;
+  border-radius: 15px;
+}
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-aurora::before,
@@ -376,6 +399,9 @@
   .hero-stars::after {
     animation: none !important;
     opacity: 0.8;
+  }
+  .gradient-border {
+    animation: none !important;
   }
   .gold-shimmer, .gold-glow, .meteor {
     animation: none !important;

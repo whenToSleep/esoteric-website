@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { CTAHeading } from "@/components/home/cta-heading";
 
 export async function CTASection() {
   const t = await getTranslations("home.cta");
@@ -12,9 +13,7 @@ export async function CTASection() {
       }}
     >
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-heading text-2xl font-semibold gold-shimmer md:text-3xl lg:text-4xl">
-          {t("title")}
-        </h2>
+        <CTAHeading title={t("title")} />
         <p className="mx-auto mt-4 max-w-xl text-silver-mist">
           {t("subtitle")}
         </p>

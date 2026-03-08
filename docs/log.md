@@ -6,6 +6,33 @@
 
 ---
 
+## Сессия 37 — 2026-03-08 — TypewriterEffectSmooth + Gradient Border (8.15)
+
+### Сделано:
+- **TypewriterEffectSmooth** — Aceternity smooth вариант (анимация width, не per-character)
+- Создан `components/ui/typewriter-effect.tsx` — client component с framer-motion
+- Создан `components/home/cta-heading.tsx` — client wrapper, разбивает title на words для typewriter
+- CTA секция: заголовок заменён на TypewriterEffectSmooth с gold цветом
+- **Animated gradient border** на featured блог-карточке — вращающийся градиент gold/violet/purple
+- CSS `@property --border-angle` + `.gradient-border` + `@keyframes border-rotate`
+- Reduced motion: gradient-border анимация отключается
+
+### Файлы созданы:
+- components/ui/typewriter-effect.tsx — TypewriterEffectSmooth
+- components/home/cta-heading.tsx — client wrapper для CTA заголовка
+
+### Файлы изменены:
+- components/home/cta-section.tsx — импорт CTAHeading, замена h2 на TypewriterEffectSmooth
+- components/home/latest-posts-section.tsx — featured карточка обёрнута в div.gradient-border
+- app/globals.css — @property --border-angle, .gradient-border, @keyframes border-rotate, reduced-motion fallback
+
+### Примечания:
+- CTA остаётся server component, typewriter вынесен в отдельный client component
+- CTAHeading разбивает переведённый title по пробелам — работает для RU/EN/UK
+- Build: компиляция OK (tsc --noEmit clean), ошибка только от отсутствия Postgres
+
+---
+
 ## Сессия 36 — 2026-03-08 — LazyMotion + MotionConfig (8.14)
 
 ### Сделано:
