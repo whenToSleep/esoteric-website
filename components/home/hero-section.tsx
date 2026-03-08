@@ -22,18 +22,18 @@ export function HeroSection() {
 
       {/* Layer 4: Parallax stars — far */}
       <ParallaxLayer speed={0.2} className="absolute inset-0 z-[1] pointer-events-none hidden md:block">
-        <div className="absolute top-[10%] left-[15%] w-2 h-2 rounded-full bg-cosmic-gold/60" />
-        <div className="absolute top-[30%] right-[20%] w-1.5 h-1.5 rounded-full bg-cosmic-white/50" />
-        <div className="absolute top-[70%] left-[60%] w-2 h-2 rounded-full bg-cosmic-gold/50" />
-        <div className="absolute top-[85%] left-[25%] w-1.5 h-1.5 rounded-full bg-cosmic-white/40" />
-        <div className="absolute top-[15%] right-[40%] w-1 h-1 rounded-full bg-cosmic-gold/45" />
+        <div className="absolute top-[10%] left-[15%] w-1 h-1 rounded-full bg-cosmic-gold/60" />
+        <div className="absolute top-[30%] right-[20%] w-0.5 h-0.5 rounded-full bg-cosmic-white/50" />
+        <div className="absolute top-[70%] left-[60%] w-1 h-1 rounded-full bg-cosmic-gold/50" />
+        <div className="absolute top-[85%] left-[25%] w-0.5 h-0.5 rounded-full bg-cosmic-white/40" />
+        <div className="absolute top-[15%] right-[40%] w-0.5 h-0.5 rounded-full bg-cosmic-gold/45" />
       </ParallaxLayer>
 
       {/* Layer 5: Parallax stars — near */}
       <ParallaxLayer speed={0.4} className="absolute inset-0 z-[1] pointer-events-none hidden md:block">
-        <div className="absolute top-[50%] right-[10%] w-3 h-3 rounded-full bg-cosmic-gold/35" />
-        <div className="absolute top-[20%] left-[40%] w-2.5 h-2.5 rounded-full bg-cosmic-white/30" />
-        <div className="absolute top-[75%] right-[35%] w-2 h-2 rounded-full bg-cosmic-gold/30" />
+        <div className="absolute top-[50%] right-[10%] w-1.5 h-1.5 rounded-full bg-cosmic-gold/35" />
+        <div className="absolute top-[20%] left-[40%] w-1 h-1 rounded-full bg-cosmic-white/30" />
+        <div className="absolute top-[75%] right-[35%] w-1 h-1 rounded-full bg-cosmic-gold/30" />
       </ParallaxLayer>
 
       {/* Layer 6: Content */}
