@@ -12,14 +12,15 @@ export function Header() {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-midnight-navy/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-[72px]">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between w-full px-4 sm:px-6 lg:px-8 lg:h-[72px]">
+        {/* Logo — shrinks if not enough space */}
+        <Link href="/" className="flex shrink min-w-0 items-center">
           <Image
             src="/images/logo.svg"
             alt="Mori Norman"
             width={120}
             height={24}
+            className="h-auto max-w-full"
           />
         </Link>
 
@@ -37,7 +38,7 @@ export function Header() {
         </nav>
 
         {/* Right: Language switcher + Mobile menu */}
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2">
           {/* Mobile language switcher (compact) */}
           <div className="lg:hidden">
             <LanguageSwitcher compact />

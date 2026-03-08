@@ -6,6 +6,27 @@
 
 ---
 
+## Сессия 42 — 2026-03-08 — Fix header horizontal scroll on mobile
+
+### Проблема:
+На мобильных устройствах (375px) header вызывал горизонтальный скролл. Логотип "Mori Norman" обрезался слева. Элементы header не адаптировались под узкие экраны.
+
+### Сделано:
+- Лого (`<Link>`): добавлен `shrink min-w-0` — сжимается при нехватке места
+- Лого (`<Image>`): добавлен `className="h-auto max-w-full"` — масштабируется
+- Правая часть (языки + hamburger): добавлен `shrink-0` — не сжимается, `gap-2` (было `gap-3`)
+- Container: добавлен `w-full sm:px-6 lg:px-8` — responsive padding
+- Flexbox `justify-between` уже был — корректно распределяет пространство
+
+### Файлы изменены:
+- components/header.tsx — flex-shrink настройки для лого и правой части
+- docs/log.md — этот лог
+
+### Примечание:
+- `npm run build` не проходит из-за ECONNREFUSED PostgreSQL (не связано с изменениями)
+
+---
+
 ## Сессия 41 — 2026-03-08 — Fix broken color classes (aliases)
 
 ### Проблема:
