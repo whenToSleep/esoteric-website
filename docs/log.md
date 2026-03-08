@@ -9,17 +9,20 @@
 ## Сессия 42 — 2026-03-08 — Fix header horizontal scroll on mobile
 
 ### Проблема:
-На мобильных устройствах (375px) header вызывал горизонтальный скролл. Логотип "Mori Norman" обрезался слева. Элементы header не адаптировались под узкие экраны.
+На мобильных устройствах (375px) header вызывал горизонтальный скролл. Логотип "Mori Norman" обрезался слева.
 
-### Сделано:
-- Лого (`<Link>`): добавлен `shrink min-w-0` — сжимается при нехватке места
-- Лого (`<Image>`): добавлен `className="h-auto max-w-full"` — масштабируется
-- Правая часть (языки + hamburger): добавлен `shrink-0` — не сжимается, `gap-2` (было `gap-3`)
-- Container: добавлен `w-full sm:px-6 lg:px-8` — responsive padding
-- Flexbox `justify-between` уже был — корректно распределяет пространство
+### Сделано (два коммита):
+1. Flex-shrink настройки: лого `shrink min-w-0`, правая часть `shrink-0`, `gap-2`
+2. Корневые причины overflow:
+   - `<header>`: `w-full` → `inset-x-0` — корректное позиционирование fixed-элемента (left:0 + right:0 вместо width:100%)
+   - `<header>`: добавлен `overflow-hidden` — предотвращает выход содержимого за границы
+   - `<body>`: добавлен `overflow-x-hidden` — страховка от горизонтального скролла на уровне body
+   - `mobile-menu.tsx`: убран `w-screen h-screen` — `inset-0` уже покрывает весь экран, а `100vw` включает ширину скроллбара
 
 ### Файлы изменены:
-- components/header.tsx — flex-shrink настройки для лого и правой части
+- components/header.tsx — positioning + overflow
+- components/mobile-menu.tsx — убран избыточный w-screen h-screen
+- app/[locale]/layout.tsx — overflow-x-hidden на body
 - docs/log.md — этот лог
 
 ### Примечание:

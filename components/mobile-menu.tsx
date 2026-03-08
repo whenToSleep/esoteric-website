@@ -39,7 +39,7 @@ export function MobileMenu() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex flex-col bg-[#0A0A0F] w-screen h-screen"
+            className="fixed inset-0 z-[100] flex flex-col bg-[#0A0A0F]"
           >
             {/* Close button */}
             <button

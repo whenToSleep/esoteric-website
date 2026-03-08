@@ -11,7 +11,7 @@ export function Header() {
   const t = useTranslations("nav");
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-midnight-navy/80 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 overflow-hidden bg-midnight-navy/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between w-full px-4 sm:px-6 lg:px-8 lg:h-[72px]">
         {/* Logo — shrinks if not enough space */}
         <Link href="/" className="flex shrink min-w-0 items-center">
