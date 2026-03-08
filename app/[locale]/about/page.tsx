@@ -89,19 +89,26 @@ export default async function AboutPage({ params }: Props) {
 
       <AboutTimeline locale={locale} items={page.timeline} />
 
-      <section
-        className="px-4 py-16 md:py-20 lg:py-24"
-        style={{
-          background: "linear-gradient(135deg, #2D1B69 0%, #0D1137 100%)",
-        }}
-      >
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-2xl font-semibold text-star-white md:text-3xl lg:text-4xl">
+      <section className="relative overflow-hidden px-4 py-16 md:py-20 lg:py-30">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, #0A0A0F, rgba(45,27,105,0.2) 50%, #0A0A0F)",
+          }}
+        />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-astral-violet/15 blur-[120px]" />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div className="mx-auto mb-8 h-px w-24 bg-linear-to-r from-transparent via-celestial-gold/50 to-transparent" />
+          <h2 className="font-heading text-section text-star-white">
             {t("cta_title")}
           </h2>
+          <p className="mt-4 font-body text-body text-star-white/60">
+            {t("cta_subtitle")}
+          </p>
           <a
             href="#"
-            className="mt-8 inline-flex items-center justify-center rounded-lg bg-celestial-gold px-8 py-3 text-base font-semibold text-cosmic-black transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_4px_12px_rgba(212,175,55,0.3)]"
+            className="mt-8 inline-flex items-center justify-center min-h-12 px-10 py-3.5 rounded-full bg-astral-violet text-star-white font-body font-medium text-base transition-all duration-300 hover:bg-astral-violet/80 hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)] active:scale-[0.97]"
           >
             {t("cta_button")}
           </a>
