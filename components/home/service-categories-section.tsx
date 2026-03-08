@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { ServiceCategoryCard } from "@/components/home/service-category-card";
+import { ScrollReveal } from "@/components/animations";
+import { StaggerContainer, StaggerItem } from "@/components/animations";
 
 interface Category {
   id: string | number;
@@ -19,12 +21,14 @@ export async function ServiceCategoriesSection({
   return (
     <section id="services" className="px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
-          {t("section_title")}
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-6 lg:gap-8">
+        <ScrollReveal direction="up">
+          <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
+            {t("section_title")}
+          </h2>
+        </ScrollReveal>
+        <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-6 lg:gap-8">
           {categories.map((cat, index) => (
-            <div
+            <StaggerItem
               key={cat.id}
               className={`lg:col-span-2${index === 3 ? " lg:col-start-2" : ""}`}
             >
@@ -35,9 +39,9 @@ export async function ServiceCategoriesSection({
                 slug={cat.slug}
                 learnMoreText={t("learn_more")}
               />
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

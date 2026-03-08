@@ -6,6 +6,28 @@
 
 ---
 
+## Сессия 32 — 2026-03-08 — ScrollReveal & StaggerReveal animations (8.9)
+
+### Сделано:
+- **ScrollReveal** компонент: fade-in/slide анимация при скролле (directions: up, left, right, fade)
+- **StaggerContainer + StaggerItem**: staggered появление дочерних элементов (0.08s между карточками)
+- Barrel export: components/animations/index.ts
+- Все компоненты поддерживают prefers-reduced-motion (useReducedMotion fallback)
+- **ServiceCategoriesSection**: заголовок — ScrollReveal up, карточки — StaggerContainer/StaggerItem
+- **AboutBriefSection**: заголовок — ScrollReveal up, фото — ScrollReveal left, текст — ScrollReveal right (delay 0.2s), удалён inline motion.div
+- **LatestPostsSection**: заголовок — ScrollReveal up, featured + blog cards — StaggerContainer/StaggerItem
+- НЕ анимированы: Testimonials (свой marquee), CTA, Hero (свои анимации)
+
+### Файлы изменены:
+- components/animations/ScrollReveal.tsx — NEW
+- components/animations/StaggerReveal.tsx — NEW
+- components/animations/index.ts — NEW
+- components/home/service-categories-section.tsx — добавлены ScrollReveal + StaggerContainer
+- components/home/about-brief-section.tsx — заменён inline motion на ScrollReveal left/right
+- components/home/latest-posts-section.tsx — добавлены ScrollReveal + StaggerContainer
+
+---
+
 ## Сессия 31 — 2026-03-08 — Section dividers + Footer update (8.8)
 
 ### Сделано:
