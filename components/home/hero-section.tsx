@@ -23,7 +23,7 @@ export function HeroSection() {
         <p className="font-body text-small tracking-[0.3em] uppercase text-celestial-gold mb-6">
           {t("tagline")}
         </p>
-        <h1 className="font-heading text-hero text-star-white">
+        <h1 className="font-heading text-hero gold-shimmer">
           {t("title")}
         </h1>
         <p className="font-body text-body text-star-white/80 mt-6 max-w-2xl mx-auto">

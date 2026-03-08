@@ -6,6 +6,22 @@
 
 ---
 
+## Сессия 33 — 2026-03-08 — Gold shimmer effect (8.10)
+
+### Сделано:
+- CSS-классы `.gold-shimmer` и `.gold-glow` в globals.css
+- `.gold-shimmer` — анимированный золотой градиент (background-clip: text, 3s linear infinite)
+- `.gold-glow` — пульсирующее золотое свечение (text-shadow, 4s ease-in-out)
+- `prefers-reduced-motion` fallback: статический золотой цвет вместо анимации
+- Применён `gold-shimmer` на Hero H1 и CTA H2 (максимум 2 элемента на странице)
+
+### Файлы изменены:
+- app/globals.css — добавлены .gold-shimmer, .gold-glow + reduced-motion fallback
+- components/home/hero-section.tsx — H1: text-star-white -> gold-shimmer
+- components/home/cta-section.tsx — H2: text-star-white -> gold-shimmer
+
+---
+
 ## Сессия 32 — 2026-03-08 — ScrollReveal & StaggerReveal animations (8.9)
 
 ### Сделано:

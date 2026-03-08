@@ -12,7 +12,7 @@ export async function CTASection() {
       }}
     >
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-heading text-2xl font-semibold text-star-white md:text-3xl lg:text-4xl">
+        <h2 className="font-heading text-2xl font-semibold gold-shimmer md:text-3xl lg:text-4xl">
           {t("title")}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-silver-mist">

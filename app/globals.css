@@ -313,6 +313,22 @@
   to { opacity: 1; transform: translate(6px, -8px); }
 }
 
+/* Gold shimmer & glow text effects */
+.gold-shimmer {
+  background: linear-gradient(90deg, #D4AF37 0%, #F5E6A3 25%, #B8860B 50%, #F5E6A3 75%, #D4AF37 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gold-shimmer 3s linear infinite;
+}
+
+.gold-glow {
+  color: #F0EAD6;
+  animation: gold-glow-pulse 4s ease-in-out infinite;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-aurora::before,
@@ -323,6 +339,17 @@
   .hero-stars::after {
     animation: none !important;
     opacity: 0.8;
+  }
+  .gold-shimmer, .gold-glow {
+    animation: none !important;
+  }
+  .gold-shimmer {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: #D4AF37;
+  }
+  .gold-glow {
+    text-shadow: 0 0 6px rgba(212,175,55,0.3), 0 0 12px rgba(212,175,55,0.15);
   }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
