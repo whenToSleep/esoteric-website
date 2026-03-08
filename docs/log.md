@@ -6,6 +6,31 @@
 
 ---
 
+## Сессия 36 — 2026-03-08 — LazyMotion + MotionConfig (8.14)
+
+### Сделано:
+- **LazyMotion** — lazy-загрузка framer-motion features (domAnimation) для уменьшения бандла (~34KB → ~4.6KB)
+- **MotionConfig reducedMotion="user"** — глобальный respect prefers-reduced-motion для всех motion компонентов
+- Создан `lib/motion-features.ts` — экспорт domAnimation для динамического импорта
+- Создан `app/providers.tsx` — MotionProviders (LazyMotion strict + MotionConfig)
+- MotionProviders обёрнут весь контент в `app/[locale]/layout.tsx`
+- CSS reduced-motion fallback уже был в globals.css — без изменений
+
+### Файлы созданы:
+- lib/motion-features.ts — domAnimation export
+- app/providers.tsx — MotionProviders (client component)
+
+### Файлы изменены:
+- app/[locale]/layout.tsx — импорт и обёртка в MotionProviders
+
+### Примечания:
+- Импорты из `framer-motion` (не `motion/react`) — пакет `motion` не установлен отдельно
+- `strict` режим LazyMotion будет предупреждать о `motion.div` (vs `m.div`), но не ломает
+- Миграция motion.div → m.div отложена на следующий этап
+- Build: компиляция OK, ошибка только от отсутствия Postgres (pre-existing)
+
+---
+
 ## Сессия 35 — 2026-03-08 — Tracing Beam + ParallaxLayer (8.13)
 
 ### Сделано:

@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { headingFont, bodyFont } from "@/lib/fonts";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { MotionProviders } from "@/app/providers";
 import "../globals.css";
 
 type Props = {
@@ -57,9 +58,11 @@ export default async function LocaleLayout({ children, params }: Props) {
         className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased`}
       >
         <NextIntlClientProvider>
-          <Header />
-          <main className="pt-16 lg:pt-[72px]">{children}</main>
-          <Footer />
+          <MotionProviders>
+            <Header />
+            <main className="pt-16 lg:pt-[72px]">{children}</main>
+            <Footer />
+          </MotionProviders>
         </NextIntlClientProvider>
       </body>
     </html>
