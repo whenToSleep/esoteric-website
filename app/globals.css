@@ -43,6 +43,14 @@
   --color-surface-3: #16161E;
   --color-surface-4: #1A1A24;
 
+  /* Aliases (used across components) */
+  --color-cosmic-bg: #0A0A0F;
+  --color-cosmic-white: #F0EAD6;
+  --color-cosmic-gold: #D4AF37;
+  --color-cosmic-violet: #7C3AED;
+  --color-cosmic-purple: #2D1B69;
+  --color-cosmic-card: #0D1137;
+
   /* Gold gradient extras */
   --color-cosmic-gold-light: #F5E6A3;
   --color-cosmic-gold-dark: #B8860B;

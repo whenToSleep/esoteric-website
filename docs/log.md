@@ -6,6 +6,37 @@
 
 ---
 
+## Сессия 41 — 2026-03-08 — Fix broken color classes (aliases)
+
+### Проблема:
+76 CSS-классов в 18 файлах использовали имена цветов (`cosmic-white`, `cosmic-gold`, `cosmic-violet`, `cosmic-purple`, `cosmic-card`, `cosmic-bg`), которые НЕ определены в `@theme` в globals.css. Реальные имена в @theme: `star-white`, `celestial-gold`, `astral-violet`, `mystic-purple`, `midnight-navy`, `cosmic-black`. Из-за этого текст, фоны и границы не отображались — страницы выглядели "необновлёнными".
+
+### Сделано:
+- Добавлены 6 alias-переменных в `@theme` блок globals.css:
+  - `--color-cosmic-bg: #0A0A0F` (= cosmic-black)
+  - `--color-cosmic-white: #F0EAD6` (= star-white)
+  - `--color-cosmic-gold: #D4AF37` (= celestial-gold)
+  - `--color-cosmic-violet: #7C3AED` (= astral-violet)
+  - `--color-cosmic-purple: #2D1B69` (= mystic-purple)
+  - `--color-cosmic-card: #0D1137` (= midnight-navy)
+- Минимальный фикс: 1 файл, 6 строк — исправляет все 18 файлов сразу
+
+### Затронутые страницы (все починены):
+- Category pages (/ru/tarot, /ru/rituals, etc.)
+- Service pages (/ru/tarot/tarot-classic, etc.)
+- Home: hero, cards, footer, blog cards, about section
+- UI: dividers, typewriter, meteors
+
+### Файлы изменены:
+- app/globals.css — 6 alias-переменных в @theme
+- docs/log.md — этот лог
+
+### Примечание:
+- `npm run build` не проходит из-за ECONNREFUSED PostgreSQL (не связано с CSS)
+- CTA кнопки и service card backgrounds УЖЕ были корректны (используют правильные имена)
+
+---
+
 ## Сессия 40 — 2026-03-08 — Fix 3 homepage bugs (round 2)
 
 ### Сделано:
