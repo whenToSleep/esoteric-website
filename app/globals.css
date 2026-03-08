@@ -221,20 +221,20 @@
   animation: aurora-drift 20s ease-in-out infinite alternate;
 }
 .hero-aurora::before {
-  width: 600px;
-  height: 600px;
-  top: -10%;
-  left: -5%;
-  background: radial-gradient(circle, rgba(45, 27, 105, 0.8), transparent 70%);
-  opacity: 0.7;
+  width: 700px;
+  height: 700px;
+  top: -15%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(45, 27, 105, 0.9), transparent 65%);
+  opacity: 0.85;
 }
 .hero-aurora::after {
-  width: 500px;
-  height: 500px;
-  bottom: -5%;
-  right: -5%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.7), transparent 70%);
-  opacity: 0.6;
+  width: 600px;
+  height: 600px;
+  bottom: -10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.8), transparent 65%);
+  opacity: 0.75;
   animation-delay: -10s;
   animation-duration: 25s;
 }
@@ -257,19 +257,19 @@
 @keyframes aurora-drift {
   0% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.6;
+    opacity: 0.5;
   }
   33% {
-    transform: translate(50px, -30px) scale(1.1);
-    opacity: 0.8;
+    transform: translate(120px, -80px) scale(1.15);
+    opacity: 0.9;
   }
   66% {
-    transform: translate(-30px, 40px) scale(0.95);
+    transform: translate(-80px, 100px) scale(0.9);
     opacity: 0.7;
   }
   100% {
-    transform: translate(20px, -20px) scale(1.05);
-    opacity: 0.65;
+    transform: translate(60px, -50px) scale(1.1);
+    opacity: 0.6;
   }
 }
 
@@ -289,43 +289,57 @@
 }
 .hero-stars::before {
   background-image:
-    radial-gradient(1px 1px at 5% 15%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(1.5px 1.5px at 12% 42%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1px 1px at 18% 78%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(2px 2px at 25% 28%, rgba(212,175,55,0.5), transparent),
-    radial-gradient(1px 1px at 32% 65%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(1.5px 1.5px at 40% 10%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1px 1px at 48% 52%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1px 1px at 55% 85%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(2px 2px at 62% 20%, rgba(212,175,55,0.4), transparent),
-    radial-gradient(1px 1px at 70% 45%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1.5px 1.5px at 78% 72%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1px 1px at 85% 8%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(1px 1px at 92% 55%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(1.5px 1.5px at 96% 90%, rgba(240,234,214,0.5), transparent);
-  animation: twinkle 2.5s ease-in-out infinite alternate;
+    radial-gradient(2px 2px at 3% 10%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 7% 55%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2.5px 2.5px at 11% 30%, rgba(212,175,55,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 15% 80%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(2px 2px at 20% 18%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(1px 1px at 24% 65%, rgba(240,234,214,0.6), transparent),
+    radial-gradient(2px 2px at 28% 42%, rgba(212,175,55,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 33% 90%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(2px 2px at 38% 5%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1px 1px at 42% 35%, rgba(240,234,214,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 47% 72%, rgba(212,175,55,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 52% 22%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(2px 2px at 57% 58%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(1px 1px at 62% 85%, rgba(240,234,214,0.6), transparent),
+    radial-gradient(2px 2px at 67% 12%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 72% 48%, rgba(212,175,55,0.6), transparent),
+    radial-gradient(2px 2px at 77% 68%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(1px 1px at 82% 25%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2.5px 2.5px at 87% 78%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 92% 40%, rgba(212,175,55,0.7), transparent),
+    radial-gradient(2px 2px at 96% 8%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(1px 1px at 98% 62%, rgba(240,234,214,0.6), transparent);
+  animation: twinkle 4s ease-in-out infinite alternate;
 }
 .hero-stars::after {
   background-image:
-    radial-gradient(1px 1px at 8% 35%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1px 1px at 22% 58%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(1.5px 1.5px at 35% 18%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1px 1px at 45% 75%, rgba(212,175,55,0.3), transparent),
-    radial-gradient(1px 1px at 58% 38%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1.5px 1.5px at 68% 62%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(1px 1px at 82% 28%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1px 1px at 90% 82%, rgba(240,234,214,0.5), transparent);
-  animation: twinkle-reverse 3s ease-in-out infinite alternate;
-  animation-delay: -1.5s;
+    radial-gradient(1.5px 1.5px at 2% 45%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2px 2px at 8% 20%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(1px 1px at 14% 70%, rgba(212,175,55,0.6), transparent),
+    radial-gradient(2px 2px at 19% 48%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 26% 15%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2px 2px at 31% 82%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(1px 1px at 36% 55%, rgba(240,234,214,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 43% 28%, rgba(212,175,55,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 49% 92%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2px 2px at 55% 38%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1px 1px at 60% 75%, rgba(240,234,214,0.6), transparent),
+    radial-gradient(2px 2px at 66% 5%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 73% 58%, rgba(212,175,55,0.7), transparent),
+    radial-gradient(2px 2px at 79% 32%, rgba(240,234,214,0.9), transparent),
+    radial-gradient(1px 1px at 84% 88%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2px 2px at 89% 15%, rgba(240,234,214,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 94% 52%, rgba(240,234,214,0.7), transparent),
+    radial-gradient(2px 2px at 99% 72%, rgba(212,175,55,0.6), transparent);
+  animation: twinkle 5s ease-in-out infinite alternate-reverse;
+  animation-delay: -2s;
 }
 
 @keyframes twinkle {
-  from { opacity: 0.6; transform: translate(0, 0); }
-  to { opacity: 1; transform: translate(-8px, 6px); }
-}
-@keyframes twinkle-reverse {
-  from { opacity: 0.5; transform: translate(0, 0); }
-  to { opacity: 1; transform: translate(6px, -8px); }
+  from { opacity: 0.7; }
+  to { opacity: 1; }
 }
 
 /* Gold shimmer & glow text effects */
