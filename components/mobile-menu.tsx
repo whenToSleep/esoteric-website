@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { TransitionLink as Link } from "@/components/ui/transition-link";
 import { navItems } from "@/lib/navigation";
 
 export function MobileMenu() {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { ViewTransitions } from "next-view-transitions";
 import { routing } from "@/i18n/routing";
 import { headingFont, bodyFont } from "@/lib/fonts";
 import { Header } from "@/components/header";
@@ -53,18 +54,20 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className="dark">
-      <body
-        className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased`}
-      >
-        <NextIntlClientProvider>
-          <MotionProviders>
-            <Header />
-            <main className="pt-16 lg:pt-[72px]">{children}</main>
-            <Footer />
-          </MotionProviders>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang={locale} className="dark">
+        <body
+          className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased`}
+        >
+          <NextIntlClientProvider>
+            <MotionProviders>
+              <Header />
+              <main className="pt-16 lg:pt-[72px]">{children}</main>
+              <Footer />
+            </MotionProviders>
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

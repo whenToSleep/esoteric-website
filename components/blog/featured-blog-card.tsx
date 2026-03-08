@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import { TransitionLink as Link } from "@/components/ui/transition-link";
 
 interface FeaturedBlogCardProps {
   title: string;

@@ -1,4 +1,4 @@
-import { Link } from "@/i18n/navigation";
+import { TransitionLink as Link } from "@/components/ui/transition-link";
 import { CategoryIcon } from "@/components/home/icon-map";
 import { Meteors } from "@/components/ui/aceternity/meteors";
 

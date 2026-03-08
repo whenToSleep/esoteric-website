@@ -6,6 +6,30 @@
 
 ---
 
+## Сессия 38 — 2026-03-08 — Page transitions via next-view-transitions (8.16)
+
+### Сделано:
+- **next-view-transitions** — установлен пакет для плавных переходов между страницами
+- `ViewTransitions` обёртка добавлена в locale layout (`app/[locale]/layout.tsx`)
+- Создан `TransitionLink` — client component, комбинирует next-intl Link (locale routing) + `useTransitionRouter` (view transitions)
+- Заменён `Link` на `TransitionLink` в навигации и карточках (Header, Footer, MobileMenu, ServiceCategoryCard, BlogCard, FeaturedBlogCard)
+- CSS анимации `::view-transition-old/new(root)` — fade-out 200ms / fade-in 300ms
+
+### Файлы созданы:
+- components/ui/transition-link.tsx — TransitionLink (client, combines next-intl + view transitions)
+
+### Файлы изменены:
+- app/[locale]/layout.tsx — ViewTransitions wrapper
+- components/header.tsx — TransitionLink
+- components/mobile-menu.tsx — TransitionLink
+- components/footer.tsx — TransitionLink
+- components/home/service-category-card.tsx — TransitionLink
+- components/home/blog-card.tsx — TransitionLink
+- components/blog/featured-blog-card.tsx — TransitionLink
+- app/globals.css — view transition CSS animations
+
+---
+
 ## Сессия 37 — 2026-03-08 — TypewriterEffectSmooth + Gradient Border (8.15)
 
 ### Сделано:

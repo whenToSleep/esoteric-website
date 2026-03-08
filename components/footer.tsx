@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Music2, Instagram, Send, Youtube } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { TransitionLink as Link } from "@/components/ui/transition-link";
 import { navItems, socialLinks } from "@/lib/navigation";
 
 const socialIcons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
