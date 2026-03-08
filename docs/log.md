@@ -6,17 +6,19 @@
 
 ---
 
-## Сессия 40 — 2026-03-08 — Fix 3 homepage bugs
+## Сессия 40 — 2026-03-08 — Fix 3 homepage bugs (round 2)
 
 ### Сделано:
-- **About section** — убрана дублирующаяся секция. TracingBeam + mobile fallback заменены на единый grid (фото слева, текст + кнопка справа)
-- **Blog grid** — убраны StaggerContainer/StaggerItem обёртки и gradient-border с featured карточки. Карточки теперь в простом grid, featured span-2
-- **CTA section** — убран CTAHeading с TypewriterEffectSmooth. Заменён на простой h2 (белый, без shimmer). Gradient bg через CSS, pill-кнопка с violet glow
+- **Blog cards** — убран featured span-2, все 3 карточки одинакового размера в простом grid 1/2/3 col. Карточки получили gradient фон (#1A1A24 -> #141419), border white/8%, placeholder с SVG иконкой для постов без изображений. Hover: violet glow + lift
+- **CTA button** — заливка bg-cosmic-violet (полноцветная фиолетовая), не прозрачная. Hover: 80% opacity + glow. Увеличена яркость декоративного orb (15% вместо 10%)
+- **About section** — убран дублирующий `<h3>{title}</h3>` ("Обо мне") — заголовок секции уже есть в `<h2>`, h3 дублировал его
+- Убраны ScrollReveal обёртки и неиспользуемые импорты из latest-posts-section
 
 ### Файлы изменены:
-- components/home/about-brief-section.tsx — убран TracingBeam + дубль, один grid
-- components/home/latest-posts-section.tsx — убраны Stagger обёртки + gradient-border
-- components/home/cta-section.tsx — полная замена на простую CTA секцию
+- components/home/blog-card.tsx — gradient bg, placeholder, flex layout, hover effects
+- components/home/latest-posts-section.tsx — простой grid без featured, без ScrollReveal
+- components/home/cta-section.tsx — кнопка bg-cosmic-violet заливка, orb ярче
+- components/home/about-brief-section.tsx — убран дублирующий h3 title
 
 ---
 

@@ -46,11 +46,6 @@ export function AboutBriefSection({
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2}>
             <div className="max-w-3xl">
-              {title && (
-                <h3 className="mb-4 font-heading text-xl text-cosmic-white md:text-2xl">
-                  {title}
-                </h3>
-              )}
               {content && (
                 <p className="leading-relaxed text-cosmic-white/70">{content}</p>
               )}
