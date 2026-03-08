@@ -57,7 +57,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <ViewTransitions>
       <html lang={locale} className="dark">
         <body
-          className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased overflow-x-hidden`}
+          className={`${headingFont.variable} ${bodyFont.variable} font-body antialiased`}
         >
           <NextIntlClientProvider>
             <MotionProviders>

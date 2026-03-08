@@ -11,18 +11,19 @@
 ### Проблема:
 На мобильных устройствах (375px) header вызывал горизонтальный скролл. Логотип "Mori Norman" обрезался слева.
 
-### Сделано (два коммита):
+### Сделано (три коммита):
 1. Flex-shrink настройки: лого `shrink min-w-0`, правая часть `shrink-0`, `gap-2`
-2. Корневые причины overflow:
-   - `<header>`: `w-full` → `inset-x-0` — корректное позиционирование fixed-элемента (left:0 + right:0 вместо width:100%)
-   - `<header>`: добавлен `overflow-hidden` — предотвращает выход содержимого за границы
-   - `<body>`: добавлен `overflow-x-hidden` — страховка от горизонтального скролла на уровне body
-   - `mobile-menu.tsx`: убран `w-screen h-screen` — `inset-0` уже покрывает весь экран, а `100vw` включает ширину скроллбара
+2. Header `w-full` → `inset-x-0`, mobile-menu убран `w-screen h-screen`
+3. **Ключевой фикс:** `overflow-x: hidden` на `<html>` в globals.css
+   - Fixed-элементы (header) игнорируют overflow на `<body>` — нужно именно на `<html>`
+   - Убран `overflow-hidden` с header — он ломал mobile-menu overlay (backdrop-filter создаёт containing block для fixed потомков, overlay клиппится)
+   - overflow-x-hidden с body перенесён на html
 
 ### Файлы изменены:
-- components/header.tsx — positioning + overflow
+- components/header.tsx — `inset-x-0` вместо `w-full`, без overflow-hidden
 - components/mobile-menu.tsx — убран избыточный w-screen h-screen
-- app/[locale]/layout.tsx — overflow-x-hidden на body
+- app/globals.css — `overflow-x-hidden` на html
+- app/[locale]/layout.tsx — убран overflow-x-hidden с body
 - docs/log.md — этот лог
 
 ### Примечание:

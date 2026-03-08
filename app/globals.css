@@ -203,7 +203,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   html {
-    @apply font-body;
+    @apply font-body overflow-x-hidden;
   }
 }
 
