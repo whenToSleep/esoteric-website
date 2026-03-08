@@ -19,17 +19,17 @@ export async function Footer() {
   return (
     <footer className="border-t border-white/[0.06] bg-surface-1">
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-16 lg:px-12 lg:py-20">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Column 1: Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div>
             <h3 className="font-heading text-lg text-cosmic-white">Mori Norman</h3>
             <p className="mt-3 text-sm leading-relaxed text-cosmic-white/60">
               {t("brand")}
             </p>
           </div>
 
-          {/* Column 2: Navigation */}
-          <div>
+          {/* Column 2: Navigation — hidden on mobile */}
+          <div className="hidden md:block">
             <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-cosmic-white/80 mb-4">
               {t("navigation")}
             </h3>
@@ -48,8 +48,8 @@ export async function Footer() {
             </nav>
           </div>
 
-          {/* Column 3: Services */}
-          <div>
+          {/* Column 3: Services — hidden on mobile */}
+          <div className="hidden md:block">
             <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-cosmic-white/80 mb-4">
               {t("services")}
             </h3>
@@ -102,24 +102,10 @@ export async function Footer() {
 
       {/* Copyright bar */}
       <div className="border-t border-white/[0.06]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
-          <p className="text-sm text-white/40">{t("copyright")}</p>
-          <div className="flex gap-4">
-            {socialLinks.map((link) => {
-              const Icon = socialIcons[link.key];
-              return (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/40 transition-colors hover:text-cosmic-white"
-                >
-                  {Icon && <Icon size={16} />}
-                </a>
-              );
-            })}
-          </div>
+        <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 lg:px-12">
+          <p className="text-sm text-white/40 text-center md:text-left">
+            {t("copyright")}
+          </p>
         </div>
       </div>
     </footer>
