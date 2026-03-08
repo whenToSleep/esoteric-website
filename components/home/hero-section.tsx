@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { ScrollButton } from "@/components/home/scroll-button";
+import { ParallaxLayer } from "@/components/animations";
 
 export function HeroSection() {
   const t = useTranslations("home.hero");
@@ -18,7 +19,20 @@ export function HeroSection() {
       <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-mystic-purple/20 blur-[150px] pointer-events-none z-0" />
       <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] rounded-full bg-astral-violet/15 blur-[120px] pointer-events-none z-0" />
 
-      {/* Layer 4: Content */}
+      {/* Layer 4: Parallax stars — far */}
+      <ParallaxLayer speed={0.2} className="absolute inset-0 z-[1] pointer-events-none hidden md:block">
+        <div className="absolute top-[10%] left-[15%] w-2 h-2 rounded-full bg-cosmic-gold/40" />
+        <div className="absolute top-[30%] right-[20%] w-1 h-1 rounded-full bg-cosmic-white/30" />
+        <div className="absolute top-[70%] left-[60%] w-1.5 h-1.5 rounded-full bg-cosmic-gold/30" />
+      </ParallaxLayer>
+
+      {/* Layer 5: Parallax stars — near */}
+      <ParallaxLayer speed={0.4} className="absolute inset-0 z-[1] pointer-events-none hidden md:block">
+        <div className="absolute top-[50%] right-[10%] w-3 h-3 rounded-full bg-cosmic-gold/20" />
+        <div className="absolute top-[20%] left-[40%] w-2 h-2 rounded-full bg-cosmic-white/20" />
+      </ParallaxLayer>
+
+      {/* Layer 6: Content */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-20 pb-12 md:pt-0 md:pb-0">
         <p className="font-body text-small tracking-[0.3em] uppercase text-celestial-gold mb-6">
           {t("tagline")}

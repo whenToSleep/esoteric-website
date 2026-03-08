@@ -1,2 +1,3 @@
 export { ScrollReveal } from './ScrollReveal';
 export { StaggerContainer, StaggerItem } from './StaggerReveal';
+export { ParallaxLayer } from './ParallaxLayer';

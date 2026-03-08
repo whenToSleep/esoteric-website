@@ -6,6 +6,32 @@
 
 ---
 
+## Сессия 35 — 2026-03-08 — Tracing Beam + ParallaxLayer (8.13)
+
+### Сделано:
+- **TracingBeam** компонент в `components/ui/tracing-beam.tsx` — Aceternity Tracing Beam (Tier 1)
+- SVG path с gradient (violet->gold), анимируется по scroll progress (useScroll + useSpring)
+- Desktop only (hidden lg:block), reduced-motion fallback
+- Обёрнут контент About Me section в TracingBeam — светящаяся линия слева при скролле
+- Mobile/tablet fallback без TracingBeam (lg:hidden)
+- **ParallaxLayer** компонент в `components/animations/ParallaxLayer.tsx`
+- useScroll + useTransform для параллакс-смещения, настраиваемый `speed` prop
+- reduced-motion fallback (статичный div)
+- Добавлены 2 слоя декоративных звёзд в Hero: far (speed=0.2, 3 точки) + near (speed=0.4, 2 точки)
+- Параллакс скрыт на мобильных (hidden md:block)
+- Экспорт ParallaxLayer из `components/animations/index.ts`
+
+### Файлы созданы:
+- components/ui/tracing-beam.tsx — TracingBeam компонент
+- components/animations/ParallaxLayer.tsx — ParallaxLayer компонент
+
+### Файлы изменены:
+- components/home/about-brief-section.tsx — обёрнут в TracingBeam (desktop) + mobile fallback
+- components/home/hero-section.tsx — добавлены ParallaxLayer звёзды (2 слоя)
+- components/animations/index.ts — экспорт ParallaxLayer
+
+---
+
 ## Сессия 34 — 2026-03-08 — Meteor Effect + Noise Overlay (8.12)
 
 ### Сделано:
