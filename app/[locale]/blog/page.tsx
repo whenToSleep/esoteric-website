@@ -5,7 +5,10 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { CategoryFilter } from "@/components/blog/category-filter";
 import { BlogPagination } from "@/components/blog/blog-pagination";
+import { FeaturedBlogCard } from "@/components/blog/featured-blog-card";
 import { BlogCard } from "@/components/home/blog-card";
+import { ScrollReveal } from "@/components/animations";
+import { StaggerContainer, StaggerItem } from "@/components/animations";
 import { calculateReadingTime } from "@/lib/reading-time";
 
 export const revalidate = 3600;
@@ -111,36 +114,60 @@ export default async function BlogPage({ params, searchParams }: Props) {
     total: String(postsResult.totalPages),
   });
 
+  const featuredPost = currentPage === 1 && posts.length > 0 ? posts[0] : null;
+  const gridPosts = currentPage === 1 ? posts.slice(1) : posts;
+
   return (
     <section className="px-4 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-8 text-center font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
-          {t("title")}
-        </h1>
+        <ScrollReveal direction="up">
+          <h1 className="mb-8 text-center font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
+            {t("title")}
+          </h1>
+        </ScrollReveal>
 
-        <div className="mb-8 flex justify-center">
-          <CategoryFilter
-            categories={categories}
-            activeCategorySlug={categorySlug}
-            allLabel={t("all_categories")}
-          />
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div className="mb-8 flex justify-center">
+            <CategoryFilter
+              categories={categories}
+              activeCategorySlug={categorySlug}
+              allLabel={t("all_categories")}
+            />
+          </div>
+        </ScrollReveal>
 
         {posts.length === 0 ? (
           <p className="py-20 text-center text-lg text-text-secondary">
             {t("no_posts")}
           </p>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <BlogCard
-                key={post.id}
-                {...post}
-                readMoreLabel={t("read_more")}
-                minReadLabel={t("min_read")}
-              />
-            ))}
-          </div>
+          <>
+            {featuredPost && (
+              <ScrollReveal delay={0.15}>
+                <div className="mb-6">
+                  <FeaturedBlogCard
+                    {...featuredPost}
+                    readMoreLabel={t("read_more")}
+                    minReadLabel={t("min_read")}
+                  />
+                </div>
+              </ScrollReveal>
+            )}
+
+            {gridPosts.length > 0 && (
+              <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {gridPosts.map((post) => (
+                  <StaggerItem key={post.id}>
+                    <BlogCard
+                      {...post}
+                      readMoreLabel={t("read_more")}
+                      minReadLabel={t("min_read")}
+                    />
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            )}
+          </>
         )}
 
         <div className="mt-10">

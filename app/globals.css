@@ -562,12 +562,14 @@
   text-underline-offset: 2px;
 }
 .prose-alchemy a:hover {
-  color: #C9A84C;
+  color: #F27A8E;
 }
 .prose-alchemy blockquote {
-  border-left: 3px solid #C9A84C;
-  padding-left: 1em;
+  border-left: 4px solid #C9A84C;
+  background: #1C1C22;
+  padding: 1em 1.25em;
   margin: 1.5em 0;
+  border-radius: 8px;
   color: #F0EBE0;
   font-style: italic;
 }
@@ -580,13 +582,13 @@
   margin-bottom: 0.5em;
 }
 .prose-alchemy code {
-  background: #131316;
+  background: #26262E;
   padding: 0.2em 0.4em;
   border-radius: 4px;
   font-size: 0.875em;
 }
 .prose-alchemy pre {
-  background: #131316;
+  background: #26262E;
   padding: 1em;
   border-radius: 8px;
   overflow-x: auto;
@@ -601,72 +603,6 @@
   font-weight: 600;
 }
 
-/* Keep prose-cosmic as alias during migration */
-.prose-cosmic {
-  color: #D4CFC4;
-  line-height: 1.8;
-  font-size: 1rem;
-}
-.prose-cosmic h1,
-.prose-cosmic h2,
-.prose-cosmic h3,
-.prose-cosmic h4 {
-  font-family: var(--font-heading), serif;
-  color: #F0EBE0;
-  line-height: 1.2;
-  margin-top: 2em;
-  margin-bottom: 0.75em;
-}
-.prose-cosmic h1 { font-size: 2rem; font-weight: 600; }
-.prose-cosmic h2 { font-size: 1.5rem; font-weight: 600; }
-.prose-cosmic h3 { font-size: 1.25rem; font-weight: 500; }
-.prose-cosmic p {
-  margin-bottom: 1.25em;
-}
-.prose-cosmic a {
-  color: #E03E5C;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.prose-cosmic a:hover {
-  color: #C9A84C;
-}
-.prose-cosmic blockquote {
-  border-left: 3px solid #C9A84C;
-  padding-left: 1em;
-  margin: 1.5em 0;
-  color: #F0EBE0;
-  font-style: italic;
-}
-.prose-cosmic ul,
-.prose-cosmic ol {
-  margin: 1em 0;
-  padding-left: 1.5em;
-}
-.prose-cosmic li {
-  margin-bottom: 0.5em;
-}
-.prose-cosmic code {
-  background: #131316;
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  font-size: 0.875em;
-}
-.prose-cosmic pre {
-  background: #131316;
-  padding: 1em;
-  border-radius: 8px;
-  overflow-x: auto;
-  margin: 1.5em 0;
-}
-.prose-cosmic hr {
-  border-color: rgba(201, 168, 76, 0.2);
-  margin: 2em 0;
-}
-.prose-cosmic strong {
-  color: #F0EBE0;
-  font-weight: 600;
-}
 
 /* ===== VIEW TRANSITIONS ===== */
 

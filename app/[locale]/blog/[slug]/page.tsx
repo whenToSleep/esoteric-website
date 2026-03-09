@@ -9,6 +9,7 @@ import { ChevronLeft } from "lucide-react";
 import { RichTextRenderer } from "@/components/rich-text-renderer";
 import { PostNavigation } from "@/components/blog/post-navigation";
 import { RelatedPosts } from "@/components/blog/related-posts";
+import { ScrollReveal } from "@/components/animations";
 import { calculateReadingTime } from "@/lib/reading-time";
 import { generateBlogPostingJsonLd } from "@/lib/json-ld";
 
@@ -193,50 +194,53 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article className="px-4 py-12 md:py-16 lg:py-20">
         <div className="mx-auto max-w-prose">
-          {/* Back link */}
-          <Link
-            href="/blog"
-            className="mb-8 inline-flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-crimson-400"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            {t("back_to_blog")}
-          </Link>
+          <ScrollReveal direction="fade" duration={0.6}>
+            {/* Back link */}
+            <Link
+              href="/blog"
+              className="mb-8 inline-flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-crimson-400"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              {t("back_to_blog")}
+            </Link>
 
-          {/* Featured image */}
-          {featuredImageUrl && (
-            <div className="relative mb-8 aspect-video w-full overflow-hidden rounded-xl">
-              <Image
-                src={featuredImageUrl}
-                alt={featuredImageAlt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 65ch"
-                priority
-              />
-            </div>
-          )}
+            {/* Featured image */}
+            {featuredImageUrl && (
+              <div className="relative mb-8 aspect-video w-full overflow-hidden rounded-2xl">
+                <Image
+                  src={featuredImageUrl}
+                  alt={featuredImageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 65ch"
+                  priority
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-void/20 via-transparent to-transparent rounded-2xl" />
+              </div>
+            )}
 
-          {/* Meta */}
-          <div className="mb-4 flex items-center gap-3">
-            {categoryTitle && (
-              <span className="rounded-md bg-crimson-950 px-3 py-1 text-xs font-medium text-crimson-400">
-                {categoryTitle}
+            {/* Meta */}
+            <div className="mb-4 flex items-center gap-3">
+              {categoryTitle && (
+                <span className="rounded-full bg-crimson-950 px-3 py-1 text-xs font-medium text-crimson-400">
+                  {categoryTitle}
+                </span>
+              )}
+              {post.publishedAt && (
+                <time className="text-sm text-text-muted">
+                  {new Date(post.publishedAt).toLocaleDateString()}
+                </time>
+              )}
+              <span className="text-sm text-text-muted">
+                {readingTime} {t("min_read")}
               </span>
-            )}
-            {post.publishedAt && (
-              <time className="text-sm text-text-secondary">
-                {new Date(post.publishedAt).toLocaleDateString()}
-              </time>
-            )}
-            <span className="text-sm text-text-secondary">
-              {readingTime} {t("min_read")}
-            </span>
-          </div>
+            </div>
 
-          {/* Title */}
-          <h1 className="mb-8 font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
-            {post.title}
-          </h1>
+            {/* Title */}
+            <h1 className="mb-8 font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
+              {post.title}
+            </h1>
+          </ScrollReveal>
 
           {/* Content */}
           <RichTextRenderer content={post.content} />
@@ -254,14 +258,16 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Related posts — wider container */}
         {relatedPosts.length > 0 && (
-          <div className="mx-auto mt-16 max-w-6xl">
-            <RelatedPosts
-              posts={relatedPosts}
-              title={t("related_posts")}
-              readMoreLabel={t("read_more")}
-              minReadLabel={t("min_read")}
-            />
-          </div>
+          <ScrollReveal>
+            <div className="mx-auto mt-16 max-w-6xl">
+              <RelatedPosts
+                posts={relatedPosts}
+                title={t("related_posts")}
+                readMoreLabel={t("read_more")}
+                minReadLabel={t("min_read")}
+              />
+            </div>
+          </ScrollReveal>
         )}
       </article>
     </>
