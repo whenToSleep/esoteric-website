@@ -45,6 +45,23 @@ export function HeroSection() {
         transition: { duration: 0.8, ease: easeOut, delay: 0.2 },
       };
 
+  const ctaButtons = (
+    <>
+      <a
+        href="#"
+        className="inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-full bg-linear-to-r from-crimson-600 to-crimson-500 text-text-primary font-body font-medium transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)] active:scale-[0.98] w-full lg:w-auto"
+      >
+        {t("cta_primary")}
+      </a>
+      <ScrollButton
+        targetId="services"
+        className="inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-full border border-crimson-500/40 text-crimson-400 font-body font-medium transition-colors duration-300 hover:bg-crimson-500/10 active:scale-[0.98] w-full lg:w-auto"
+      >
+        {t("cta_secondary")}
+      </ScrollButton>
+    </>
+  );
+
   return (
     <section className="relative -mt-16 lg:-mt-[72px] min-h-svh overflow-hidden bg-void">
       {/* Ambient radial glow behind text area */}
@@ -53,7 +70,7 @@ export function HeroSection() {
       </div>
 
       {/* Main grid */}
-      <div className="relative z-10 mx-auto grid min-h-svh lg:grid-cols-[55fr_45fr] items-center">
+      <div className="relative z-10 mx-auto grid lg:min-h-svh lg:grid-cols-[55fr_45fr] lg:items-center">
         {/* Left: Text content */}
         <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-16 xl:px-24 pt-28 lg:pt-0 pb-8 lg:pb-0">
           <motion.h1
@@ -70,28 +87,18 @@ export function HeroSection() {
             {t("subtitle")}
           </motion.p>
 
+          {/* Desktop CTAs — inside text column */}
           <motion.div
-            className="mt-10 flex flex-col sm:flex-row gap-4"
+            className="mt-10 hidden lg:flex flex-row gap-4"
             {...ctaMotion}
           >
-            <a
-              href="#"
-              className="inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-full bg-linear-to-r from-crimson-600 to-crimson-500 text-text-primary font-body font-medium transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)] active:scale-[0.98] w-full sm:w-auto"
-            >
-              {t("cta_primary")}
-            </a>
-            <ScrollButton
-              targetId="services"
-              className="inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-full border border-crimson-500/40 text-crimson-400 font-body font-medium transition-colors duration-300 hover:bg-crimson-500/10 active:scale-[0.98] w-full sm:w-auto"
-            >
-              {t("cta_secondary")}
-            </ScrollButton>
+            {ctaButtons}
           </motion.div>
         </div>
 
         {/* Right: Practitioner photo */}
         <motion.div
-          className="relative lg:h-svh h-[50vh] w-full"
+          className="relative lg:h-svh min-h-[60vh] w-full"
           {...photoMotion}
         >
           {/* Radial glow behind photo — "aura" effect */}
@@ -107,7 +114,7 @@ export function HeroSection() {
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-cover object-top lg:object-center"
+              className="object-contain lg:object-cover object-top lg:object-center"
               style={{
                 maskImage:
                   "linear-gradient(to bottom, transparent 0%, black 20%), linear-gradient(to top, transparent 0%, black 15%)",
@@ -142,6 +149,14 @@ export function HeroSection() {
               }}
             />
           </div>
+        </motion.div>
+
+        {/* Mobile CTAs — below photo */}
+        <motion.div
+          className="flex lg:hidden flex-col gap-4 px-6 sm:px-10 pb-12 pt-4"
+          {...ctaMotion}
+        >
+          {ctaButtons}
         </motion.div>
       </div>
 

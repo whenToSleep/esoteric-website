@@ -6,6 +6,22 @@
 
 ---
 
+## Сессия 46 — 2026-03-09 — Hero mobile fix: CTAs below photo + reduce cropping
+
+### Задача:
+Fix mobile hero: переместить CTA кнопки под фото, уменьшить обрезку фото.
+
+### Сделано:
+1. **CTA порядок на mobile**: Заголовок → Подзаголовок → Фото → CTA кнопки
+   - Два CTA блока: `hidden lg:flex` (desktop, внутри текстовой колонки) + `flex lg:hidden` (mobile, под фото)
+   - Desktop layout не затронут
+2. **Фото обрезка**: `h-[50vh]` → `min-h-[60vh]`, `object-cover` → `object-contain` на mobile
+   - Desktop: по-прежнему `object-cover object-center`
+3. **Grid**: убран `min-h-svh` и `items-center` на mobile (только `lg:min-h-svh lg:items-center`)
+4. **Build**: ✅
+
+---
+
 ## Сессия 45 — 2026-03-09 — Hero: split layout with practitioner photo (9.3)
 
 ### Задача:
