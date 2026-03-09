@@ -34,12 +34,9 @@ export async function LatestPostsSection({ posts }: { posts: Post[] }) {
           </div>
         </ScrollReveal>
 
-        <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
-          {posts.map((post, index) => (
-            <StaggerItem
-              key={post.id}
-              className={index === 0 ? "md:col-span-2 lg:col-span-2" : ""}
-            >
+        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <StaggerItem key={post.id}>
               <BlogCard
                 title={post.title}
                 slug={post.slug}
@@ -51,7 +48,6 @@ export async function LatestPostsSection({ posts }: { posts: Post[] }) {
                 readingTime={post.readingTime}
                 readMoreLabel={t("read_more")}
                 minReadLabel={t("min_read")}
-                featured={index === 0}
               />
             </StaggerItem>
           ))}
