@@ -11,6 +11,18 @@ interface Category {
   icon: string;
 }
 
+function getGridClasses(index: number): string {
+  // Таро (index 0): spans 2 columns on desktop
+  if (index === 0) return "lg:col-span-2";
+  return "";
+}
+
+function getMinHeight(index: number): string {
+  // First row (Таро + Ритуалы) taller
+  if (index <= 1) return "min-h-[280px] lg:min-h-[320px]";
+  return "min-h-[280px]";
+}
+
 export async function ServiceCategoriesSection({
   categories,
 }: {
@@ -26,11 +38,11 @@ export async function ServiceCategoriesSection({
             {t("section_title")}
           </h2>
         </ScrollReveal>
-        <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-6 lg:gap-8">
+        <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {categories.map((cat, index) => (
             <StaggerItem
               key={cat.id}
-              className={`lg:col-span-2${index === 3 ? " lg:col-start-2" : ""}`}
+              className={`${getGridClasses(index)} ${getMinHeight(index)}`}
             >
               <ServiceCategoryCard
                 title={cat.title}
