@@ -11,7 +11,9 @@ import { ScrollReveal } from "@/components/animations";
 import { StaggerContainer, StaggerItem } from "@/components/animations";
 import { calculateReadingTime } from "@/lib/reading-time";
 
-export const revalidate = 3600;
+// Page depends on searchParams (category filter, pagination) — must be dynamic.
+// revalidate would cause ISR caching that serves stale data during filter switches.
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -125,6 +127,13 @@ export default async function BlogPage({ params, searchParams }: Props) {
   const featuredPost = showFeatured ? posts[0] : null;
   const gridPosts = showFeatured ? posts.slice(1) : posts;
 
+  // Key forces React to re-mount the posts section (and animation components
+  // inside it) when the filter or page changes, resetting viewport: once state
+  const postsKey = `${categorySlug || "all"}-${currentPage}`;
+
+  // Debug: uncomment to trace filtering in server logs
+  // console.log("[blog]", { categorySlug, categoryId, isFiltered, postsKey, total: posts.length, featured: !!featuredPost, grid: gridPosts.length });
+
   return (
     <section className="px-4 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl">
@@ -149,7 +158,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
             {t("no_posts")}
           </p>
         ) : (
-          <>
+          <div key={postsKey}>
             {featuredPost && (
               <ScrollReveal delay={0.15}>
                 <div className="mb-8">
@@ -175,7 +184,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
                 ))}
               </StaggerContainer>
             )}
-          </>
+          </div>
         )}
 
         <div className="mt-10">
