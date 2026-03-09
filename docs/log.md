@@ -6,6 +6,32 @@
 
 ---
 
+## Сессия 48 — 2026-03-09 — Bento grid service cards with accent colors
+
+### Задача:
+Переделать секцию услуг на главной в bento grid с уникальными accent colors per category.
+
+### Сделано:
+1. **Accent color система** (`components/home/icon-map.tsx`): `AccentConfig` интерфейс + `accentMap` по icon-ключу. 5 категорий: crimson (Таро), gold (Ритуалистика), rose (Сопровождение), emerald (Обучение), amethyst (Регресс). Каждая имеет iconColor, borderGlow, shadowGlow, bgTint, iconBg, iconBorder, linkColor.
+2. **Bento grid layout** (`components/home/service-categories-section.tsx`): `lg:grid-cols-3 gap-4 lg:gap-6`. Порядок зафиксирован через `bentoOrder` массив (candle → book → compass → cards → spiral). Ритуалы: `lg:col-span-2`, первая строка `lg:min-h-[320px]`, вторая `min-h-[280px]`.
+3. **Карточка** (`components/home/service-category-card.tsx`): client component с `motion.div` (spring hover: stiffness 300, damping 20, y:-4, scale:1.02). Динамические accent colors через inline styles (border glow, shadow, bg tint) + Tailwind classes (icon container, link color). `rounded-3xl`, Meteors эффект сохранён.
+4. **Layout**:
+   ```
+   ┌─────────────────────┬──────────────┐
+   │  🕯 Ритуалы (2col)  │ 📚 Обучение  │
+   ├──────────┬──────────┼──────────────┤
+   │ 🤝 Сопр  │ 🔮 Таро  │ 🌀 Регресс  │
+   └──────────┴──────────┴──────────────┘
+   ```
+5. **Build**: ✅
+
+### Файлы:
+- `components/home/icon-map.tsx` — AccentConfig + accentMap + getAccentConfig()
+- `components/home/service-categories-section.tsx` — bento grid + bentoOrder
+- `components/home/service-category-card.tsx` — client component + motion hover + dynamic accents
+
+---
+
 ## Сессия 47 — 2026-03-09 — Mobile menu overlay + hero photo vignette (v2)
 
 ### Задача:
