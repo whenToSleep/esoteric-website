@@ -34,7 +34,7 @@ export function LanguageSwitcher({ className, compact, onNavigate }: Props) {
               compact ? "text-xs font-medium transition-colors" : "text-sm font-medium transition-colors",
               loc === locale
                 ? "text-gold-500"
-                : "text-text-secondary hover:text-text-primary"
+                : "text-text-muted hover:text-text-primary"
             )}
           >
             {loc.toUpperCase()}

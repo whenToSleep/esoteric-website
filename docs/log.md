@@ -6,6 +6,26 @@
 
 ---
 
+## Сессия 49 — 2026-03-09 — Header, Footer, Mobile Menu — Crimson Alchemy
+
+### Что сделано
+- **Header**: добавлена CTA кнопка «Записаться» (desktop), реализован scroll-hide/show через useScroll + useMotionValueEvent
+- **Mobile Menu**: цвет ссылок gold-500 → text-primary, close button → text-secondary, размер text-2xl, добавлена CTA кнопка внизу (полноширинная), улучшена анимация стаггера
+- **Footer**: border-overlay/50, все тексты text-text-secondary, hover:text-crimson-400, copyright text-text-muted, добавлен marquee с именем практика
+- **Language Switcher**: неактивная локаль text-text-muted (было text-text-secondary)
+- **i18n**: добавлен ключ `nav.cta` во все 3 локали (RU/EN/UK)
+
+### Файлы изменены
+- `components/header.tsx` — CTA + scroll-hide
+- `components/mobile-menu.tsx` — цвета + CTA
+- `components/footer.tsx` — цвета + marquee
+- `components/language-switcher.tsx` — неактивная локаль
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json` — nav.cta
+
+### Билд: ✅
+
+---
+
 ## Сессия 48 — 2026-03-09 — Bento grid service cards with accent colors
 
 ### Задача:

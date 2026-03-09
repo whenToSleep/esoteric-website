@@ -17,44 +17,65 @@ function MenuOverlay({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.15 }}
+      transition={{ duration: 0.25, ease: [0.17, 0.55, 0.55, 1] }}
       className="fixed inset-0 z-[9999] flex flex-col"
       style={{ backgroundColor: "#0B0B0F" }}
     >
       {/* Close button */}
-      <motion.button
+      <button
         onClick={onClose}
         aria-label="Close menu"
-        className="absolute top-4 right-4 p-2 text-gold-500 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
+        className="absolute top-4 right-4 p-2 text-text-secondary z-10"
       >
         <X size={28} />
-      </motion.button>
+      </button>
 
       {/* Navigation items */}
-      <nav className="flex flex-col gap-7 pt-24 pl-9">
+      <nav className="flex flex-col gap-7 pt-24 pl-9 flex-1">
         {navItems.map((item, i) => (
           <motion.div
             key={item.key}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
+            transition={{
+              delay: 0.1 + i * 0.06,
+              duration: 0.5,
+              ease: [0.17, 0.55, 0.55, 1],
+            }}
           >
             <Link
               href={item.href}
               onClick={onClose}
-              className="text-[22px] font-heading text-gold-500 transition-colors hover:text-text-primary"
+              className="text-2xl font-heading text-text-primary transition-colors hover:text-crimson-400"
             >
               {t(item.key)}
             </Link>
           </motion.div>
         ))}
       </nav>
+
+      {/* CTA button at bottom */}
+      <motion.div
+        className="px-9 pb-12"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.1 + navItems.length * 0.06 + 0.1,
+          duration: 0.5,
+          ease: [0.17, 0.55, 0.55, 1],
+        }}
+      >
+        <a
+          href="#"
+          onClick={onClose}
+          className="flex w-full items-center justify-center rounded-full bg-crimson-500 py-4 text-lg font-medium text-text-primary transition-all duration-300 hover:bg-crimson-400 active:scale-[0.98]"
+        >
+          {t("cta")}
+        </a>
+      </motion.div>
     </motion.div>
   );
 }
