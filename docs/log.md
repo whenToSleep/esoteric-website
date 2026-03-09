@@ -6,6 +6,31 @@
 
 ---
 
+## Сессия 50 — 2026-03-09 — Home sections + blog fix — Crimson Alchemy
+
+### Что сделано
+- **About Brief** (`about-brief-section.tsx`): новый layout — фото слева с gradient mask, пронумерованные блоки (01, 02, 03) справа через StaggerReveal, золотой accent label + heading pattern
+- **Latest Posts** (`latest-posts-section.tsx`, `blog-card.tsx`): uniform 3-column grid (без featured), карточки одной высоты через h-full flex-col, gradient placeholder с Lucide FileText иконкой вместо пустой области, badge категории absolute поверх изображения, meta-строка (дата + время чтения)
+- **Testimonials** (`testimonials-section.tsx`): desktop — InfiniteMovingCards, mobile — Embla Carousel с dot indicators (gold-500 active), bg-obsidian, ScrollReveal на заголовке
+- **CTA** (`cta-section.tsx`): animated radial glow (framer-motion opacity pulse), gradient button from-crimson-600 to-crimson-500, gold accent label, ScrollReveal
+- **SectionDivider** (`components/ui/section-divider.tsx`): новый компонент — четырёхконечная звезда SVG (gold-500/50) с gradient lines, slow rotate animation (20s), reduced motion fallback
+- **Homepage** (`app/[locale]/page.tsx`): заменён CelestialDivider на SectionDivider, добавлены разделители между секциями, убран неиспользуемый import extractPlainText
+- **i18n**: добавлены ключи bio_01–03 (title/text), label для about/blog/cta во все 3 локали
+
+### Файлы изменены
+- `components/home/about-brief-section.tsx` — numbered bio layout
+- `components/home/blog-card.tsx` — uniform card, image fallback, meta row
+- `components/home/latest-posts-section.tsx` — uniform 3-col grid, StaggerReveal
+- `components/home/testimonials-section.tsx` — Embla mobile + bg-obsidian
+- `components/home/cta-section.tsx` — animated glow + client component
+- `components/ui/section-divider.tsx` — NEW
+- `app/[locale]/page.tsx` — section composition update
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json` — new keys
+
+### Билд: ✅
+
+---
+
 ## Сессия 49 — 2026-03-09 — Header, Footer, Mobile Menu — Crimson Alchemy
 
 ### Что сделано
