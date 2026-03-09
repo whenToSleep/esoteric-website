@@ -45,10 +45,18 @@
       "learn_more": "Learn More"
     },
     "about": {
-      "section_title": "About Me",
+      "label": "About Me",
+      "section_title": "My Path to the Esoteric",
+      "bio_01_title": "The Beginning",
+      "bio_01_text": "Esotericism entered my life not by chance — it was a calling I heard many years ago. Since then, every day brings new discoveries and deeper understanding.",
+      "bio_02_title": "My Approach",
+      "bio_02_text": "I work at the intersection of ancient traditions and modern energy understanding. Every consultation is a unique journey where we find answers together.",
+      "bio_03_title": "Mission",
+      "bio_03_text": "My goal is to help you find harmony and clarity. Through tarot, rituals and spiritual guidance, we unlock your potential.",
       "learn_more": "Learn More"
     },
     "blog": {
+      "label": "Blog",
       "section_title": "Latest Posts",
       "read_more": "Read More",
       "min_read": "min read"
@@ -57,6 +65,7 @@
       "section_title": "Client Testimonials"
     },
     "cta": {
+      "label": "Consultation",
       "title": "Ready to Begin Your Journey?",
       "subtitle": "Book a consultation and discover new dimensions of your life",
       "button": "Message on Telegram"

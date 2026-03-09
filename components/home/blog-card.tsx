@@ -12,6 +12,7 @@ interface BlogCardProps {
   readingTime?: number;
   readMoreLabel: string;
   minReadLabel: string;
+  featured?: boolean;
 }
 
 export function BlogCard({
@@ -21,36 +22,43 @@ export function BlogCard({
   featuredImageUrl,
   featuredImageAlt,
   categoryTitle,
+  featured = false,
 }: BlogCardProps) {
   return (
     <Link
       href={`/blog/${slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl
-                 border border-white/[0.08]
-                 transition-all duration-300
+      className={`group flex overflow-hidden rounded-3xl
+                 border border-overlay/50
+                 transition-all duration-500
                  hover:border-crimson-500/30
                  hover:shadow-[0_0_25px_-5px_rgba(185,28,60,0.2)]
                  hover:-translate-y-1
-                 active:scale-[0.98]"
+                 active:scale-[0.98]
+                 ${featured ? "flex-col md:flex-row" : "flex-col"}`}
       style={{ background: "linear-gradient(180deg, #1C1C22 0%, #131316 100%)" }}
     >
-      {/* Image or placeholder */}
-      <div className="aspect-video w-full overflow-hidden">
+      {/* Image */}
+      <div
+        className={`w-full overflow-hidden ${
+          featured ? "aspect-video md:aspect-auto md:w-1/2" : "aspect-video"
+        }`}
+      >
         {featuredImageUrl ? (
           <Image
             src={featuredImageUrl}
             alt={featuredImageAlt || title}
-            width={600}
-            height={340}
-            className="w-full h-full object-cover transition-transform duration-500
+            width={featured ? 800 : 600}
+            height={featured ? 500 : 340}
+            className="h-full w-full object-cover transition-transform duration-500
                        group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-crimson-950/20
-                          via-void to-onyx/30
-                          flex items-center justify-center">
+          <div
+            className="flex h-full w-full items-center justify-center
+                        bg-linear-to-br from-crimson-950/20 via-void to-onyx/30"
+          >
             <svg
-              className="w-10 h-10 text-text-primary/10"
+              className="h-10 w-10 text-text-primary/10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,21 +75,36 @@ export function BlogCard({
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-5 md:p-6">
+      <div
+        className={`flex flex-1 flex-col p-5 md:p-6 ${
+          featured ? "md:justify-center md:p-8" : ""
+        }`}
+      >
         {categoryTitle && (
-          <span className="self-start text-xs font-medium uppercase tracking-wider
-                           text-crimson-400 mb-3">
+          <span
+            className="mb-3 self-start rounded-full bg-crimson-950 px-3 py-1 text-xs
+                         font-medium uppercase tracking-wider text-crimson-400"
+          >
             {categoryTitle}
           </span>
         )}
 
-        <h3 className="font-heading text-card-title text-text-primary mb-3 line-clamp-2">
+        <h3
+          className={`font-heading text-text-primary line-clamp-2 ${
+            featured
+              ? "text-card-title md:text-2xl"
+              : "text-card-title"
+          }`}
+        >
           {title}
         </h3>
 
         {excerpt && (
-          <p className="font-body text-small text-text-secondary leading-relaxed
-                        line-clamp-3 flex-1">
+          <p
+            className={`mt-3 flex-1 font-body text-sm leading-relaxed text-text-secondary ${
+              featured ? "line-clamp-4" : "line-clamp-3"
+            }`}
+          >
             {excerpt}
           </p>
         )}
