@@ -11,15 +11,18 @@ interface Category {
   icon: string;
 }
 
-function getGridClasses(index: number): string {
-  // Таро (index 0): spans 2 columns on desktop
-  if (index === 0) return "lg:col-span-2";
+// Desired bento order: Ритуалы (2col) | Обучение | Сопровождение | Таро | Регресс
+const bentoOrder = ["candle", "book", "compass", "cards", "spiral"];
+
+function getGridClasses(icon: string): string {
+  // Ритуалы: spans 2 columns on desktop (first, large card)
+  if (icon === "candle") return "lg:col-span-2";
   return "";
 }
 
-function getMinHeight(index: number): string {
-  // First row (Таро + Ритуалы) taller
-  if (index <= 1) return "min-h-[280px] lg:min-h-[320px]";
+function getMinHeight(icon: string): string {
+  // First row (Ритуалы + Обучение) taller
+  if (icon === "candle" || icon === "book") return "min-h-[280px] lg:min-h-[320px]";
   return "min-h-[280px]";
 }
 
@@ -39,10 +42,10 @@ export async function ServiceCategoriesSection({
           </h2>
         </ScrollReveal>
         <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {categories.map((cat, index) => (
+          {[...categories].sort((a, b) => bentoOrder.indexOf(a.icon) - bentoOrder.indexOf(b.icon)).map((cat) => (
             <StaggerItem
               key={cat.id}
-              className={`${getGridClasses(index)} ${getMinHeight(index)}`}
+              className={`${getGridClasses(cat.icon)} ${getMinHeight(cat.icon)}`}
             >
               <ServiceCategoryCard
                 title={cat.title}
