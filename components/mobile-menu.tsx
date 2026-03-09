@@ -35,20 +35,23 @@ export function MobileMenu() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[100] flex flex-col bg-void"
           >
             {/* Close button */}
-            <button
+            <motion.button
               onClick={() => setIsOpen(false)}
               aria-label="Close menu"
               className="absolute top-4 right-4 p-2 text-gold-500 z-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
             >
               <X size={28} />
-            </button>
+            </motion.button>
 
             {/* Navigation items */}
             <nav className="flex flex-col gap-7 pt-24 pl-9">

@@ -106,27 +106,39 @@ export function HeroSection() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_center,var(--color-crimson-950)_0%,transparent_70%)] opacity-30" />
           </div>
 
-          {/* Photo */}
-          <div className="relative z-10 h-full w-full">
+          {/* Photo — mobile: radial vignette mask */}
+          <div
+            className="relative z-10 h-full w-full lg:hidden"
+            style={{
+              maskImage:
+                "radial-gradient(ellipse 70% 60% at center, black 40%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 70% 60% at center, black 40%, transparent 100%)",
+            }}
+          >
             <Image
               src="/images/hero-photo.webp"
               alt={t("title")}
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-contain lg:object-cover object-top lg:object-center"
-              style={{
-                maskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 20%), linear-gradient(to top, transparent 0%, black 15%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 20%), linear-gradient(to top, transparent 0%, black 15%)",
-                maskComposite: "intersect",
-                WebkitMaskComposite: "source-in",
-              }}
+              sizes="100vw"
+              className="object-contain object-top"
             />
-            {/* Desktop: left-edge mask overlay */}
+          </div>
+
+          {/* Photo — desktop: left-edge + bottom fade masks */}
+          <div className="relative z-10 h-full w-full hidden lg:block">
+            <Image
+              src="/images/hero-photo.webp"
+              alt={t("title")}
+              fill
+              priority
+              sizes="45vw"
+              className="object-cover object-center"
+            />
+            {/* Left-edge mask overlay */}
             <div
-              className="absolute inset-0 z-20 hidden lg:block pointer-events-none"
+              className="absolute inset-0 z-20 pointer-events-none"
               style={{
                 background:
                   "linear-gradient(to right, var(--color-void) 0%, transparent 30%)",
@@ -138,14 +150,6 @@ export function HeroSection() {
               style={{
                 background:
                   "linear-gradient(to top, var(--color-void) 0%, transparent 100%)",
-              }}
-            />
-            {/* Mobile: top fade to void */}
-            <div
-              className="absolute inset-x-0 top-0 z-20 h-24 lg:hidden pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(to bottom, var(--color-void) 0%, transparent 100%)",
               }}
             />
           </div>
