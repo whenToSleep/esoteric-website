@@ -6,6 +6,44 @@
 
 ---
 
+## Сессия 44 — 2026-03-09 — Crimson Alchemy: component migration (9.2)
+
+### Задача:
+Итерация 9.2 — замена всех старых цветовых токенов Cosmic Night на Crimson Alchemy во ВСЕХ компонентах и страницах.
+
+### Сделано:
+1. **38 файлов мигрированы** (198 замен), 0 старых токенов осталось:
+   - Layout (4): header, footer, mobile-menu, language-switcher
+   - Home sections (9): hero, services, service-card, about-brief, blog-card, cta, cta-heading, latest-posts, testimonials
+   - Blog (5): featured-blog-card, blog-pagination, category-filter, post-navigation, related-posts
+   - Category/Service (4): category-hero, service-card, service-faq, service-info-block
+   - About (2): about-hero, about-timeline
+   - UI (5): celestial-divider, typewriter-effect, tracing-beam, gradient-divider + aceternity (infinite-moving-cards, meteors, aurora-background, sparkles)
+   - Pages (6): category, service, about, blog list, blog post, home
+
+2. **Замены токенов**:
+   - `cosmic-bg/cosmic-black` → `void`, `cosmic-card` → `onyx`, `surface-1` → `obsidian`
+   - `cosmic-violet/astral-violet` → `crimson-500` (interactive) / `crimson-400` (hover)
+   - `cosmic-gold/celestial-gold` → `gold-500`
+   - `cosmic-white/star-white` → `text-primary`, `silver-mist` → `text-secondary`
+   - `midnight-navy` → `obsidian`, `mystic-purple` → `amethyst-900`
+
+3. **Inline hex обновлены**: card gradients (#1A1A24→#1C1C22), CTA bg gradients (violet rgba→crimson rgba), aurora effects, tracing-beam SVG stops, sparkle colors
+
+4. **CTA кнопки**: `bg-crimson-500 hover:bg-crimson-400 text-text-primary` + crimson glow shadow
+5. **Ghost кнопки**: `border-crimson-500/40 text-crimson-400 hover:bg-crimson-500/10`
+6. **DB connection**: обновлён `.env.local` на Neon PostgreSQL (localhost→cloud)
+
+### Статус:
+- ✅ `npm run build` — проходит без ошибок
+- ✅ grep по старым токенам — 0 совпадений в components/ и app/[locale]/
+- Коммит: `refactor: migrate all components to Crimson Alchemy palette` (28a8193)
+
+### Следующий шаг:
+- Итерация 9.3: Hero — split layout с фото практика + gradient mask + blur text reveal
+
+---
+
 ## Сессия 43 — 2026-03-09 — Crimson Alchemy: color palette replacement (9.1)
 
 ### Задача:
