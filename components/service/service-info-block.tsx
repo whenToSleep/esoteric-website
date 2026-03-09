@@ -35,7 +35,7 @@ export async function ServiceInfoBlock({
       {items.map((item) => (
         <div
           key={item.label}
-          className="rounded-xl border border-white/[0.06] p-5 text-center"
+          className="rounded-xl border border-overlay/50 p-5 text-center"
           style={{
             background: "linear-gradient(180deg, #1C1C22 0%, #131316 100%)",
           }}

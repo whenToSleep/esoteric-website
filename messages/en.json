@@ -91,7 +91,9 @@
     "format_offline": "Offline",
     "format_both": "Online & Offline",
     "description_title": "Description",
-    "book_subtitle": "Contact me via Telegram to book a session"
+    "book_subtitle": "Contact me via Telegram to book a session",
+    "prev_service": "Previous",
+    "next_service": "Next"
   },
   "about": {
     "title": "About Me",

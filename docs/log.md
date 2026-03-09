@@ -6,6 +6,32 @@
 
 ---
 
+## Сессия 51 — 2026-03-09 — Category & Service pages — Crimson Alchemy
+
+### Что сделано
+- **CategoryHero** (`components/category/category-hero.tsx`): bg-void→bg-onyx, atmospheric glow с accent color категории (dynamic RGBA), ScrollReveal на контенте, `"use client"` directive
+- **ServiceCard** (`components/category/service-card.tsx`): converted to client component с `useState` для hover, accent colors per category via `getAccentConfig()` (borderGlow, shadowGlow, bgTint), border tokens `border-overlay/50`
+- **Category page** (`app/[locale]/[categorySlug]/page.tsx`): grid 3→2 cols (lg:grid-cols-2), передача `icon` prop в CategoryHero и ServiceCard, ScrollReveal на заголовке и CTA, StaggerContainer/StaggerItem на сетке, CTA button gradient style
+- **ServiceFaq** (`components/service/service-faq.tsx`): border-overlay/50, hover:text-crimson-400 на вопросе (group/faq pattern), ScrollReveal wrapper
+- **ServiceInfoBlock** (`components/service/service-info-block.tsx`): border-overlay/50
+- **ServicePrevNext** (`components/service/service-prev-next.tsx`): новый компонент — prev/next навигация между услугами с ChevronLeft/Right, hover:text-crimson-400
+- **Service page** (`app/[locale]/[categorySlug]/[serviceSlug]/page.tsx`): category badge (icon + title, accent colors), atmospheric glow с accent color, ScrollReveal на hero/description/CTA, sibling query для prev/next, gradient CTA button
+- **i18n**: добавлены ключи `prev_service`/`next_service` во все 3 локали
+
+### Файлы изменены
+- `components/category/category-hero.tsx`
+- `components/category/service-card.tsx`
+- `components/service/service-info-block.tsx`
+- `components/service/service-faq.tsx`
+- `components/service/service-prev-next.tsx` (new)
+- `app/[locale]/[categorySlug]/page.tsx`
+- `app/[locale]/[categorySlug]/[serviceSlug]/page.tsx`
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json`
+
+### Iteration 9.7 ✅
+
+---
+
 ## Сессия 50 — 2026-03-09 — Home sections + blog fix — Crimson Alchemy
 
 ### Что сделано

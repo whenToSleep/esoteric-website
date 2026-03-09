@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { ScrollReveal } from "@/components/animations";
 
 interface FaqItem {
   question: string;
@@ -19,16 +20,16 @@ function FaqAccordionItem({ question, answer }: FaqItem) {
 
   return (
     <div
-      className="overflow-hidden rounded-xl border border-white/[0.06]"
+      className="overflow-hidden rounded-xl border border-overlay/50"
       style={{
         background: "linear-gradient(180deg, #1C1C22 0%, #131316 100%)",
       }}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-white/[0.03]"
+        className="group/faq flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-white/[0.03]"
       >
-        <span className="font-medium text-text-primary">{question}</span>
+        <span className="font-medium text-text-primary transition-colors group-hover/faq:text-crimson-400">{question}</span>
         <span
           className={`ml-4 text-xl font-light text-gold-500 transition-transform duration-300 ${
             isOpen ? "rotate-45" : ""
@@ -66,19 +67,21 @@ export function ServiceFaq({ items }: ServiceFaqProps) {
   if (!items || items.length === 0) return null;
 
   return (
-    <div>
-      <h2 className="mb-8 text-center font-heading text-section text-gold-500">
-        {t("faq_title")}
-      </h2>
-      <div className="space-y-3">
-        {items.map((item, index) => (
-          <FaqAccordionItem
-            key={index}
-            question={item.question}
-            answer={item.answer}
-          />
-        ))}
+    <ScrollReveal direction="up">
+      <div>
+        <h2 className="mb-8 text-center font-heading text-section text-gold-500">
+          {t("faq_title")}
+        </h2>
+        <div className="space-y-3">
+          {items.map((item, index) => (
+            <FaqAccordionItem
+              key={index}
+              question={item.question}
+              answer={item.answer}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </ScrollReveal>
   );
 }
