@@ -10,6 +10,7 @@
   --font-body: var(--font-body);
   --font-mono: var(--font-geist-mono);
 
+  /* Typography scale */
   --text-hero: clamp(2.5rem, 1.5rem + 3.5vw, 5rem);
   --text-hero--line-height: 1.1;
   --text-hero--letter-spacing: 0.02em;
@@ -29,39 +30,48 @@
 
   --text-small: 0.9375rem;
   --text-small--line-height: 1.6;
-  --color-cosmic-black: #0A0A0F;
-  --color-midnight-navy: #0D1137;
-  --color-mystic-purple: #2D1B69;
-  --color-astral-violet: #7C3AED;
-  --color-celestial-gold: #D4AF37;
-  --color-star-white: #F0EAD6;
-  --color-silver-mist: #C0C0D0;
 
-  /* Elevation surfaces */
-  --color-surface-1: #0E0E14;
-  --color-surface-2: #121218;
-  --color-surface-3: #16161E;
-  --color-surface-4: #1A1A24;
+  /* ===== CRIMSON ALCHEMY PALETTE ===== */
 
-  /* Aliases (used across components) */
-  --color-cosmic-bg: #0A0A0F;
-  --color-cosmic-white: #F0EAD6;
-  --color-cosmic-gold: #D4AF37;
-  --color-cosmic-violet: #7C3AED;
-  --color-cosmic-purple: #2D1B69;
-  --color-cosmic-card: #0D1137;
+  /* Backgrounds (60% foundation) */
+  --color-void: #0B0B0F;
+  --color-obsidian: #131316;
+  --color-onyx: #1C1C22;
+  --color-elevated: #26262E;
+  --color-overlay: #32323C;
 
-  /* Gold gradient extras */
-  --color-cosmic-gold-light: #F5E6A3;
-  --color-cosmic-gold-dark: #B8860B;
+  /* Crimson (25% primary accent) */
+  --color-crimson-950: #2A0A0F;
+  --color-crimson-600: #7A1A2E;
+  --color-crimson-500: #B91C3C;
+  --color-crimson-400: #E03E5C;
+
+  /* Emerald (5% secondary accent) */
+  --color-emerald-950: #0A1F14;
+  --color-emerald-600: #14532D;
+  --color-emerald-500: #1E7A4B;
+  --color-emerald-400: #34D07B;
+
+  /* Gold (5% bridge color) */
+  --color-gold-700: #8B6F3A;
+  --color-gold-500: #C9A84C;
+  --color-gold-300: #E8D48B;
+
+  /* Amethyst (gradient overlays only) */
+  --color-amethyst-900: #2D1B4E;
+
+  /* Text hierarchy (all WCAG AA+ on void) */
+  --color-text-primary: #F0EBE0;
+  --color-text-body: #D4CFC4;
+  --color-text-secondary: #A8A29E;
+  --color-text-muted: #78716C;
 
   /* Animations */
-  --animate-aurora: aurora 30s ease-in-out infinite;
+  --animate-crimson-glow: crimson-glow 4s ease-in-out infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-scroll: scroll var(--animation-duration, 80s) var(--animation-direction, forwards) linear infinite;
-  --animate-gold-shimmer: gold-shimmer 3s linear infinite;
-  --animate-gold-glow: gold-glow-pulse 4s ease-in-out infinite;
 
+  /* shadcn/ui vars */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -100,26 +110,33 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@keyframes aurora {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  33% { transform: translate(-5%, 3%) scale(1.05); opacity: 0.8; }
-  66% { transform: translate(3%, -2%) scale(0.98); opacity: 0.7; }
+/* ===== KEYFRAMES ===== */
+
+@keyframes crimson-glow {
+  0%, 100% { box-shadow: 0 0 20px -5px rgba(185, 28, 60, 0.2); }
+  50%      { box-shadow: 0 0 40px -5px rgba(185, 28, 60, 0.4); }
 }
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+
 @keyframes scroll {
   to { transform: translate(calc(-50% - 0.5rem)); }
 }
-@keyframes gold-shimmer {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
-@keyframes gold-glow-pulse {
-  0%, 100% { text-shadow: 0 0 4px rgba(212,175,55,0.3), 0 0 8px rgba(212,175,55,0.2), 0 0 16px rgba(212,175,55,0.1); }
-  50% { text-shadow: 0 0 8px rgba(212,175,55,0.6), 0 0 16px rgba(212,175,55,0.4), 0 0 32px rgba(212,175,55,0.2); }
+
+@keyframes slow-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
+
+/* ===== SHADCN :root / .dark ===== */
 
 :root {
   --background: oklch(1 0 0);
@@ -157,8 +174,8 @@
 }
 
 .dark {
-  --background: #0A0A0F;
-  --foreground: #F0EAD6;
+  --background: #0B0B0F;
+  --foreground: #F0EBE0;
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -190,12 +207,14 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ===== BASE LAYER ===== */
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-void text-text-body;
     font-size: 1.0625rem;
     line-height: 1.7;
     letter-spacing: 0.02em;
@@ -205,6 +224,10 @@
   html {
     @apply font-body;
   }
+  ::selection {
+    background: rgba(185, 28, 60, 0.3);
+    color: #F0EBE0;
+  }
 }
 
 @utility font-heading {
@@ -212,9 +235,9 @@
   font-weight: 600;
 }
 
-/* ===== HERO COSMIC BACKGROUND ===== */
+/* ===== HERO ATMOSPHERIC BACKGROUND ===== */
 
-/* Aurora — animated color blobs on CSS */
+/* Aurora — animated crimson/amethyst blobs */
 .hero-aurora {
   position: absolute;
   inset: 0;
@@ -233,7 +256,7 @@
   height: 700px;
   top: -15%;
   left: -10%;
-  background: radial-gradient(circle, rgba(45, 27, 105, 0.9), transparent 65%);
+  background: radial-gradient(circle, rgba(42, 10, 15, 0.9), transparent 65%);
   opacity: 0.85;
 }
 .hero-aurora::after {
@@ -241,8 +264,8 @@
   height: 600px;
   bottom: -10%;
   right: -10%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.8), transparent 65%);
-  opacity: 0.75;
+  background: radial-gradient(circle, rgba(185, 28, 60, 0.5), transparent 65%);
+  opacity: 0.6;
   animation-delay: -10s;
   animation-duration: 25s;
 }
@@ -255,7 +278,7 @@
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.08), transparent 70%);
   filter: blur(80px);
   animation: aurora-drift 30s ease-in-out infinite alternate-reverse;
   pointer-events: none;
@@ -282,7 +305,7 @@
 }
 
 
-/* Starfield — CSS star dots */
+/* Starfield — CSS star dots (crimson alchemy palette) */
 .hero-stars {
   position: absolute;
   inset: 0;
@@ -298,50 +321,50 @@
 }
 .hero-stars::before {
   background-image:
-    radial-gradient(3px 3px at 3% 10%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(2px 2px at 7% 55%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(3.5px 3.5px at 11% 30%, rgba(212,175,55,0.6), transparent),
-    radial-gradient(2px 2px at 15% 80%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(2.5px 2.5px at 20% 18%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1.5px 1.5px at 24% 65%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(3px 3px at 28% 42%, rgba(212,175,55,0.5), transparent),
-    radial-gradient(2px 2px at 33% 90%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(2.5px 2.5px at 38% 5%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(1.5px 1.5px at 42% 35%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(3.5px 3.5px at 47% 72%, rgba(212,175,55,0.5), transparent),
-    radial-gradient(2px 2px at 52% 22%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(2.5px 2.5px at 57% 58%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(1.5px 1.5px at 62% 85%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(2.5px 2.5px at 67% 12%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(2px 2px at 72% 48%, rgba(212,175,55,0.4), transparent),
-    radial-gradient(2.5px 2.5px at 77% 68%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1.5px 1.5px at 82% 25%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(3.5px 3.5px at 87% 78%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(2px 2px at 92% 40%, rgba(212,175,55,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 96% 8%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1.5px 1.5px at 98% 62%, rgba(240,234,214,0.4), transparent);
+    radial-gradient(3px 3px at 3% 10%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(2px 2px at 7% 55%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(3.5px 3.5px at 11% 30%, rgba(201,168,76,0.6), transparent),
+    radial-gradient(2px 2px at 15% 80%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 20% 18%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 24% 65%, rgba(240,235,224,0.4), transparent),
+    radial-gradient(3px 3px at 28% 42%, rgba(201,168,76,0.5), transparent),
+    radial-gradient(2px 2px at 33% 90%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 38% 5%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 42% 35%, rgba(240,235,224,0.4), transparent),
+    radial-gradient(3.5px 3.5px at 47% 72%, rgba(201,168,76,0.5), transparent),
+    radial-gradient(2px 2px at 52% 22%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 57% 58%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 62% 85%, rgba(240,235,224,0.4), transparent),
+    radial-gradient(2.5px 2.5px at 67% 12%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(2px 2px at 72% 48%, rgba(201,168,76,0.4), transparent),
+    radial-gradient(2.5px 2.5px at 77% 68%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 82% 25%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(3.5px 3.5px at 87% 78%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(2px 2px at 92% 40%, rgba(201,168,76,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 96% 8%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 98% 62%, rgba(240,235,224,0.4), transparent);
   animation: twinkle 2.5s ease-in-out infinite alternate;
 }
 .hero-stars::after {
   background-image:
-    radial-gradient(2px 2px at 2% 45%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 8% 20%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1.5px 1.5px at 14% 70%, rgba(212,175,55,0.4), transparent),
-    radial-gradient(3px 3px at 19% 48%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(2px 2px at 26% 15%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 31% 82%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(1.5px 1.5px at 36% 55%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(3.5px 3.5px at 43% 28%, rgba(212,175,55,0.6), transparent),
-    radial-gradient(2px 2px at 49% 92%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 55% 38%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(1.5px 1.5px at 60% 75%, rgba(240,234,214,0.4), transparent),
-    radial-gradient(2.5px 2.5px at 66% 5%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(2px 2px at 73% 58%, rgba(212,175,55,0.5), transparent),
-    radial-gradient(3px 3px at 79% 32%, rgba(240,234,214,0.7), transparent),
-    radial-gradient(1.5px 1.5px at 84% 88%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 89% 15%, rgba(240,234,214,0.6), transparent),
-    radial-gradient(2px 2px at 94% 52%, rgba(240,234,214,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 99% 72%, rgba(212,175,55,0.4), transparent);
+    radial-gradient(2px 2px at 2% 45%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 8% 20%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 14% 70%, rgba(201,168,76,0.4), transparent),
+    radial-gradient(3px 3px at 19% 48%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(2px 2px at 26% 15%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 31% 82%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 36% 55%, rgba(240,235,224,0.4), transparent),
+    radial-gradient(3.5px 3.5px at 43% 28%, rgba(201,168,76,0.6), transparent),
+    radial-gradient(2px 2px at 49% 92%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 55% 38%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 60% 75%, rgba(240,235,224,0.4), transparent),
+    radial-gradient(2.5px 2.5px at 66% 5%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(2px 2px at 73% 58%, rgba(201,168,76,0.5), transparent),
+    radial-gradient(3px 3px at 79% 32%, rgba(240,235,224,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 84% 88%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 89% 15%, rgba(240,235,224,0.6), transparent),
+    radial-gradient(2px 2px at 94% 52%, rgba(240,235,224,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 99% 72%, rgba(201,168,76,0.4), transparent);
   animation: twinkle 3s ease-in-out infinite alternate-reverse;
   animation-delay: -1.5s;
 }
@@ -356,20 +379,38 @@
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* Gold shimmer & glow text effects */
-.gold-shimmer {
-  background: linear-gradient(90deg, #D4AF37 0%, #F5E6A3 25%, #B8860B 50%, #F5E6A3 75%, #D4AF37 100%);
+/* ===== TEXT EFFECTS ===== */
+
+/* Crimson shimmer gradient text */
+.crimson-shimmer {
+  background: linear-gradient(90deg, #B91C3C 0%, #E8D48B 25%, #C9A84C 50%, #E8D48B 75%, #B91C3C 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: gold-shimmer 3s linear infinite;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Gold shimmer gradient text */
+.gold-shimmer {
+  background: linear-gradient(90deg, #C9A84C 0%, #E8D48B 25%, #8B6F3A 50%, #E8D48B 75%, #C9A84C 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
 }
 
 .gold-glow {
-  color: #F0EAD6;
+  color: #F0EBE0;
   animation: gold-glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes gold-glow-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(201,168,76,0.3), 0 0 8px rgba(201,168,76,0.2), 0 0 16px rgba(201,168,76,0.1); }
+  50% { text-shadow: 0 0 8px rgba(201,168,76,0.6), 0 0 16px rgba(201,168,76,0.4), 0 0 32px rgba(201,168,76,0.2); }
 }
 
 /* Meteor Effect — CSS-only falling stars */
@@ -421,18 +462,33 @@
   border-radius: 16px;
   padding: 1px;
   background: linear-gradient(var(--border-angle, 0deg),
-    #D4AF37, #7C3AED, #2D1B69, #D4AF37);
+    #C9A84C, #B91C3C, #2A0A0F, #C9A84C);
   animation: border-rotate 4s linear infinite;
 }
 .gradient-border > * {
-  background: #0D1137;
+  background: #131316;
   border-radius: 15px;
 }
 @keyframes border-rotate {
   to { --border-angle: 360deg; }
 }
 
-/* Reduced motion */
+/* ===== GRADIENT DIVIDERS ===== */
+
+/* Crimson gradient line divider */
+.divider-crimson {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(122, 26, 46, 0.3), transparent);
+}
+
+/* Gold gradient line divider */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.3), transparent);
+}
+
+/* ===== REDUCED MOTION ===== */
+
 @media (prefers-reduced-motion: reduce) {
   .hero-aurora::before,
   .hero-aurora::after,
@@ -451,19 +507,24 @@
   .gradient-border {
     animation: none !important;
   }
-  .gold-shimmer, .gold-glow, .meteor {
+  .crimson-shimmer, .gold-shimmer, .gold-glow, .meteor {
     animation: none !important;
   }
   .meteor {
     opacity: 0 !important;
   }
+  .crimson-shimmer {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: #E03E5C;
+  }
   .gold-shimmer {
     background: none;
     -webkit-text-fill-color: unset;
-    color: #D4AF37;
+    color: #C9A84C;
   }
   .gold-glow {
-    text-shadow: 0 0 6px rgba(212,175,55,0.3), 0 0 12px rgba(212,175,55,0.15);
+    text-shadow: 0 0 6px rgba(201,168,76,0.3), 0 0 12px rgba(201,168,76,0.15);
   }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -472,8 +533,77 @@
   }
 }
 
+/* ===== PROSE — ALCHEMY RICH TEXT ===== */
+
+.prose-alchemy {
+  color: #D4CFC4;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+.prose-alchemy h1,
+.prose-alchemy h2,
+.prose-alchemy h3,
+.prose-alchemy h4 {
+  font-family: var(--font-heading), serif;
+  color: #F0EBE0;
+  line-height: 1.2;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+.prose-alchemy h1 { font-size: 2rem; font-weight: 600; }
+.prose-alchemy h2 { font-size: 1.5rem; font-weight: 600; }
+.prose-alchemy h3 { font-size: 1.25rem; font-weight: 500; }
+.prose-alchemy p {
+  margin-bottom: 1.25em;
+}
+.prose-alchemy a {
+  color: #E03E5C;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-alchemy a:hover {
+  color: #C9A84C;
+}
+.prose-alchemy blockquote {
+  border-left: 3px solid #C9A84C;
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: #F0EBE0;
+  font-style: italic;
+}
+.prose-alchemy ul,
+.prose-alchemy ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+.prose-alchemy li {
+  margin-bottom: 0.5em;
+}
+.prose-alchemy code {
+  background: #131316;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+.prose-alchemy pre {
+  background: #131316;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.prose-alchemy hr {
+  border-color: rgba(201, 168, 76, 0.2);
+  margin: 2em 0;
+}
+.prose-alchemy strong {
+  color: #F0EBE0;
+  font-weight: 600;
+}
+
+/* Keep prose-cosmic as alias during migration */
 .prose-cosmic {
-  color: #C0C0D0;
+  color: #D4CFC4;
   line-height: 1.8;
   font-size: 1rem;
 }
@@ -482,7 +612,7 @@
 .prose-cosmic h3,
 .prose-cosmic h4 {
   font-family: var(--font-heading), serif;
-  color: #F0EAD6;
+  color: #F0EBE0;
   line-height: 1.2;
   margin-top: 2em;
   margin-bottom: 0.75em;
@@ -494,18 +624,18 @@
   margin-bottom: 1.25em;
 }
 .prose-cosmic a {
-  color: #7C3AED;
+  color: #E03E5C;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .prose-cosmic a:hover {
-  color: #D4AF37;
+  color: #C9A84C;
 }
 .prose-cosmic blockquote {
-  border-left: 3px solid #D4AF37;
+  border-left: 3px solid #C9A84C;
   padding-left: 1em;
   margin: 1.5em 0;
-  color: #F0EAD6;
+  color: #F0EBE0;
   font-style: italic;
 }
 .prose-cosmic ul,
@@ -517,28 +647,29 @@
   margin-bottom: 0.5em;
 }
 .prose-cosmic code {
-  background: #0D1137;
+  background: #131316;
   padding: 0.2em 0.4em;
   border-radius: 4px;
   font-size: 0.875em;
 }
 .prose-cosmic pre {
-  background: #0D1137;
+  background: #131316;
   padding: 1em;
   border-radius: 8px;
   overflow-x: auto;
   margin: 1.5em 0;
 }
 .prose-cosmic hr {
-  border-color: rgba(212, 175, 55, 0.2);
+  border-color: rgba(201, 168, 76, 0.2);
   margin: 2em 0;
 }
 .prose-cosmic strong {
-  color: #F0EAD6;
+  color: #F0EBE0;
   font-weight: 600;
 }
 
-/* View Transitions */
+/* ===== VIEW TRANSITIONS ===== */
+
 ::view-transition-old(root) {
   animation: vt-fade-out 200ms ease-in;
 }
