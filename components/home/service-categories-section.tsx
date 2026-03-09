@@ -22,7 +22,7 @@ export async function ServiceCategoriesSection({
     <section id="services" className="px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="up">
-          <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
+          <h2 className="mb-8 text-center font-heading text-section text-gold-500 md:mb-12 lg:mb-16">
             {t("section_title")}
           </h2>
         </ScrollReveal>

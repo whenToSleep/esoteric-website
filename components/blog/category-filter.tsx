@@ -17,8 +17,8 @@ export function CategoryFilter({
         href="/blog"
         className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
           !activeCategorySlug
-            ? "bg-astral-violet text-star-white"
-            : "bg-astral-violet/10 text-astral-violet hover:bg-astral-violet/20"
+            ? "bg-crimson-500 text-text-primary"
+            : "bg-crimson-950 text-crimson-400 hover:bg-crimson-950/80"
         }`}
       >
         {allLabel}
@@ -29,8 +29,8 @@ export function CategoryFilter({
           href={`/blog?category=${cat.slug}`}
           className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
             activeCategorySlug === cat.slug
-              ? "bg-astral-violet text-star-white"
-              : "bg-astral-violet/10 text-astral-violet hover:bg-astral-violet/20"
+              ? "bg-crimson-500 text-text-primary"
+              : "bg-crimson-950 text-crimson-400 hover:bg-crimson-950/80"
           }`}
         >
           {cat.title}

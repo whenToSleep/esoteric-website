@@ -21,7 +21,7 @@ export async function LatestPostsSection({ posts }: { posts: Post[] }) {
   return (
     <section className="px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
+        <h2 className="mb-8 text-center font-heading text-section text-gold-500 md:mb-12 lg:mb-16">
           {t("section_title")}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">

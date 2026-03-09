@@ -29,27 +29,27 @@ export function BlogPagination({
       {currentPage > 1 ? (
         <Link
           href={buildHref(currentPage - 1, categorySlug)}
-          className="flex items-center gap-1 text-sm text-silver-mist transition-colors hover:text-celestial-gold"
+          className="flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-crimson-400"
         >
           <ChevronLeft className="h-4 w-4" />
         </Link>
       ) : (
-        <span className="flex items-center gap-1 text-sm text-silver-mist/30">
+        <span className="flex items-center gap-1 text-sm text-text-muted">
           <ChevronLeft className="h-4 w-4" />
         </span>
       )}
 
-      <span className="text-sm text-silver-mist">{pageLabel}</span>
+      <span className="text-sm text-text-secondary">{pageLabel}</span>
 
       {currentPage < totalPages ? (
         <Link
           href={buildHref(currentPage + 1, categorySlug)}
-          className="flex items-center gap-1 text-sm text-silver-mist transition-colors hover:text-celestial-gold"
+          className="flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-crimson-400"
         >
           <ChevronRight className="h-4 w-4" />
         </Link>
       ) : (
-        <span className="flex items-center gap-1 text-sm text-silver-mist/30">
+        <span className="flex items-center gap-1 text-sm text-text-muted">
           <ChevronRight className="h-4 w-4" />
         </span>
       )}

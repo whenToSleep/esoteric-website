@@ -128,13 +128,13 @@ export default async function CategoryPage({ params }: Props) {
       {/* Gradient divider: hero → services */}
       <div
         className="h-16 md:h-20"
-        style={{ background: "linear-gradient(to bottom, #0A0A0F, #0E0E14)" }}
+        style={{ background: "linear-gradient(to bottom, #0B0B0F, #131316)" }}
       />
 
       {/* Services grid */}
-      <section className="bg-surface-1 py-16 md:py-20 lg:py-30">
+      <section className="bg-obsidian py-16 md:py-20 lg:py-30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
+          <h2 className="mb-8 text-center font-heading text-section text-gold-500 md:mb-12 lg:mb-16">
             {t("services_title")}
           </h2>
 
@@ -153,7 +153,7 @@ export default async function CategoryPage({ params }: Props) {
               ))}
             </div>
           ) : (
-            <p className="text-center text-cosmic-white/60">
+            <p className="text-center text-text-secondary">
               {t("coming_soon") || ""}
             </p>
           )}
@@ -161,8 +161,8 @@ export default async function CategoryPage({ params }: Props) {
       </section>
 
       {/* Celestial divider: services → CTA */}
-      <div className="flex justify-center bg-surface-1 py-8 md:py-10">
-        <div className="h-px w-20 bg-linear-to-r from-transparent via-cosmic-gold/50 to-transparent" />
+      <div className="flex justify-center bg-obsidian py-8 md:py-10">
+        <div className="h-px w-20 bg-linear-to-r from-transparent via-gold-500/50 to-transparent" />
       </div>
 
       {/* CTA section */}
@@ -171,31 +171,31 @@ export default async function CategoryPage({ params }: Props) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, #0A0A0F, rgba(45,27,105,0.2) 50%, #0A0A0F)",
+              "linear-gradient(to bottom, #0B0B0F, rgba(42,10,15,0.3) 50%, #0B0B0F)",
           }}
         />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                       w-[500px] h-[300px] rounded-full blur-[100px] pointer-events-none
-                      bg-astral-violet/15"
+                      bg-crimson-950/15"
         />
 
         <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <h2 className="font-heading text-section text-star-white mb-4">
+          <h2 className="font-heading text-section text-text-primary mb-4">
             {t("cta_title")}
           </h2>
-          <p className="font-body text-body text-star-white/60 mb-10">
+          <p className="font-body text-body text-text-secondary mb-10">
             {t("cta_subtitle")}
           </p>
           <a
             href="#"
             className="inline-flex items-center justify-center min-h-12
                        px-10 py-3.5 rounded-full
-                       bg-astral-violet text-star-white
+                       bg-crimson-500 text-text-primary
                        font-body font-medium text-base
                        transition-all duration-300
-                       hover:bg-astral-violet/80
-                       hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)]
+                       hover:bg-crimson-400
+                       hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)]
                        active:scale-[0.97]"
           >
             {t("cta_button")}

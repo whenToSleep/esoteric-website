@@ -27,7 +27,7 @@ export function MobileMenu() {
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open menu"
-        className="text-star-white p-2"
+        className="text-text-primary p-2"
       >
         <Menu size={24} />
       </button>
@@ -39,13 +39,13 @@ export function MobileMenu() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex flex-col bg-[#0A0A0F]"
+            className="fixed inset-0 z-[100] flex flex-col bg-void"
           >
             {/* Close button */}
             <button
               onClick={() => setIsOpen(false)}
               aria-label="Close menu"
-              className="absolute top-4 right-4 p-2 text-celestial-gold z-10"
+              className="absolute top-4 right-4 p-2 text-gold-500 z-10"
             >
               <X size={28} />
             </button>
@@ -62,7 +62,7 @@ export function MobileMenu() {
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-[22px] font-heading text-celestial-gold transition-colors hover:text-star-white"
+                    className="text-[22px] font-heading text-gold-500 transition-colors hover:text-text-primary"
                   >
                     {t(item.key)}
                   </Link>

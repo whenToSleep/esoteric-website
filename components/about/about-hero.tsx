@@ -24,7 +24,7 @@ export function AboutHero({ title, imageUrl, imageAlt, children }: AboutHeroProp
             transition={{ duration: 0.6 }}
             className="w-full shrink-0 md:w-[40%]"
           >
-            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-celestial-gold/20">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-overlay/50">
               <Image
                 src={imageUrl}
                 alt={imageAlt || title}
@@ -42,11 +42,11 @@ export function AboutHero({ title, imageUrl, imageAlt, children }: AboutHeroProp
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex-1"
         >
-          <h1 className="font-heading text-3xl font-semibold text-star-white md:text-4xl lg:text-5xl">
+          <h1 className="font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
             {title}
           </h1>
           {children && (
-            <div className="mt-6 text-silver-mist/90">
+            <div className="mt-6 text-text-body">
               {children}
             </div>
           )}

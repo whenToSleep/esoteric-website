@@ -24,7 +24,7 @@ export function FeaturedBlogCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      className="group block md:col-span-2 overflow-hidden rounded-2xl border border-cosmic-purple/15 bg-cosmic-card hover:border-cosmic-violet/40 transition-colors duration-300"
+      className="group block md:col-span-2 overflow-hidden rounded-2xl border border-overlay/50 bg-onyx hover:border-crimson-500/30 transition-colors duration-300"
     >
       <div className="aspect-video lg:aspect-[21/9] relative overflow-hidden">
         {featuredImageUrl ? (
@@ -37,14 +37,14 @@ export function FeaturedBlogCard({
             priority
           />
         ) : (
-          <div className="h-full w-full bg-linear-to-br from-cosmic-card to-cosmic-purple" />
+          <div className="h-full w-full bg-linear-to-br from-onyx to-crimson-950" />
         )}
-        <div className="absolute inset-0 bg-linear-to-t from-cosmic-bg/90 via-cosmic-bg/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-void/90 via-void/40 to-transparent" />
         <div className="absolute bottom-0 left-0 p-5 lg:p-8">
-          <span className="text-small font-body text-cosmic-gold uppercase tracking-wider">
+          <span className="text-small font-body text-gold-500 uppercase tracking-wider">
             {categoryTitle || "Featured"}
           </span>
-          <h3 className="font-heading text-card-title text-cosmic-white mt-2">
+          <h3 className="font-heading text-card-title text-text-primary mt-2">
             {title}
           </h3>
         </div>

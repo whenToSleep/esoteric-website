@@ -114,7 +114,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
   return (
     <section className="px-4 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-8 text-center font-heading text-3xl font-semibold text-star-white md:text-4xl lg:text-5xl">
+        <h1 className="mb-8 text-center font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
           {t("title")}
         </h1>
 
@@ -127,7 +127,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
         </div>
 
         {posts.length === 0 ? (
-          <p className="py-20 text-center text-lg text-silver-mist">
+          <p className="py-20 text-center text-lg text-text-secondary">
             {t("no_posts")}
           </p>
         ) : (

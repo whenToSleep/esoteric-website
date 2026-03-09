@@ -1,6 +1,6 @@
 export function GradientDivider({
-  from = "#0A0A0F",
-  to = "#0E0E14",
+  from = "#0B0B0F",
+  to = "#131316",
 }: {
   from?: string;
   to?: string;

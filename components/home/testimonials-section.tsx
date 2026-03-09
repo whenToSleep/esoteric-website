@@ -19,7 +19,7 @@ export function TestimonialsSection({
 
   return (
     <section className="py-16 md:py-20 lg:py-30">
-      <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold md:mb-12 md:text-3xl lg:mb-16 lg:text-4xl">
+      <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-gold-500 md:mb-12 md:text-3xl lg:mb-16 lg:text-4xl">
         {t("section_title")}
       </h2>
       <InfiniteMovingCards

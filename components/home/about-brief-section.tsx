@@ -21,10 +21,10 @@ export function AboutBriefSection({
   const t = useTranslations("home.about");
 
   return (
-    <section className="bg-surface-1 px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
+    <section className="bg-obsidian px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal direction="up">
-          <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
+          <h2 className="mb-8 text-center font-heading text-section text-gold-500 md:mb-12 lg:mb-16">
             {t("section_title")}
           </h2>
         </ScrollReveal>
@@ -41,17 +41,17 @@ export function AboutBriefSection({
                 />
               </div>
             ) : (
-              <div className="mx-auto aspect-[3/4] w-full max-w-sm rounded-xl bg-gradient-to-br from-midnight-navy to-mystic-purple" />
+              <div className="mx-auto aspect-[3/4] w-full max-w-sm rounded-xl bg-gradient-to-br from-obsidian to-amethyst-900" />
             )}
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2}>
             <div className="max-w-3xl">
               {content && (
-                <p className="leading-relaxed text-cosmic-white/70">{content}</p>
+                <p className="leading-relaxed text-text-secondary">{content}</p>
               )}
               <Link
                 href="/about"
-                className="mt-6 inline-flex items-center justify-center rounded-full border border-cosmic-gold/40 bg-transparent px-8 py-3 text-sm font-medium text-cosmic-gold transition-all duration-300 hover:bg-cosmic-gold/10"
+                className="mt-6 inline-flex items-center justify-center rounded-full border border-crimson-500/40 bg-transparent px-8 py-3 text-sm font-medium text-crimson-400 transition-all duration-300 hover:bg-crimson-500/10"
               >
                 {t("learn_more")}
               </Link>

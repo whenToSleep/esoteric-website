@@ -37,14 +37,14 @@ export function Meteors({ number = 20, className }: MeteorsProps) {
       {meteors.map((meteor, idx) => (
         <span
           key={idx}
-          className="meteor absolute top-0 h-0.5 w-0.5 rotate-[215deg] rounded-full bg-cosmic-white shadow-[0_0_0_1px_#ffffff10]"
+          className="meteor absolute top-0 h-0.5 w-0.5 rotate-[215deg] rounded-full bg-text-primary shadow-[0_0_0_1px_rgba(240,235,224,0.06)]"
           style={{
             left: meteor.left,
             animationDelay: meteor.delay,
             animationDuration: meteor.duration,
           }}
         >
-          <span className="absolute top-1/2 -z-10 h-px w-12 -translate-y-1/2 bg-linear-to-r from-cosmic-white/60 to-transparent" />
+          <span className="absolute top-1/2 -z-10 h-px w-12 -translate-y-1/2 bg-linear-to-r from-text-primary/60 to-transparent" />
         </span>
       ))}
     </div>

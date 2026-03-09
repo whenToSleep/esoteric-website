@@ -196,7 +196,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Back link */}
           <Link
             href="/blog"
-            className="mb-8 inline-flex items-center gap-1 text-sm text-silver-mist transition-colors hover:text-celestial-gold"
+            className="mb-8 inline-flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-crimson-400"
           >
             <ChevronLeft className="h-4 w-4" />
             {t("back_to_blog")}
@@ -219,22 +219,22 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Meta */}
           <div className="mb-4 flex items-center gap-3">
             {categoryTitle && (
-              <span className="rounded-md bg-astral-violet/10 px-3 py-1 text-xs font-medium text-astral-violet">
+              <span className="rounded-md bg-crimson-950 px-3 py-1 text-xs font-medium text-crimson-400">
                 {categoryTitle}
               </span>
             )}
             {post.publishedAt && (
-              <time className="text-sm text-silver-mist">
+              <time className="text-sm text-text-secondary">
                 {new Date(post.publishedAt).toLocaleDateString()}
               </time>
             )}
-            <span className="text-sm text-silver-mist">
+            <span className="text-sm text-text-secondary">
               {readingTime} {t("min_read")}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="mb-8 font-heading text-3xl font-semibold text-star-white md:text-4xl lg:text-5xl">
+          <h1 className="mb-8 font-heading text-3xl font-semibold text-text-primary md:text-4xl lg:text-5xl">
             {post.title}
           </h1>
 

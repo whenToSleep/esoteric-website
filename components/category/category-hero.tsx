@@ -17,7 +17,7 @@ export function CategoryHero({
   const tNav = useTranslations("nav");
 
   return (
-    <section className="relative flex min-h-[40vh] items-end overflow-hidden bg-cosmic-bg md:min-h-[50vh]">
+    <section className="relative flex min-h-[40vh] items-end overflow-hidden bg-void md:min-h-[50vh]">
       {heroImage?.url ? (
         <>
           <Image
@@ -28,37 +28,37 @@ export function CategoryHero({
             priority
           />
           {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-cosmic-bg via-cosmic-bg/70 to-cosmic-bg/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-void via-void/70 to-void/30" />
         </>
       ) : (
         <>
           {/* Fallback: atmospheric gradient + orbs */}
-          <div className="absolute inset-0 bg-gradient-to-b from-midnight-navy/50 to-cosmic-bg" />
-          <div className="pointer-events-none absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full bg-cosmic-purple/10 blur-[120px]" />
-          <div className="pointer-events-none absolute bottom-0 right-1/4 h-[300px] w-[300px] rounded-full bg-cosmic-violet/8 blur-[100px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 to-void" />
+          <div className="pointer-events-none absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full bg-crimson-950/10 blur-[120px]" />
+          <div className="pointer-events-none absolute bottom-0 right-1/4 h-[300px] w-[300px] rounded-full bg-crimson-500/8 blur-[100px]" />
         </>
       )}
 
       {/* Content — pinned to bottom via items-end on section */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-32 sm:px-6 md:pb-16 md:pt-40 lg:px-8">
         {/* Breadcrumb */}
-        <nav className="mb-4 text-small text-cosmic-white/40">
+        <nav className="mb-4 text-small text-text-muted">
           <Link
             href="/"
-            className="transition-colors hover:text-cosmic-white/70"
+            className="transition-colors hover:text-text-primary"
           >
             {tNav("home")}
           </Link>
           <span className="mx-2">&rarr;</span>
-          <span className="text-cosmic-gold">{title}</span>
+          <span className="text-gold-500">{title}</span>
         </nav>
 
         {/* Title */}
-        <h1 className="font-heading text-hero text-cosmic-white">{title}</h1>
+        <h1 className="font-heading text-hero text-text-primary">{title}</h1>
 
         {/* Description */}
         {description && (
-          <p className="mt-4 max-w-2xl font-body text-body text-cosmic-white/70">
+          <p className="mt-4 max-w-2xl font-body text-body text-text-secondary">
             {description}
           </p>
         )}

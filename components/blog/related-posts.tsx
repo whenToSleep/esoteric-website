@@ -29,7 +29,7 @@ export function RelatedPosts({
 
   return (
     <section>
-      <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-celestial-gold">
+      <h2 className="mb-8 text-center font-heading text-2xl font-semibold text-gold-500">
         {title}
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">

@@ -28,11 +28,11 @@ export function BlogCard({
       className="group flex flex-col overflow-hidden rounded-2xl
                  border border-white/[0.08]
                  transition-all duration-300
-                 hover:border-cosmic-violet/40
-                 hover:shadow-[0_0_25px_-5px_rgba(124,58,237,0.2)]
+                 hover:border-crimson-500/30
+                 hover:shadow-[0_0_25px_-5px_rgba(185,28,60,0.2)]
                  hover:-translate-y-1
                  active:scale-[0.98]"
-      style={{ background: "linear-gradient(180deg, #1A1A24 0%, #141419 100%)" }}
+      style={{ background: "linear-gradient(180deg, #1C1C22 0%, #131316 100%)" }}
     >
       {/* Image or placeholder */}
       <div className="aspect-video w-full overflow-hidden">
@@ -46,11 +46,11 @@ export function BlogCard({
                        group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-cosmic-purple/20
-                          via-cosmic-bg to-cosmic-card/30
+          <div className="w-full h-full bg-linear-to-br from-crimson-950/20
+                          via-void to-onyx/30
                           flex items-center justify-center">
             <svg
-              className="w-10 h-10 text-cosmic-white/10"
+              className="w-10 h-10 text-text-primary/10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -70,17 +70,17 @@ export function BlogCard({
       <div className="flex flex-col flex-1 p-5 md:p-6">
         {categoryTitle && (
           <span className="self-start text-xs font-medium uppercase tracking-wider
-                           text-cosmic-violet mb-3">
+                           text-crimson-400 mb-3">
             {categoryTitle}
           </span>
         )}
 
-        <h3 className="font-heading text-card-title text-cosmic-white mb-3 line-clamp-2">
+        <h3 className="font-heading text-card-title text-text-primary mb-3 line-clamp-2">
           {title}
         </h3>
 
         {excerpt && (
-          <p className="font-body text-small text-cosmic-white/60 leading-relaxed
+          <p className="font-body text-small text-text-secondary leading-relaxed
                         line-clamp-3 flex-1">
             {excerpt}
           </p>

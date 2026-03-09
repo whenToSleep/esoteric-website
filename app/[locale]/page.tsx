@@ -132,11 +132,11 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HeroSection />
-      <GradientDivider from="#0A0A0F" to="#0A0A0F" />
+      <GradientDivider from="#0B0B0F" to="#0B0B0F" />
       <ServiceCategoriesSection categories={categories} />
       <CelestialDivider />
       <AboutBriefSection {...aboutData} />
-      <GradientDivider from="#0E0E14" to="#0A0A0F" />
+      <GradientDivider from="#131316" to="#0B0B0F" />
       <LatestPostsSection posts={posts} />
       <TestimonialsSection testimonials={testimonials} />
       <CTASection />
