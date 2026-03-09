@@ -6,14 +6,14 @@
 
 ---
 
-## Сессия 47 — 2026-03-09 — Mobile menu overlay + hero photo vignette
+## Сессия 47 — 2026-03-09 — Mobile menu overlay + hero photo vignette (v2)
 
 ### Задача:
 Fix два mobile бага: прозрачное меню и резкие края фото.
 
 ### Сделано:
-1. **Mobile menu** (`components/mobile-menu.tsx`): убрана анимация opacity на контейнере (была `initial={{ opacity: 0 }}` → теперь `initial={{ opacity: 1 }}`). Фон bg-void всегда непрозрачный, анимируются только элементы внутри (close button + nav items).
-2. **Hero photo mobile** (`components/home/hero-section.tsx`): заменена прямоугольная маска на радиальную виньетку `radial-gradient(ellipse 70% 60% at center, black 40%, transparent 100%)`. Фото плавно растворяется по всем краям. Desktop маска (left-edge + bottom fade) не изменена. Разделены на два отдельных блока: mobile (`lg:hidden`) и desktop (`hidden lg:block`).
+1. **Mobile menu** (`components/mobile-menu.tsx`): полный рефактор — `createPortal(document.body)` выносит оверлей за пределы stacking context header'а (header имеет `backdrop-blur-xl` → создаёт новый stacking context). `z-[9999]`, inline `backgroundColor: "#0B0B0F"` (hardcode). Отдельный `MenuOverlay` компонент. `mounted` state для SSR safety.
+2. **Hero photo mobile** (`components/home/hero-section.tsx`): радиальная виньетка `radial-gradient(ellipse 70% 60% at center, black 40%, transparent 100%)`. Два отдельных photo блока: mobile (`lg:hidden` + vignette) и desktop (`hidden lg:block` + left/bottom fades).
 3. **Build**: ✅
 
 ---
