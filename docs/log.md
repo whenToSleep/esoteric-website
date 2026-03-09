@@ -6,6 +6,48 @@
 
 ---
 
+## Сессия 43 — 2026-03-09 — Crimson Alchemy: color palette replacement (9.1)
+
+### Задача:
+Итерация 9.1 — полная замена цветовой палитры Cosmic Night → Crimson Alchemy в `app/globals.css`.
+
+### Сделано:
+1. **@theme inline**: удалены все старые токены (cosmic-*, surface-1..4, midnight-navy, mystic-purple, astral-violet, celestial-gold, star-white, silver-mist, cosmic-gold-light/dark). Добавлена новая палитра:
+   - Backgrounds: void (#0B0B0F), obsidian (#131316), onyx (#1C1C22), elevated (#26262E), overlay (#32323C)
+   - Crimson: 950/600/500/400
+   - Emerald: 950/600/500/400
+   - Gold: 700/500/300
+   - Amethyst: 900 (gradient overlays)
+   - Text: text-primary (#F0EBE0), text-body (#D4CFC4), text-secondary (#A8A29E), text-muted (#78716C)
+2. **@layer base**: body → `bg-void text-text-body`, добавлен `::selection` (crimson-500/30)
+3. **Keyframes**: добавлен `crimson-glow` (box-shadow пульсация), `shimmer`, `slow-rotate`. Удалены `aurora`, `gold-shimmer` (заменены)
+4. **Hero aurora**: rgba-цвета обновлены с purple/violet на crimson-950/crimson-500
+5. **Starfield dots**: rgba обновлены на text-primary (#F0EBE0) и gold-500 (#C9A84C)
+6. **Утилиты**: добавлены `crimson-shimmer`, `divider-crimson`, `divider-gold`. Обновлены `gold-shimmer`, `gold-glow`, `gradient-border`
+7. **prose-alchemy**: новый класс rich text (crimson links, gold blockquote borders, obsidian code bg). `prose-cosmic` оставлен как алиас на время миграции
+8. **Reduced motion**: обновлены fallback-цвета
+9. **.dark**: `--background: #0B0B0F`, `--foreground: #F0EBE0`
+
+### Build:
+`✓ Compiled successfully` — CSS/TS без ошибок. Единственный fail — Postgres connection (БД не запущена, не связано).
+
+### 33 файла с ссылками на старые токены (миграция в 9.2):
+- **Home**: hero-section, service-categories-section, service-category-card, about-brief-section, latest-posts-section, blog-card, cta-section, cta-heading, testimonials-section
+- **Layout**: header, footer, mobile-menu, language-switcher
+- **Pages**: about, categorySlug, serviceSlug, blog, blog/[slug]
+- **Category/Service**: category-hero, service-card, service-faq, service-info-block
+- **Blog**: featured-blog-card, related-posts, post-navigation, blog-pagination, category-filter
+- **UI**: celestial-divider, typewriter-effect, infinite-moving-cards, meteors
+- **About**: about-hero, about-timeline
+
+### Файлы изменены:
+- app/globals.css (241 вставок, 110 удалений)
+- docs/log.md
+
+### Коммит: b2282a3
+
+---
+
 ## Сессия 42 — 2026-03-08 — Fix mobile horizontal scroll
 
 ### Проблема:
