@@ -81,6 +81,12 @@ export default async function BlogPage({ params, searchParams }: Props) {
     }
   }
 
+  // Pagination limits:
+  // - "All" filter (no category): limit 5 → page 1 shows 1 featured + 4 grid, page 2+ shows 5 grid
+  // - Category filter: limit 6 → all posts in uniform grid, no featured card
+  const isFiltered = !!categoryId;
+  const pageLimit = isFiltered ? 6 : 5;
+
   // Fetch posts
   const postsResult = await payload.find({
     collection: "posts",
@@ -91,7 +97,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
     },
     sort: "-publishedAt",
     page: currentPage,
-    limit: 6,
+    limit: pageLimit,
     depth: 2,
   });
 
@@ -114,8 +120,10 @@ export default async function BlogPage({ params, searchParams }: Props) {
     total: String(postsResult.totalPages),
   });
 
-  const featuredPost = currentPage === 1 && posts.length > 0 ? posts[0] : null;
-  const gridPosts = currentPage === 1 ? posts.slice(1) : posts;
+  // Featured card only on page 1 when showing all posts (no category filter)
+  const showFeatured = !isFiltered && currentPage === 1 && posts.length > 0;
+  const featuredPost = showFeatured ? posts[0] : null;
+  const gridPosts = showFeatured ? posts.slice(1) : posts;
 
   return (
     <section className="px-4 py-12 md:py-16 lg:py-20">
@@ -144,7 +152,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
           <>
             {featuredPost && (
               <ScrollReveal delay={0.15}>
-                <div className="mb-6">
+                <div className="mb-8">
                   <FeaturedBlogCard
                     {...featuredPost}
                     readMoreLabel={t("read_more")}
