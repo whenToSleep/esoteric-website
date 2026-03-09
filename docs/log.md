@@ -6,6 +6,34 @@
 
 ---
 
+## Сессия 45 — 2026-03-09 — Hero: split layout with practitioner photo (9.3)
+
+### Задача:
+Итерация 9.3 — полная переработка hero-section: split layout с фото практика.
+
+### Сделано:
+1. **Полностью переписан `components/home/hero-section.tsx`**:
+   - Split grid layout: `grid-cols-[55fr_45fr]` (desktop), stacked (mobile)
+   - Левая часть (55%): H1 + подзаголовок + 2 CTA кнопки (primary gradient + ghost)
+   - Правая часть (45%): фото практика через `next/image` с priority
+   - Фото: CSS gradient mask (left edge desktop, top edge mobile) + bottom fade + radial glow "aura"
+   - Mobile: `object-top` для фокуса на лицо, `max-h-[50vh]`
+   - CTA кнопки full-width на мобильных
+2. **Анимации** (framer-motion, respect prefers-reduced-motion):
+   - H1: blur-to-sharp reveal (blur 10px→0, opacity 0→1, y 20%→0)
+   - Subtitle: fade-up delay 0.3s
+   - CTA: fade-up delay 0.5s
+   - Photo: fade-in + scale 1.05→1 delay 0.2s
+   - Scroll indicator: анимированная стрелка вниз (desktop only)
+3. **Убраны**: aurora, starfield, parallax stars — заменены на чистый split layout
+4. **Build**: ✅ проходит без ошибок
+
+### Текущий статус:
+- Итерация 9.3 ✅ завершена
+- Следующая: 9.4 — Services bento grid с accent colors
+
+---
+
 ## Сессия 44 — 2026-03-09 — Crimson Alchemy: component migration (9.2)
 
 ### Задача:
