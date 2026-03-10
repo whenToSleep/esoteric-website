@@ -82,7 +82,7 @@ export default async function AboutPage({ params }: Props) {
       />
 
       <AboutHero
-        title={(page.title as string) || t("title")}
+        name={t("hero_name")}
         imageUrl={page.featuredImage?.url || undefined}
         imageAlt={page.featuredImage?.alt || undefined}
       >

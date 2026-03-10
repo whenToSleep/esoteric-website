@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { TextReveal } from "@/components/animations";
 
 interface AboutHeroProps {
-  title: string;
+  name: string;
   imageUrl?: string;
   imageAlt?: string;
   children?: ReactNode;
@@ -16,7 +16,7 @@ interface AboutHeroProps {
 const easeOut = [0.17, 0.55, 0.55, 1] as const;
 
 export function AboutHero({
-  title,
+  name,
   imageUrl,
   imageAlt,
   children,
@@ -42,7 +42,7 @@ export function AboutHero({
           </motion.span>
 
           <TextReveal
-            text={title}
+            text={name}
             as="h1"
             className="font-heading text-hero font-semibold leading-[1.1] text-text-primary"
             delay={0.15}
@@ -96,7 +96,7 @@ export function AboutHero({
               >
                 <Image
                   src={imageUrl}
-                  alt={imageAlt || title}
+                  alt={imageAlt || name}
                   fill
                   className="object-cover object-center"
                   sizes="45vw"
@@ -116,7 +116,7 @@ export function AboutHero({
               >
                 <Image
                   src={imageUrl}
-                  alt={imageAlt || title}
+                  alt={imageAlt || name}
                   width={600}
                   height={800}
                   className="h-auto w-full object-cover object-center"

@@ -21,8 +21,9 @@ export function AboutBioSections() {
           {bioItems.map((num, index) => (
             <div key={num}>
               <ScrollReveal direction="up" delay={index * 0.08}>
-                <div className="relative py-8 pl-16 lg:pl-20">
-                  <span className="absolute left-0 top-6 font-heading text-6xl font-semibold text-gold-500 opacity-20 lg:text-8xl">
+                {/* Mobile: number above text */}
+                <div className="py-8 md:hidden">
+                  <span className="mb-3 block font-heading text-5xl font-semibold text-gold-500 opacity-20">
                     {num}
                   </span>
                   <h3 className="font-heading text-xl font-medium text-text-primary">
@@ -31,6 +32,21 @@ export function AboutBioSections() {
                   <p className="mt-2 font-body leading-relaxed text-text-secondary">
                     {t(`bio_${num}_text`)}
                   </p>
+                </div>
+
+                {/* Desktop: grid with fixed number column */}
+                <div className="hidden py-8 md:grid md:grid-cols-[5rem_1fr] md:gap-6 lg:grid-cols-[6rem_1fr] lg:gap-8">
+                  <span className="font-heading text-6xl font-semibold text-gold-500 opacity-20 lg:text-8xl">
+                    {num}
+                  </span>
+                  <div>
+                    <h3 className="font-heading text-xl font-medium text-text-primary">
+                      {t(`bio_${num}_title`)}
+                    </h3>
+                    <p className="mt-2 font-body leading-relaxed text-text-secondary">
+                      {t(`bio_${num}_text`)}
+                    </p>
+                  </div>
                 </div>
               </ScrollReveal>
 
