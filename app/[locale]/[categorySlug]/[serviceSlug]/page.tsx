@@ -7,7 +7,11 @@ import { Link } from "@/i18n/navigation";
 import { RichTextRenderer } from "@/components/rich-text-renderer";
 import { ServiceInfoBlock } from "@/components/service/service-info-block";
 import { ServiceFaq } from "@/components/service/service-faq";
+import { ServicePrevNext } from "@/components/service/service-prev-next";
+import { ScrollReveal } from "@/components/animations";
 import { generateServiceJsonLd } from "@/lib/json-ld";
+import { getAccentConfig, CategoryIcon } from "@/components/home/icon-map";
+import { cn } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string; categorySlug: string; serviceSlug: string }>;
@@ -98,7 +102,40 @@ export default async function ServicePage({ params }: Props) {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const service = serviceResult.docs[0] as any;
   const categoryTitle = service.category?.title || "";
+  const categoryIcon = service.category?.icon || "cards";
+  const categoryId = service.category?.id;
   /* eslint-enable @typescript-eslint/no-explicit-any */
+
+  const accent = getAccentConfig(categoryIcon);
+  const glowBase = accent.borderGlow.replace(/[\d.]+\)$/, "");
+
+  // Fetch sibling services for prev/next navigation
+  let prev: { title: string; slug: string } | undefined;
+  let next: { title: string; slug: string } | undefined;
+
+  if (categoryId) {
+    const siblingsResult = await payload.find({
+      collection: "services",
+      where: {
+        category: { equals: categoryId },
+        isActive: { equals: true },
+      },
+      locale: locale as "ru" | "en" | "uk",
+      sort: "order",
+      limit: 100,
+    });
+
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const siblings = siblingsResult.docs.map((svc: any) => ({
+      title: (svc.title as string) || "",
+      slug: (svc.slug as string) || "",
+    }));
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+
+    const currentIndex = siblings.findIndex((s) => s.slug === serviceSlug);
+    if (currentIndex > 0) prev = siblings[currentIndex - 1];
+    if (currentIndex < siblings.length - 1) next = siblings[currentIndex + 1];
+  }
 
   const faqItems = (service.faq || [])
     .filter(
@@ -129,71 +166,91 @@ export default async function ServicePage({ params }: Props) {
       />
 
       {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-cosmic-bg py-16 md:py-24 lg:py-32">
-        <div className="pointer-events-none absolute right-1/4 top-0 h-[350px] w-[350px] rounded-full bg-cosmic-purple/10 blur-[120px]" />
+      <section className="relative overflow-hidden bg-void py-16 md:py-24 lg:py-32">
+        <div
+          className="pointer-events-none absolute right-1/4 top-0 h-[350px] w-[350px] rounded-full blur-[120px]"
+          style={{ background: `${glowBase}0.1)` }}
+        />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
-          {/* Breadcrumb */}
-          <nav className="mb-8 text-small text-cosmic-white/40">
-            <Link
-              href="/"
-              className="transition-colors hover:text-cosmic-white/70"
+          <ScrollReveal direction="up">
+            {/* Breadcrumb */}
+            <nav className="mb-8 text-small text-text-muted">
+              <Link
+                href="/"
+                className="transition-colors hover:text-text-primary"
+              >
+                {tNav("home")}
+              </Link>
+              <span className="mx-2">&rarr;</span>
+              <Link
+                href={`/${categorySlug}`}
+                className="transition-colors hover:text-text-primary"
+              >
+                {categoryTitle}
+              </Link>
+              <span className="mx-2">&rarr;</span>
+              <span className="text-text-secondary">
+                {service.title as string}
+              </span>
+            </nav>
+
+            {/* Category badge */}
+            <div
+              className={cn(
+                "mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium",
+                accent.iconBg,
+                accent.iconBorder,
+                accent.iconColor,
+              )}
             >
-              {tNav("home")}
-            </Link>
-            <span className="mx-2">&rarr;</span>
-            <Link
-              href={`/${categorySlug}`}
-              className="transition-colors hover:text-cosmic-white/70"
-            >
-              {categoryTitle}
-            </Link>
-            <span className="mx-2">&rarr;</span>
-            <span className="text-cosmic-white/70">
+              <CategoryIcon name={categoryIcon} size={14} />
+              <span>{categoryTitle}</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="font-heading text-hero text-text-primary">
               {service.title as string}
-            </span>
-          </nav>
+            </h1>
 
-          {/* Title */}
-          <h1 className="font-heading text-hero text-cosmic-white">
-            {service.title as string}
-          </h1>
+            {/* Short description */}
+            {service.shortDescription && (
+              <p className="mt-4 max-w-2xl font-body text-body text-text-secondary">
+                {service.shortDescription as string}
+              </p>
+            )}
 
-          {/* Short description */}
-          {service.shortDescription && (
-            <p className="mt-4 max-w-2xl font-body text-body text-cosmic-white/70">
-              {service.shortDescription as string}
-            </p>
-          )}
-
-          {/* Info cards */}
-          <div className="mt-10">
-            <ServiceInfoBlock
-              price={service.price as string}
-              duration={service.duration as string}
-              format={service.format as string}
-            />
-          </div>
+            {/* Info cards */}
+            <div className="mt-10">
+              <ServiceInfoBlock
+                price={service.price as string}
+                duration={service.duration as string}
+                format={service.format as string}
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ===== Full Description ===== */}
       {service.fullDescription && (
         <>
-          {/* Gradient divider: cosmic-bg -> surface-1 */}
+          {/* Gradient divider: void -> obsidian */}
           <div
             className="h-16 md:h-20"
             style={{
-              background: "linear-gradient(to bottom, #0A0A0F, #0E0E14)",
+              background: "linear-gradient(to bottom, #0B0B0F, #131316)",
             }}
           />
 
-          <section className="bg-surface-1 py-16 md:py-20">
+          <section className="bg-obsidian py-16 md:py-20">
             <div className="mx-auto max-w-3xl px-4 sm:px-6">
-              <h2 className="mb-8 font-heading text-section text-cosmic-gold">
-                {t("description_title")}
-              </h2>
-              <RichTextRenderer content={service.fullDescription} />
+              <ScrollReveal direction="up">
+                <h2 className="mb-8 font-heading text-section text-gold-500">
+                  {t("description_title")}
+                </h2>
+                <RichTextRenderer content={service.fullDescription} />
+              </ScrollReveal>
             </div>
           </section>
         </>
@@ -203,11 +260,11 @@ export default async function ServicePage({ params }: Props) {
       {faqItems.length > 0 && (
         <>
           {/* Celestial divider */}
-          <div className="flex justify-center bg-cosmic-bg py-8 md:py-10">
-            <div className="h-px w-20 bg-linear-to-r from-transparent via-cosmic-gold/50 to-transparent" />
+          <div className="flex justify-center bg-void py-8 md:py-10">
+            <div className="h-px w-20 bg-linear-to-r from-transparent via-gold-500/50 to-transparent" />
           </div>
 
-          <section className="bg-cosmic-bg py-16 md:py-20">
+          <section className="bg-void py-16 md:py-20">
             <div className="mx-auto max-w-3xl px-4 sm:px-6">
               <ServiceFaq items={faqItems} />
             </div>
@@ -215,43 +272,56 @@ export default async function ServicePage({ params }: Props) {
         </>
       )}
 
-      {/* ===== CTA ===== */}
-      <section className="relative overflow-hidden py-16 md:py-20 lg:py-28">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, #0A0A0F, rgba(45,27,105,0.2) 50%, #0A0A0F)",
-          }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                      w-[500px] h-[300px] rounded-full blur-[100px] pointer-events-none
-                      bg-astral-violet/15"
-        />
+      {/* ===== Prev/Next Navigation ===== */}
+      {(prev || next) && (
+        <section className="bg-void py-8 md:py-12">
+          <ServicePrevNext
+            prev={prev}
+            next={next}
+            categorySlug={categorySlug}
+          />
+        </section>
+      )}
 
-        <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <h2 className="font-heading text-section text-star-white mb-4">
-            {t("book_title", { title: service.title as string })}
-          </h2>
-          <p className="font-body text-body text-star-white/60 mb-10">
-            {t("book_subtitle")}
-          </p>
-          <a
-            href="#"
-            className="inline-flex items-center justify-center min-h-12
-                       px-10 py-3.5 rounded-full
-                       bg-astral-violet text-star-white
-                       font-body font-medium text-base
-                       transition-all duration-300
-                       hover:bg-astral-violet/80
-                       hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.5)]
-                       active:scale-[0.97]"
-          >
-            {t("book_button")}
-          </a>
-        </div>
-      </section>
+      {/* ===== CTA ===== */}
+      <ScrollReveal direction="up">
+        <section className="relative overflow-hidden py-16 md:py-20 lg:py-28">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, #0B0B0F, rgba(42,10,15,0.3) 50%, #0B0B0F)",
+            }}
+          />
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                        w-[500px] h-[300px] rounded-full blur-[100px] pointer-events-none
+                        bg-crimson-950/15"
+          />
+
+          <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6">
+            <h2 className="font-heading text-section text-text-primary mb-4">
+              {t("book_title", { title: service.title as string })}
+            </h2>
+            <p className="font-body text-body text-text-secondary mb-10">
+              {t("book_subtitle")}
+            </p>
+            <a
+              href="#"
+              className="inline-flex items-center justify-center min-h-12
+                         px-10 py-3.5 rounded-full
+                         bg-linear-to-r from-crimson-600 to-crimson-500 text-text-primary
+                         font-body font-medium text-base
+                         transition-all duration-300
+                         hover:brightness-110
+                         hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)]
+                         active:scale-[0.97]"
+            >
+              {t("book_button")}
+            </a>
+          </div>
+        </section>
+      </ScrollReveal>
     </>
   );
 }

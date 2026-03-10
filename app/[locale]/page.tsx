@@ -10,8 +10,7 @@ import { LatestPostsSection } from "@/components/home/latest-posts-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { CTASection } from "@/components/home/cta-section";
 import { GradientDivider } from "@/components/ui/gradient-divider";
-import { CelestialDivider } from "@/components/ui/celestial-divider";
-import { extractPlainText } from "@/lib/rich-text-utils";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { generateWebSiteJsonLd } from "@/lib/json-ld";
 
 type Props = {
@@ -115,8 +114,6 @@ export default async function HomePage({ params }: Props) {
   const aboutPage = aboutResult.docs[0] as any;
   const aboutData = aboutPage
     ? {
-        title: (aboutPage.title as string) || undefined,
-        content: extractPlainText(aboutPage.content, 300) || undefined,
         imageUrl: aboutPage.featuredImage?.url || undefined,
         imageAlt: aboutPage.featuredImage?.alt || undefined,
       }
@@ -132,13 +129,15 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HeroSection />
-      <GradientDivider from="#0A0A0F" to="#0A0A0F" />
+      <GradientDivider from="#0B0B0F" to="#0B0B0F" />
       <ServiceCategoriesSection categories={categories} />
-      <CelestialDivider />
+      <SectionDivider variant="moon" />
       <AboutBriefSection {...aboutData} />
-      <GradientDivider from="#0E0E14" to="#0A0A0F" />
+      <GradientDivider from="#131316" to="#0B0B0F" />
       <LatestPostsSection posts={posts} />
+      <SectionDivider variant="moon" />
       <TestimonialsSection testimonials={testimonials} />
+      <SectionDivider variant="moon" />
       <CTASection />
     </>
   );

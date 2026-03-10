@@ -8,7 +8,7 @@ export function CTAHeading({ title }: { title: string }) {
   return (
     <TypewriterEffectSmooth
       words={words}
-      className="font-heading text-section text-cosmic-gold"
+      className="font-heading text-section text-gold-500"
     />
   );
 }

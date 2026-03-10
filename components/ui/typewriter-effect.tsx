@@ -19,7 +19,7 @@ export function TypewriterEffectSmooth({
       {words.map((word, idx) => (
         <span key={`word-${idx}`} className="inline-block">
           {word.text.split("").map((char, charIdx) => (
-            <span key={`char-${charIdx}`} className={cn("text-cosmic-gold", word.className)}>
+            <span key={`char-${charIdx}`} className={cn("text-gold-500", word.className)}>
               {char}
             </span>
           ))}
@@ -55,7 +55,7 @@ export function TypewriterEffectSmooth({
           repeatType: "reverse",
         }}
         className={cn(
-          "inline-block h-[1.2em] w-[4px] rounded-sm bg-cosmic-gold ml-1",
+          "inline-block h-[1.2em] w-[4px] rounded-sm bg-gold-500 ml-1",
           shouldReduceMotion && "hidden",
           cursorClassName
         )}

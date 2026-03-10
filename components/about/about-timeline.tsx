@@ -36,14 +36,14 @@ export function AboutTimeline({
       : fallbackData.default.map((item) => ({ year: item.year, text: item.title[lang] || item.title.ru }));
 
   return (
-    <section className="px-4 py-12 md:py-16 lg:py-20">
+    <section className="bg-void px-4 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-10 text-center font-heading text-2xl font-semibold text-star-white md:text-3xl">
+        <h2 className="mb-10 text-center font-heading text-2xl font-semibold text-text-primary md:text-3xl">
           {t("timeline_title")}
         </h2>
 
         <div className="relative">
-          <div className="absolute left-4 top-0 h-full w-0.5 bg-celestial-gold/30 md:left-1/2 md:-translate-x-0.5" />
+          <div className="absolute left-4 top-0 h-full w-0.5 bg-crimson-500/30 md:left-1/2 md:-translate-x-0.5" />
 
           {timelineItems.map((item, index) => {
             const isEven = index % 2 === 0;
@@ -67,25 +67,25 @@ export function AboutTimeline({
                   className={`hidden flex-1 md:block ${isEven ? "text-right" : "text-left"}`}
                 >
                   <div
-                    className={`inline-block rounded-xl border border-celestial-gold/20 bg-midnight-navy p-4 ${
+                    className={`inline-block rounded-xl border border-overlay/50 bg-onyx p-4 ${
                       isEven ? "mr-6" : "ml-6"
                     }`}
                   >
-                    <p className="text-sm font-semibold text-celestial-gold">
+                    <p className="text-sm font-semibold text-gold-500">
                       {item.year}
                     </p>
-                    <p className="mt-1 text-sm text-silver-mist">{item.text}</p>
+                    <p className="mt-1 text-sm text-text-secondary">{item.text}</p>
                   </div>
                 </div>
 
-                <div className="absolute left-2.5 top-1 h-3 w-3 rounded-full border-2 border-celestial-gold bg-cosmic-black md:static md:mt-4 md:shrink-0" />
+                <div className="absolute left-2.5 top-1 h-3 w-3 rounded-full border-2 border-crimson-500 bg-void md:static md:mt-4 md:shrink-0" />
 
                 <div className="flex-1 md:hidden">
-                  <div className="rounded-xl border border-celestial-gold/20 bg-midnight-navy p-4">
-                    <p className="text-sm font-semibold text-celestial-gold">
+                  <div className="rounded-xl border border-overlay/50 bg-onyx p-4">
+                    <p className="text-sm font-semibold text-gold-500">
                       {item.year}
                     </p>
-                    <p className="mt-1 text-sm text-silver-mist">{item.text}</p>
+                    <p className="mt-1 text-sm text-text-secondary">{item.text}</p>
                   </div>
                 </div>
 

@@ -80,10 +80,10 @@ export function TracingBeam({
               y1={y1}
               y2={y2}
             >
-              <stop stopColor="#7C3AED" stopOpacity="0" />
-              <stop stopColor="#7C3AED" />
-              <stop offset="0.325" stopColor="#D4AF37" />
-              <stop offset="1" stopColor="#D4AF37" stopOpacity="0" />
+              <stop stopColor="#B91C3C" stopOpacity="0" />
+              <stop stopColor="#B91C3C" />
+              <stop offset="0.325" stopColor="#C9A84C" />
+              <stop offset="1" stopColor="#C9A84C" stopOpacity="0" />
             </motion.linearGradient>
           </defs>
         </svg>

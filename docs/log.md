@@ -6,6 +6,275 @@
 
 ---
 
+## Сессия 52 — 2026-03-10 — Polish: Preloader, Custom Cursor, Noise Overlay, Blog Loading
+
+### Что сделано
+- **Preloader** (`components/ui/preloader.tsx`): SVG pentagram path-draw animation (gold-500 на bg-void), `motion.path` pathLength 0→1 за 2с, AnimatePresence exit (opacity 0, scale 1.02, 0.8s), sessionStorage-гейт (показывается 1 раз за сессию), body overflow hidden во время показа, `useReducedMotion()` → skip
+- **Custom Cursor** (`components/ui/custom-cursor.tsx`): dot 8px (мгновенное следование через useMotionValue) + ring 32px (spring lag: stiffness 150, damping 20, mass 0.5), `mix-blend-mode: difference`, scale 1.5x на hover интерактивных элементов (a, button, etc.), `matchMedia("(pointer: coarse)")` — скрыт на тач-устройствах, `useReducedMotion()` → skip
+- **Noise Overlay**: статичный server-rendered div с SVG fractalNoise (opacity 0.03, mix-blend-overlay), pointer-events: none, z-[9998]
+- **Cursor CSS** (`app/globals.css`): `.custom-cursor-active` скрывает дефолтный курсор, override в `@media (prefers-reduced-motion: reduce)`
+- **Blog loading skeleton** (`app/[locale]/blog/loading.tsx`): Next.js loading.tsx для первичной загрузки страницы блога (force-dynamic SSR)
+- **Blog Suspense streaming** (`app/[locale]/blog/page.tsx`): вынес загрузку постов в async-компонент `BlogPosts`, обернул в `<Suspense key={postsKey}>` с `BlogPostsSkeleton` fallback — при переключении категорий/страниц показывается скелетон, заголовок и фильтр остаются видимыми
+
+### Z-Index стек
+| Элемент | z-index |
+|---------|---------|
+| Header | 50 |
+| Noise overlay | 9998 |
+| Mobile menu | 9999 |
+| Custom cursor | 99990 |
+| Preloader | 99999 |
+
+### Файлы изменены
+- `components/ui/preloader.tsx` (new)
+- `components/ui/custom-cursor.tsx` (new)
+- `components/blog/blog-posts.tsx` (new) — extracted async server component
+- `components/blog/blog-posts-skeleton.tsx` (new) — skeleton for Suspense fallback
+- `app/[locale]/layout.tsx` — интеграция Preloader, CustomCursor, noise overlay div
+- `app/[locale]/blog/page.tsx` — refactored: Suspense + BlogPosts extraction
+- `app/[locale]/blog/loading.tsx` (new) — full-page skeleton
+- `app/globals.css` — cursor-hiding CSS + reduced-motion override
+
+### Статус
+- Iteration 9.11 (Polish) — preloader, custom cursor, noise overlay ✅
+- Blog loading states — skeleton + Suspense streaming ✅
+- `npm run build` проходит
+
+---
+
+## Сессия 51 — 2026-03-09 — Category & Service pages — Crimson Alchemy
+
+### Что сделано
+- **CategoryHero** (`components/category/category-hero.tsx`): bg-void→bg-onyx, atmospheric glow с accent color категории (dynamic RGBA), ScrollReveal на контенте, `"use client"` directive
+- **ServiceCard** (`components/category/service-card.tsx`): converted to client component с `useState` для hover, accent colors per category via `getAccentConfig()` (borderGlow, shadowGlow, bgTint), border tokens `border-overlay/50`
+- **Category page** (`app/[locale]/[categorySlug]/page.tsx`): grid 3→2 cols (lg:grid-cols-2), передача `icon` prop в CategoryHero и ServiceCard, ScrollReveal на заголовке и CTA, StaggerContainer/StaggerItem на сетке, CTA button gradient style
+- **ServiceFaq** (`components/service/service-faq.tsx`): border-overlay/50, hover:text-crimson-400 на вопросе (group/faq pattern), ScrollReveal wrapper
+- **ServiceInfoBlock** (`components/service/service-info-block.tsx`): border-overlay/50
+- **ServicePrevNext** (`components/service/service-prev-next.tsx`): новый компонент — prev/next навигация между услугами с ChevronLeft/Right, hover:text-crimson-400
+- **Service page** (`app/[locale]/[categorySlug]/[serviceSlug]/page.tsx`): category badge (icon + title, accent colors), atmospheric glow с accent color, ScrollReveal на hero/description/CTA, sibling query для prev/next, gradient CTA button
+- **i18n**: добавлены ключи `prev_service`/`next_service` во все 3 локали
+
+### Файлы изменены
+- `components/category/category-hero.tsx`
+- `components/category/service-card.tsx`
+- `components/service/service-info-block.tsx`
+- `components/service/service-faq.tsx`
+- `components/service/service-prev-next.tsx` (new)
+- `app/[locale]/[categorySlug]/page.tsx`
+- `app/[locale]/[categorySlug]/[serviceSlug]/page.tsx`
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json`
+
+### Iteration 9.7 ✅
+
+---
+
+## Сессия 50 — 2026-03-09 — Home sections + blog fix — Crimson Alchemy
+
+### Что сделано
+- **About Brief** (`about-brief-section.tsx`): новый layout — фото слева с gradient mask, пронумерованные блоки (01, 02, 03) справа через StaggerReveal, золотой accent label + heading pattern
+- **Latest Posts** (`latest-posts-section.tsx`, `blog-card.tsx`): uniform 3-column grid (без featured), карточки одной высоты через h-full flex-col, gradient placeholder с Lucide FileText иконкой вместо пустой области, badge категории absolute поверх изображения, meta-строка (дата + время чтения)
+- **Testimonials** (`testimonials-section.tsx`): desktop — InfiniteMovingCards, mobile — Embla Carousel с dot indicators (gold-500 active), bg-obsidian, ScrollReveal на заголовке
+- **CTA** (`cta-section.tsx`): animated radial glow (framer-motion opacity pulse), gradient button from-crimson-600 to-crimson-500, gold accent label, ScrollReveal
+- **SectionDivider** (`components/ui/section-divider.tsx`): новый компонент — четырёхконечная звезда SVG (gold-500/50) с gradient lines, slow rotate animation (20s), reduced motion fallback
+- **Homepage** (`app/[locale]/page.tsx`): заменён CelestialDivider на SectionDivider, добавлены разделители между секциями, убран неиспользуемый import extractPlainText
+- **i18n**: добавлены ключи bio_01–03 (title/text), label для about/blog/cta во все 3 локали
+
+### Файлы изменены
+- `components/home/about-brief-section.tsx` — numbered bio layout
+- `components/home/blog-card.tsx` — uniform card, image fallback, meta row
+- `components/home/latest-posts-section.tsx` — uniform 3-col grid, StaggerReveal
+- `components/home/testimonials-section.tsx` — Embla mobile + bg-obsidian
+- `components/home/cta-section.tsx` — animated glow + client component
+- `components/ui/section-divider.tsx` — NEW
+- `app/[locale]/page.tsx` — section composition update
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json` — new keys
+
+### Билд: ✅
+
+---
+
+## Сессия 49 — 2026-03-09 — Header, Footer, Mobile Menu — Crimson Alchemy
+
+### Что сделано
+- **Header**: добавлена CTA кнопка «Записаться» (desktop), реализован scroll-hide/show через useScroll + useMotionValueEvent
+- **Mobile Menu**: цвет ссылок gold-500 → text-primary, close button → text-secondary, размер text-2xl, добавлена CTA кнопка внизу (полноширинная), улучшена анимация стаггера
+- **Footer**: border-overlay/50, все тексты text-text-secondary, hover:text-crimson-400, copyright text-text-muted, добавлен marquee с именем практика
+- **Language Switcher**: неактивная локаль text-text-muted (было text-text-secondary)
+- **i18n**: добавлен ключ `nav.cta` во все 3 локали (RU/EN/UK)
+
+### Файлы изменены
+- `components/header.tsx` — CTA + scroll-hide
+- `components/mobile-menu.tsx` — цвета + CTA
+- `components/footer.tsx` — цвета + marquee
+- `components/language-switcher.tsx` — неактивная локаль
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json` — nav.cta
+
+### Билд: ✅
+
+---
+
+## Сессия 48 — 2026-03-09 — Bento grid service cards with accent colors
+
+### Задача:
+Переделать секцию услуг на главной в bento grid с уникальными accent colors per category.
+
+### Сделано:
+1. **Accent color система** (`components/home/icon-map.tsx`): `AccentConfig` интерфейс + `accentMap` по icon-ключу. 5 категорий: crimson (Таро), gold (Ритуалистика), rose (Сопровождение), emerald (Обучение), amethyst (Регресс). Каждая имеет iconColor, borderGlow, shadowGlow, bgTint, iconBg, iconBorder, linkColor.
+2. **Bento grid layout** (`components/home/service-categories-section.tsx`): `lg:grid-cols-3 gap-4 lg:gap-6`. Порядок зафиксирован через `bentoOrder` массив (candle → book → compass → cards → spiral). Ритуалы: `lg:col-span-2`, первая строка `lg:min-h-[320px]`, вторая `min-h-[280px]`.
+3. **Карточка** (`components/home/service-category-card.tsx`): client component с `motion.div` (spring hover: stiffness 300, damping 20, y:-4, scale:1.02). Динамические accent colors через inline styles (border glow, shadow, bg tint) + Tailwind classes (icon container, link color). `rounded-3xl`, Meteors эффект сохранён.
+4. **Layout**:
+   ```
+   ┌─────────────────────┬──────────────┐
+   │  🕯 Ритуалы (2col)  │ 📚 Обучение  │
+   ├──────────┬──────────┼──────────────┤
+   │ 🤝 Сопр  │ 🔮 Таро  │ 🌀 Регресс  │
+   └──────────┴──────────┴──────────────┘
+   ```
+5. **Build**: ✅
+
+### Файлы:
+- `components/home/icon-map.tsx` — AccentConfig + accentMap + getAccentConfig()
+- `components/home/service-categories-section.tsx` — bento grid + bentoOrder
+- `components/home/service-category-card.tsx` — client component + motion hover + dynamic accents
+
+---
+
+## Сессия 47 — 2026-03-09 — Mobile menu overlay + hero photo vignette (v2)
+
+### Задача:
+Fix два mobile бага: прозрачное меню и резкие края фото.
+
+### Сделано:
+1. **Mobile menu** (`components/mobile-menu.tsx`): полный рефактор — `createPortal(document.body)` выносит оверлей за пределы stacking context header'а (header имеет `backdrop-blur-xl` → создаёт новый stacking context). `z-[9999]`, inline `backgroundColor: "#0B0B0F"` (hardcode). Отдельный `MenuOverlay` компонент. `mounted` state для SSR safety.
+2. **Hero photo mobile** (`components/home/hero-section.tsx`): радиальная виньетка `radial-gradient(ellipse 70% 60% at center, black 40%, transparent 100%)`. Два отдельных photo блока: mobile (`lg:hidden` + vignette) и desktop (`hidden lg:block` + left/bottom fades).
+3. **Build**: ✅
+
+---
+
+## Сессия 46 — 2026-03-09 — Hero mobile fix: CTAs below photo + reduce cropping
+
+### Задача:
+Fix mobile hero: переместить CTA кнопки под фото, уменьшить обрезку фото.
+
+### Сделано:
+1. **CTA порядок на mobile**: Заголовок → Подзаголовок → Фото → CTA кнопки
+   - Два CTA блока: `hidden lg:flex` (desktop, внутри текстовой колонки) + `flex lg:hidden` (mobile, под фото)
+   - Desktop layout не затронут
+2. **Фото обрезка**: `h-[50vh]` → `min-h-[60vh]`, `object-cover` → `object-contain` на mobile
+   - Desktop: по-прежнему `object-cover object-center`
+3. **Grid**: убран `min-h-svh` и `items-center` на mobile (только `lg:min-h-svh lg:items-center`)
+4. **Build**: ✅
+
+---
+
+## Сессия 45 — 2026-03-09 — Hero: split layout with practitioner photo (9.3)
+
+### Задача:
+Итерация 9.3 — полная переработка hero-section: split layout с фото практика.
+
+### Сделано:
+1. **Полностью переписан `components/home/hero-section.tsx`**:
+   - Split grid layout: `grid-cols-[55fr_45fr]` (desktop), stacked (mobile)
+   - Левая часть (55%): H1 + подзаголовок + 2 CTA кнопки (primary gradient + ghost)
+   - Правая часть (45%): фото практика через `next/image` с priority
+   - Фото: CSS gradient mask (left edge desktop, top edge mobile) + bottom fade + radial glow "aura"
+   - Mobile: `object-top` для фокуса на лицо, `max-h-[50vh]`
+   - CTA кнопки full-width на мобильных
+2. **Анимации** (framer-motion, respect prefers-reduced-motion):
+   - H1: blur-to-sharp reveal (blur 10px→0, opacity 0→1, y 20%→0)
+   - Subtitle: fade-up delay 0.3s
+   - CTA: fade-up delay 0.5s
+   - Photo: fade-in + scale 1.05→1 delay 0.2s
+   - Scroll indicator: анимированная стрелка вниз (desktop only)
+3. **Убраны**: aurora, starfield, parallax stars — заменены на чистый split layout
+4. **Build**: ✅ проходит без ошибок
+
+### Текущий статус:
+- Итерация 9.3 ✅ завершена
+- Следующая: 9.4 — Services bento grid с accent colors
+
+---
+
+## Сессия 44 — 2026-03-09 — Crimson Alchemy: component migration (9.2)
+
+### Задача:
+Итерация 9.2 — замена всех старых цветовых токенов Cosmic Night на Crimson Alchemy во ВСЕХ компонентах и страницах.
+
+### Сделано:
+1. **38 файлов мигрированы** (198 замен), 0 старых токенов осталось:
+   - Layout (4): header, footer, mobile-menu, language-switcher
+   - Home sections (9): hero, services, service-card, about-brief, blog-card, cta, cta-heading, latest-posts, testimonials
+   - Blog (5): featured-blog-card, blog-pagination, category-filter, post-navigation, related-posts
+   - Category/Service (4): category-hero, service-card, service-faq, service-info-block
+   - About (2): about-hero, about-timeline
+   - UI (5): celestial-divider, typewriter-effect, tracing-beam, gradient-divider + aceternity (infinite-moving-cards, meteors, aurora-background, sparkles)
+   - Pages (6): category, service, about, blog list, blog post, home
+
+2. **Замены токенов**:
+   - `cosmic-bg/cosmic-black` → `void`, `cosmic-card` → `onyx`, `surface-1` → `obsidian`
+   - `cosmic-violet/astral-violet` → `crimson-500` (interactive) / `crimson-400` (hover)
+   - `cosmic-gold/celestial-gold` → `gold-500`
+   - `cosmic-white/star-white` → `text-primary`, `silver-mist` → `text-secondary`
+   - `midnight-navy` → `obsidian`, `mystic-purple` → `amethyst-900`
+
+3. **Inline hex обновлены**: card gradients (#1A1A24→#1C1C22), CTA bg gradients (violet rgba→crimson rgba), aurora effects, tracing-beam SVG stops, sparkle colors
+
+4. **CTA кнопки**: `bg-crimson-500 hover:bg-crimson-400 text-text-primary` + crimson glow shadow
+5. **Ghost кнопки**: `border-crimson-500/40 text-crimson-400 hover:bg-crimson-500/10`
+6. **DB connection**: обновлён `.env.local` на Neon PostgreSQL (localhost→cloud)
+
+### Статус:
+- ✅ `npm run build` — проходит без ошибок
+- ✅ grep по старым токенам — 0 совпадений в components/ и app/[locale]/
+- Коммит: `refactor: migrate all components to Crimson Alchemy palette` (28a8193)
+
+### Следующий шаг:
+- Итерация 9.3: Hero — split layout с фото практика + gradient mask + blur text reveal
+
+---
+
+## Сессия 43 — 2026-03-09 — Crimson Alchemy: color palette replacement (9.1)
+
+### Задача:
+Итерация 9.1 — полная замена цветовой палитры Cosmic Night → Crimson Alchemy в `app/globals.css`.
+
+### Сделано:
+1. **@theme inline**: удалены все старые токены (cosmic-*, surface-1..4, midnight-navy, mystic-purple, astral-violet, celestial-gold, star-white, silver-mist, cosmic-gold-light/dark). Добавлена новая палитра:
+   - Backgrounds: void (#0B0B0F), obsidian (#131316), onyx (#1C1C22), elevated (#26262E), overlay (#32323C)
+   - Crimson: 950/600/500/400
+   - Emerald: 950/600/500/400
+   - Gold: 700/500/300
+   - Amethyst: 900 (gradient overlays)
+   - Text: text-primary (#F0EBE0), text-body (#D4CFC4), text-secondary (#A8A29E), text-muted (#78716C)
+2. **@layer base**: body → `bg-void text-text-body`, добавлен `::selection` (crimson-500/30)
+3. **Keyframes**: добавлен `crimson-glow` (box-shadow пульсация), `shimmer`, `slow-rotate`. Удалены `aurora`, `gold-shimmer` (заменены)
+4. **Hero aurora**: rgba-цвета обновлены с purple/violet на crimson-950/crimson-500
+5. **Starfield dots**: rgba обновлены на text-primary (#F0EBE0) и gold-500 (#C9A84C)
+6. **Утилиты**: добавлены `crimson-shimmer`, `divider-crimson`, `divider-gold`. Обновлены `gold-shimmer`, `gold-glow`, `gradient-border`
+7. **prose-alchemy**: новый класс rich text (crimson links, gold blockquote borders, obsidian code bg). `prose-cosmic` оставлен как алиас на время миграции
+8. **Reduced motion**: обновлены fallback-цвета
+9. **.dark**: `--background: #0B0B0F`, `--foreground: #F0EBE0`
+
+### Build:
+`✓ Compiled successfully` — CSS/TS без ошибок. Единственный fail — Postgres connection (БД не запущена, не связано).
+
+### 33 файла с ссылками на старые токены (миграция в 9.2):
+- **Home**: hero-section, service-categories-section, service-category-card, about-brief-section, latest-posts-section, blog-card, cta-section, cta-heading, testimonials-section
+- **Layout**: header, footer, mobile-menu, language-switcher
+- **Pages**: about, categorySlug, serviceSlug, blog, blog/[slug]
+- **Category/Service**: category-hero, service-card, service-faq, service-info-block
+- **Blog**: featured-blog-card, related-posts, post-navigation, blog-pagination, category-filter
+- **UI**: celestial-divider, typewriter-effect, infinite-moving-cards, meteors
+- **About**: about-hero, about-timeline
+
+### Файлы изменены:
+- app/globals.css (241 вставок, 110 удалений)
+- docs/log.md
+
+### Коммит: b2282a3
+
+---
+
 ## Сессия 42 — 2026-03-08 — Fix mobile horizontal scroll
 
 ### Проблема:

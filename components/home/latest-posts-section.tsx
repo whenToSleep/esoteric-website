@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { BlogCard } from "@/components/home/blog-card";
+import { StaggerContainer, StaggerItem, ScrollReveal, TextReveal } from "@/components/animations";
 
 interface Post {
   id: string | number;
@@ -19,28 +20,41 @@ export async function LatestPostsSection({ posts }: { posts: Post[] }) {
   const t = await getTranslations("home.blog");
 
   return (
-    <section className="px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
+    <section className="bg-void px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-center font-heading text-section text-cosmic-gold md:mb-12 lg:mb-16">
-          {t("section_title")}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-          {posts.map((post) => (
-            <BlogCard
-              key={post.id}
-              title={post.title}
-              slug={post.slug}
-              excerpt={post.excerpt}
-              featuredImageUrl={post.featuredImageUrl}
-              featuredImageAlt={post.featuredImageAlt}
-              categoryTitle={post.categoryTitle}
-              publishedAt={post.publishedAt}
-              readingTime={post.readingTime}
-              readMoreLabel={t("read_more")}
-              minReadLabel={t("min_read")}
-            />
-          ))}
+        <div className="mb-8 text-center md:mb-12 lg:mb-16">
+          <ScrollReveal direction="fade">
+            <span className="font-body text-sm uppercase tracking-widest text-gold-500">
+              {t("label")}
+            </span>
+          </ScrollReveal>
+          <TextReveal
+            text={t("section_title")}
+            type="words"
+            as="h2"
+            className="mt-3 font-heading text-section font-semibold text-text-primary"
+            delay={0.1}
+          />
         </div>
+
+        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <StaggerItem key={post.id}>
+              <BlogCard
+                title={post.title}
+                slug={post.slug}
+                excerpt={post.excerpt}
+                featuredImageUrl={post.featuredImageUrl}
+                featuredImageAlt={post.featuredImageAlt}
+                categoryTitle={post.categoryTitle}
+                publishedAt={post.publishedAt}
+                readingTime={post.readingTime}
+                readMoreLabel={t("read_more")}
+                minReadLabel={t("min_read")}
+              />
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );

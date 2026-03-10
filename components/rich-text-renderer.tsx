@@ -11,7 +11,7 @@ export function RichTextRenderer({ content, className }: RichTextRendererProps) 
   if (!content) return null;
 
   return (
-    <div className={cn("prose-cosmic", className)}>
+    <div className={cn("prose-alchemy", className)}>
       <RichText data={content} />
     </div>
   );

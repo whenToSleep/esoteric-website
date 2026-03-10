@@ -21,12 +21,12 @@ export function PostNavigation({
       {prevPost ? (
         <Link
           href={`/blog/${prevPost.slug}`}
-          className="group flex items-center gap-3 rounded-xl border border-celestial-gold/20 bg-midnight-navy p-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+          className="group flex items-center gap-3 rounded-xl border border-overlay/50 bg-onyx p-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(185,28,60,0.15)]"
         >
-          <ChevronLeft className="h-5 w-5 shrink-0 text-celestial-gold" />
+          <ChevronLeft className="h-5 w-5 shrink-0 text-crimson-400" />
           <div className="min-w-0">
-            <span className="text-xs text-silver-mist">{prevLabel}</span>
-            <p className="truncate font-heading text-sm text-star-white">
+            <span className="text-xs text-text-secondary">{prevLabel}</span>
+            <p className="truncate font-heading text-sm text-text-primary">
               {prevPost.title}
             </p>
           </div>
@@ -37,15 +37,15 @@ export function PostNavigation({
       {nextPost ? (
         <Link
           href={`/blog/${nextPost.slug}`}
-          className="group flex items-center justify-end gap-3 rounded-xl border border-celestial-gold/20 bg-midnight-navy p-4 text-right transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+          className="group flex items-center justify-end gap-3 rounded-xl border border-overlay/50 bg-onyx p-4 text-right transition-all duration-300 hover:shadow-[0_0_20px_rgba(185,28,60,0.15)]"
         >
           <div className="min-w-0">
-            <span className="text-xs text-silver-mist">{nextLabel}</span>
-            <p className="truncate font-heading text-sm text-star-white">
+            <span className="text-xs text-text-secondary">{nextLabel}</span>
+            <p className="truncate font-heading text-sm text-text-primary">
               {nextPost.title}
             </p>
           </div>
-          <ChevronRight className="h-5 w-5 shrink-0 text-celestial-gold" />
+          <ChevronRight className="h-5 w-5 shrink-0 text-crimson-400" />
         </Link>
       ) : (
         <div />

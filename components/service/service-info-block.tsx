@@ -35,15 +35,15 @@ export async function ServiceInfoBlock({
       {items.map((item) => (
         <div
           key={item.label}
-          className="rounded-xl border border-white/[0.06] p-5 text-center"
+          className="rounded-xl border border-overlay/50 p-5 text-center"
           style={{
-            background: "linear-gradient(180deg, #16161E 0%, #111118 100%)",
+            background: "linear-gradient(180deg, #1C1C22 0%, #131316 100%)",
           }}
         >
-          <p className="text-small text-cosmic-white/50">{item.label}</p>
+          <p className="text-small text-text-muted">{item.label}</p>
           <p
             className={`mt-1 text-lg font-medium ${
-              item.accent ? "text-cosmic-gold" : "text-cosmic-white"
+              item.accent ? "text-gold-500" : "text-text-primary"
             }`}
           >
             {item.value}

@@ -24,7 +24,7 @@ interface Particle {
 export function Sparkles({
   className,
   particleCount = 50,
-  particleColor = "#D4AF37",
+  particleColor = "#C9A84C",
   minSize = 1,
   maxSize = 3,
 }: SparklesProps) {

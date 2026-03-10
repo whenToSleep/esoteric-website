@@ -22,7 +22,7 @@ export function AuroraBackground({
       className={cn("absolute inset-0", className)}
       style={{
         background:
-          "linear-gradient(180deg, #0A0A0F 0%, #0D1137 40%, #2D1B69 70%, #0D1137 100%)",
+          "linear-gradient(180deg, #0B0B0F 0%, #131316 40%, #2D1B4E 70%, #131316 100%)",
       }}
       {...props}
     >
@@ -31,9 +31,9 @@ export function AuroraBackground({
           className="pointer-events-none absolute inset-0 opacity-50"
           style={{
             backgroundImage: `
-              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.3), transparent),
-              radial-gradient(ellipse 60% 40% at 70% 50%, rgba(45, 27, 105, 0.4), transparent),
-              radial-gradient(ellipse 50% 30% at 30% 70%, rgba(212, 175, 55, 0.08), transparent)
+              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(185, 28, 60, 0.3), transparent),
+              radial-gradient(ellipse 60% 40% at 70% 50%, rgba(42, 10, 15, 0.4), transparent),
+              radial-gradient(ellipse 50% 30% at 30% 70%, rgba(201, 168, 76, 0.08), transparent)
             `,
             animation: "aurora 15s ease-in-out infinite alternate",
           }}
@@ -44,7 +44,7 @@ export function AuroraBackground({
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 50%, transparent 20%, #0A0A0F 80%)",
+              "radial-gradient(ellipse at 50% 50%, transparent 20%, #0B0B0F 80%)",
           }}
         />
       )}
