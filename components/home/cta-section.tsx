@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "framer-motion";
-import { ScrollReveal } from "@/components/animations";
+import { ScrollReveal, MagneticButton } from "@/components/animations";
 
 export function CTASection({ namespace = "home.cta" }: { namespace?: string }) {
   const t = useTranslations(namespace);
@@ -49,18 +49,20 @@ export function CTASection({ namespace = "home.cta" }: { namespace?: string }) {
           <p className="mt-4 font-body text-lg text-text-secondary">
             {t("subtitle")}
           </p>
-          <a
-            href="#"
-            className="mt-10 inline-flex min-h-12 items-center justify-center
-                       rounded-full bg-linear-to-r from-crimson-600 to-crimson-500
-                       px-10 py-3.5 font-body text-base font-medium text-text-primary
-                       transition-all duration-300
-                       hover:brightness-110
-                       hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)]
-                       active:scale-[0.97]"
-          >
-            {t("button")}
-          </a>
+          <MagneticButton className="mt-10">
+            <a
+              href="#"
+              className="inline-flex min-h-12 items-center justify-center
+                         rounded-full bg-linear-to-r from-crimson-600 to-crimson-500
+                         px-10 py-3.5 font-body text-base font-medium text-text-primary
+                         transition-all duration-300
+                         hover:brightness-110
+                         hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)]
+                         active:scale-[0.97]"
+            >
+              {t("button")}
+            </a>
+          </MagneticButton>
         </div>
       </ScrollReveal>
     </section>

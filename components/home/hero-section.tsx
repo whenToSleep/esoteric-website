@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "framer-motion";
 import { ScrollButton } from "@/components/home/scroll-button";
+import { MagneticButton } from "@/components/animations";
 
 const easeOut = [0.17, 0.55, 0.55, 1] as const;
 
@@ -92,7 +93,22 @@ export function HeroSection() {
             className="mt-10 hidden lg:flex flex-row gap-4"
             {...ctaMotion}
           >
-            {ctaButtons}
+            <MagneticButton>
+              <a
+                href="#"
+                className="inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-full bg-linear-to-r from-crimson-600 to-crimson-500 text-text-primary font-body font-medium transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)] active:scale-[0.98]"
+              >
+                {t("cta_primary")}
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <ScrollButton
+                targetId="services"
+                className="inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-full border border-crimson-500/40 text-crimson-400 font-body font-medium transition-colors duration-300 hover:bg-crimson-500/10 active:scale-[0.98]"
+              >
+                {t("cta_secondary")}
+              </ScrollButton>
+            </MagneticButton>
           </motion.div>
         </div>
 
