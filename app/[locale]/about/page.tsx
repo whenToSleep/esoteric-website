@@ -4,7 +4,9 @@ import { getTranslations } from "next-intl/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import { AboutHero } from "@/components/about/about-hero";
+import { AboutBioSections } from "@/components/about/about-bio-sections";
 import { AboutTimeline } from "@/components/about/about-timeline";
+import { CTASection } from "@/components/home/cta-section";
 import { RichTextRenderer } from "@/components/rich-text-renderer";
 import { generatePersonJsonLd } from "@/lib/json-ld";
 import { extractPlainText } from "@/lib/rich-text-utils";
@@ -87,33 +89,11 @@ export default async function AboutPage({ params }: Props) {
         {page.content && <RichTextRenderer content={page.content} />}
       </AboutHero>
 
+      <AboutBioSections />
+
       <AboutTimeline locale={locale} items={page.timeline} />
 
-      <section className="relative overflow-hidden px-4 py-16 md:py-20 lg:py-30">
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, #0B0B0F, rgba(42,10,15,0.3) 50%, #0B0B0F)",
-          }}
-        />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-crimson-950/15 blur-[120px]" />
-        <div className="relative mx-auto max-w-3xl text-center">
-          <div className="mx-auto mb-8 h-px w-24 bg-linear-to-r from-transparent via-gold-500/50 to-transparent" />
-          <h2 className="font-heading text-section text-text-primary">
-            {t("cta_title")}
-          </h2>
-          <p className="mt-4 font-body text-body text-text-secondary">
-            {t("cta_subtitle")}
-          </p>
-          <a
-            href="#"
-            className="mt-8 inline-flex items-center justify-center min-h-12 px-10 py-3.5 rounded-full bg-crimson-500 text-text-primary font-body font-medium text-base transition-all duration-300 hover:bg-crimson-400 hover:shadow-[0_0_30px_-5px_rgba(185,28,60,0.5)] active:scale-[0.97]"
-          >
-            {t("cta_button")}
-          </a>
-        </div>
-      </section>
+      <CTASection namespace="about.cta" />
     </>
   );
 }

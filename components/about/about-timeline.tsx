@@ -36,7 +36,7 @@ export function AboutTimeline({
       : fallbackData.default.map((item) => ({ year: item.year, text: item.title[lang] || item.title.ru }));
 
   return (
-    <section className="px-4 py-12 md:py-16 lg:py-20">
+    <section className="bg-void px-4 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-10 text-center font-heading text-2xl font-semibold text-text-primary md:text-3xl">
           {t("timeline_title")}

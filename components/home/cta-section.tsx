@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "framer-motion";
 import { ScrollReveal } from "@/components/animations";
 
-export function CTASection() {
-  const t = useTranslations("home.cta");
+export function CTASection({ namespace = "home.cta" }: { namespace?: string }) {
+  const t = useTranslations(namespace);
   const prefersReducedMotion = useReducedMotion();
 
   return (
