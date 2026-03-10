@@ -18,21 +18,20 @@ function StarSVG() {
 }
 
 function MoonSVG() {
-  // ☽○☾ — two circles with fill-rule="evenodd" punch out overlap → crescent
+  // ☽○☾ — each crescent traced between intersection points of two offset circles (r=6, offset=4)
+  // Intersections at y = 10 ± √32 ≈ 4.34, 15.66
   return (
     <>
-      {/* ☽ Left crescent: circle at (8,10) minus circle at (12,10) → bulge LEFT */}
+      {/* ☽ Left crescent: outer arc of circle(8,10) + inner arc of circle(12,10) */}
       <path
-        fillRule="evenodd"
-        d="M2 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z M6 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z"
+        d="M10 4.34 A6 6 0 1 0 10 15.66 A6 6 0 0 1 10 4.34Z"
         fill="currentColor"
       />
-      {/* ○ Center full moon */}
+      {/* ○ Full moon */}
       <circle cx="24" cy="10" r="6" fill="currentColor" />
-      {/* ☾ Right crescent: circle at (40,10) minus circle at (36,10) → bulge RIGHT */}
+      {/* ☾ Right crescent: outer arc of circle(40,10) + inner arc of circle(36,10) */}
       <path
-        fillRule="evenodd"
-        d="M34 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z M30 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z"
+        d="M38 4.34 A6 6 0 1 1 38 15.66 A6 6 0 0 0 38 4.34Z"
         fill="currentColor"
       />
     </>
