@@ -131,13 +131,13 @@ export default async function HomePage({ params }: Props) {
       <HeroSection />
       <GradientDivider from="#0B0B0F" to="#0B0B0F" />
       <ServiceCategoriesSection categories={categories} />
-      <SectionDivider />
+      <SectionDivider variant="moon" />
       <AboutBriefSection {...aboutData} />
       <GradientDivider from="#131316" to="#0B0B0F" />
       <LatestPostsSection posts={posts} />
-      <SectionDivider />
+      <SectionDivider variant="moon" />
       <TestimonialsSection testimonials={testimonials} />
-      <SectionDivider />
+      <SectionDivider variant="moon" />
       <CTASection />
     </>
   );

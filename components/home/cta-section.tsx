@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "framer-motion";
-import { ScrollReveal, MagneticButton } from "@/components/animations";
+import { ScrollReveal, TextReveal, MagneticButton } from "@/components/animations";
 
 export function CTASection({ namespace = "home.cta" }: { namespace?: string }) {
   const t = useTranslations(namespace);
@@ -43,9 +43,13 @@ export function CTASection({ namespace = "home.cta" }: { namespace?: string }) {
           <span className="font-body text-sm uppercase tracking-widest text-gold-500">
             {t("label")}
           </span>
-          <h2 className="mt-3 font-heading text-section text-text-primary">
-            {t("title")}
-          </h2>
+          <TextReveal
+            text={t("title")}
+            type="words"
+            as="h2"
+            className="mt-3 font-heading text-section text-text-primary"
+            delay={0.1}
+          />
           <p className="mt-4 font-body text-lg text-text-secondary">
             {t("subtitle")}
           </p>

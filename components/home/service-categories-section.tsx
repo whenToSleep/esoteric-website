@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { ServiceCategoryCard } from "@/components/home/service-category-card";
-import { ScrollReveal } from "@/components/animations";
+import { TextReveal } from "@/components/animations";
 import { StaggerContainer, StaggerItem } from "@/components/animations";
 
 interface Category {
@@ -36,11 +36,12 @@ export async function ServiceCategoriesSection({
   return (
     <section id="services" className="px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal direction="up">
-          <h2 className="mb-8 text-center font-heading text-section text-gold-500 md:mb-12 lg:mb-16">
-            {t("section_title")}
-          </h2>
-        </ScrollReveal>
+        <TextReveal
+          text={t("section_title")}
+          type="words"
+          as="h2"
+          className="mb-8 text-center font-heading text-section text-gold-500 md:mb-12 lg:mb-16"
+        />
         <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {[...categories].sort((a, b) => bentoOrder.indexOf(a.icon) - bentoOrder.indexOf(b.icon)).map((cat) => (
             <StaggerItem

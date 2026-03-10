@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
 import { TestimonialCard } from "@/components/ui/aceternity/infinite-moving-cards";
-import { ScrollReveal } from "@/components/animations";
+import { ScrollReveal, TextReveal } from "@/components/animations";
 
 interface Testimonial {
   clientName: string;
@@ -43,16 +43,20 @@ export function TestimonialsSection({
 
   return (
     <section className="bg-obsidian py-16 md:py-20 lg:py-30">
-      <ScrollReveal direction="up">
-        <div className="mb-8 text-center md:mb-12 lg:mb-16">
+      <div className="mb-8 text-center md:mb-12 lg:mb-16 px-4 sm:px-6">
+        <ScrollReveal direction="fade">
           <span className="font-body text-sm uppercase tracking-widest text-gold-500">
             {t("section_title")}
           </span>
-          <h2 className="mt-3 font-heading text-section font-semibold text-text-primary">
-            {t("section_title")}
-          </h2>
-        </div>
-      </ScrollReveal>
+        </ScrollReveal>
+        <TextReveal
+          text={t("section_title")}
+          type="words"
+          as="h2"
+          className="mt-3 font-heading text-section font-semibold text-text-primary"
+          delay={0.1}
+        />
+      </div>
 
       {/* Desktop: Infinite Moving Cards */}
       <div className="hidden md:block">

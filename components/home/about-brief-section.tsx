@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ScrollReveal } from "@/components/animations";
+import { ScrollReveal, TextReveal } from "@/components/animations";
 import { StaggerContainer, StaggerItem } from "@/components/animations";
 
 interface AboutBriefSectionProps {
@@ -22,16 +22,20 @@ export function AboutBriefSection({
   return (
     <section className="bg-obsidian px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-30">
       <div className="mx-auto max-w-6xl">
-        <ScrollReveal direction="up">
-          <div className="mb-10 text-center md:mb-14 lg:mb-16">
+        <div className="mb-10 text-center md:mb-14 lg:mb-16">
+          <ScrollReveal direction="fade">
             <span className="font-body text-sm uppercase tracking-widest text-gold-500">
               {t("label")}
             </span>
-            <h2 className="mt-3 font-heading text-section font-semibold text-text-primary">
-              {t("section_title")}
-            </h2>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+          <TextReveal
+            text={t("section_title")}
+            type="words"
+            as="h2"
+            className="mt-3 font-heading text-section font-semibold text-text-primary"
+            delay={0.1}
+          />
+        </div>
 
         <div className="grid items-start gap-10 md:grid-cols-[2fr_3fr] md:gap-12 lg:gap-16">
           {/* Photo with gradient mask */}
