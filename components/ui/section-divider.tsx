@@ -19,18 +19,19 @@ function StarSVG() {
 
 function MoonSVG() {
   // ☽○☾ — waning crescent (left), full moon (center), waxing crescent (right)
+  // Each crescent: outer arc (r=6) traces the bulge side, inner arc (r=4) traces the bite
   return (
     <>
-      {/* ☽ Left waning crescent — bulge faces left, opening faces right */}
+      {/* ☽ Left crescent — bulge LEFT, bite RIGHT */}
       <path
-        d="M10 1a9 9 0 0 1 0 18 7 7 0 0 0 0-18z"
+        d="M8 4 A6 6 0 1 0 8 16 A4 4 0 1 0 8 4Z"
         fill="currentColor"
       />
       {/* ○ Center full moon */}
       <circle cx="24" cy="10" r="6" fill="currentColor" />
-      {/* ☾ Right waxing crescent — bulge faces right, opening faces left */}
+      {/* ☾ Right crescent — bulge RIGHT, bite LEFT */}
       <path
-        d="M38 1a9 9 0 0 0 0 18 7 7 0 0 1 0-18z"
+        d="M40 4 A6 6 0 1 1 40 16 A4 4 0 1 1 40 4Z"
         fill="currentColor"
       />
     </>
