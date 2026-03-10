@@ -6,6 +6,42 @@
 
 ---
 
+## Сессия 52 — 2026-03-10 — Polish: Preloader, Custom Cursor, Noise Overlay, Blog Loading
+
+### Что сделано
+- **Preloader** (`components/ui/preloader.tsx`): SVG pentagram path-draw animation (gold-500 на bg-void), `motion.path` pathLength 0→1 за 2с, AnimatePresence exit (opacity 0, scale 1.02, 0.8s), sessionStorage-гейт (показывается 1 раз за сессию), body overflow hidden во время показа, `useReducedMotion()` → skip
+- **Custom Cursor** (`components/ui/custom-cursor.tsx`): dot 8px (мгновенное следование через useMotionValue) + ring 32px (spring lag: stiffness 150, damping 20, mass 0.5), `mix-blend-mode: difference`, scale 1.5x на hover интерактивных элементов (a, button, etc.), `matchMedia("(pointer: coarse)")` — скрыт на тач-устройствах, `useReducedMotion()` → skip
+- **Noise Overlay**: статичный server-rendered div с SVG fractalNoise (opacity 0.03, mix-blend-overlay), pointer-events: none, z-[9998]
+- **Cursor CSS** (`app/globals.css`): `.custom-cursor-active` скрывает дефолтный курсор, override в `@media (prefers-reduced-motion: reduce)`
+- **Blog loading skeleton** (`app/[locale]/blog/loading.tsx`): Next.js loading.tsx для первичной загрузки страницы блога (force-dynamic SSR)
+- **Blog Suspense streaming** (`app/[locale]/blog/page.tsx`): вынес загрузку постов в async-компонент `BlogPosts`, обернул в `<Suspense key={postsKey}>` с `BlogPostsSkeleton` fallback — при переключении категорий/страниц показывается скелетон, заголовок и фильтр остаются видимыми
+
+### Z-Index стек
+| Элемент | z-index |
+|---------|---------|
+| Header | 50 |
+| Noise overlay | 9998 |
+| Mobile menu | 9999 |
+| Custom cursor | 99990 |
+| Preloader | 99999 |
+
+### Файлы изменены
+- `components/ui/preloader.tsx` (new)
+- `components/ui/custom-cursor.tsx` (new)
+- `components/blog/blog-posts.tsx` (new) — extracted async server component
+- `components/blog/blog-posts-skeleton.tsx` (new) — skeleton for Suspense fallback
+- `app/[locale]/layout.tsx` — интеграция Preloader, CustomCursor, noise overlay div
+- `app/[locale]/blog/page.tsx` — refactored: Suspense + BlogPosts extraction
+- `app/[locale]/blog/loading.tsx` (new) — full-page skeleton
+- `app/globals.css` — cursor-hiding CSS + reduced-motion override
+
+### Статус
+- Iteration 9.11 (Polish) — preloader, custom cursor, noise overlay ✅
+- Blog loading states — skeleton + Suspense streaming ✅
+- `npm run build` проходит
+
+---
+
 ## Сессия 51 — 2026-03-09 — Category & Service pages — Crimson Alchemy
 
 ### Что сделано
