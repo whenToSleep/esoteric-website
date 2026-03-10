@@ -22,16 +22,16 @@ function MoonSVG() {
   // Intersections at y = 10 ± √32 ≈ 4.34, 15.66
   return (
     <>
-      {/* ☽ Left crescent: outer arc of circle(8,10) + inner arc of circle(12,10) */}
+      {/* ☽ Left crescent: bulge LEFT */}
       <path
-        d="M10 4.34 A6 6 0 1 0 10 15.66 A6 6 0 0 1 10 4.34Z"
+        d="M10 4.34 A6 6 0 1 1 10 15.66 A6 6 0 0 0 10 4.34Z"
         fill="currentColor"
       />
       {/* ○ Full moon */}
       <circle cx="24" cy="10" r="6" fill="currentColor" />
-      {/* ☾ Right crescent: outer arc of circle(40,10) + inner arc of circle(36,10) */}
+      {/* ☾ Right crescent: bulge RIGHT */}
       <path
-        d="M38 4.34 A6 6 0 1 1 38 15.66 A6 6 0 0 0 38 4.34Z"
+        d="M38 4.34 A6 6 0 1 0 38 15.66 A6 6 0 0 1 38 4.34Z"
         fill="currentColor"
       />
     </>
