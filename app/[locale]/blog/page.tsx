@@ -105,7 +105,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
           </div>
         </ScrollReveal>
 
-        <Suspense key={postsKey} fallback={<BlogPostsSkeleton />}>
+        <Suspense key={postsKey} fallback={<BlogPostsSkeleton showFeatured={!categorySlug && currentPage === 1} />}>
           <BlogPosts
             locale={localeTyped}
             currentPage={currentPage}
