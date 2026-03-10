@@ -18,18 +18,19 @@ function StarSVG() {
 }
 
 function MoonSVG() {
+  // ☽○☾ — waning crescent (left), full moon (center), waxing crescent (right)
   return (
     <>
-      {/* Left crescent (waning) */}
+      {/* ☽ Left waning crescent — bulge faces left, opening faces right */}
       <path
-        d="M8 2C5.8 3.6 4.5 6.1 4.5 9s1.3 5.4 3.5 7c-4.2-0.5-7.5-4-7.5-8.5S3.8 2.5 8 2z"
+        d="M10 1a9 9 0 0 1 0 18 7 7 0 0 0 0-18z"
         fill="currentColor"
       />
-      {/* Center full moon */}
-      <circle cx="18" cy="9" r="5" fill="currentColor" />
-      {/* Right crescent (waxing) */}
+      {/* ○ Center full moon */}
+      <circle cx="24" cy="10" r="6" fill="currentColor" />
+      {/* ☾ Right waxing crescent — bulge faces right, opening faces left */}
       <path
-        d="M28 2c2.2 1.6 3.5 4.1 3.5 7s-1.3 5.4-3.5 7c4.2-0.5 7.5-4 7.5-8.5S32.2 2.5 28 2z"
+        d="M38 1a9 9 0 0 0 0 18 7 7 0 0 1 0-18z"
         fill="currentColor"
       />
     </>
@@ -40,9 +41,9 @@ export function SectionDivider({ variant = "star" }: SectionDividerProps) {
   const prefersReducedMotion = useReducedMotion();
 
   const isMoon = variant === "moon";
-  const svgWidth = isMoon ? 36 : 20;
-  const svgHeight = isMoon ? 18 : 20;
-  const viewBox = isMoon ? "0 0 36 18" : "0 0 20 20";
+  const svgWidth = isMoon ? 48 : 20;
+  const svgHeight = isMoon ? 20 : 20;
+  const viewBox = isMoon ? "0 0 48 20" : "0 0 20 20";
 
   if (prefersReducedMotion) {
     return (
