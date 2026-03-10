@@ -160,7 +160,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
         ) : (
           <div key={postsKey}>
             {featuredPost && (
-              <ScrollReveal delay={0.15}>
+              <ScrollReveal direction="up" duration={0.6} delay={0.15}>
                 <div className="mb-8">
                   <FeaturedBlogCard
                     {...featuredPost}
