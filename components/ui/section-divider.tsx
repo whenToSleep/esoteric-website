@@ -18,20 +18,21 @@ function StarSVG() {
 }
 
 function MoonSVG() {
-  // ☽○☾ — waning crescent (left), full moon (center), waxing crescent (right)
-  // Each crescent: outer arc (r=6) traces the bulge side, inner arc (r=4) traces the bite
+  // ☽○☾ — two circles with fill-rule="evenodd" punch out overlap → crescent
   return (
     <>
-      {/* ☽ Left crescent — bulge LEFT, bite RIGHT */}
+      {/* ☽ Left crescent: circle at (8,10) minus circle at (12,10) → bulge LEFT */}
       <path
-        d="M8 4 A6 6 0 1 0 8 16 A4 4 0 1 0 8 4Z"
+        fillRule="evenodd"
+        d="M2 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z M6 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z"
         fill="currentColor"
       />
       {/* ○ Center full moon */}
       <circle cx="24" cy="10" r="6" fill="currentColor" />
-      {/* ☾ Right crescent — bulge RIGHT, bite LEFT */}
+      {/* ☾ Right crescent: circle at (40,10) minus circle at (36,10) → bulge RIGHT */}
       <path
-        d="M40 4 A6 6 0 1 1 40 16 A4 4 0 1 1 40 4Z"
+        fillRule="evenodd"
+        d="M34 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z M30 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0Z"
         fill="currentColor"
       />
     </>
