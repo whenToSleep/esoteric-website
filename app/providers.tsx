@@ -9,7 +9,7 @@ const loadFeatures = () =>
 export function MotionProviders({ children }: { children: React.ReactNode }) {
   return (
     <MotionConfig reducedMotion="user">
-      <LazyMotion features={loadFeatures} strict>
+      <LazyMotion features={loadFeatures}>
         <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
           {children}
         </ReactLenis>
