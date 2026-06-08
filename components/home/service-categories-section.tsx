@@ -15,14 +15,14 @@ interface Category {
 const bentoOrder = ["candle", "book", "compass", "cards"];
 
 function getGridClasses(icon: string): string {
-  // Ритуалы: spans 2 columns on desktop (first, large card)
-  if (icon === "candle") return "lg:col-span-2";
+  // Ритуалы (row 1, left) и Таро (row 2, right) — широкие карточки
+  if (icon === "candle" || icon === "cards") return "lg:col-span-2";
   return "";
 }
 
 function getMinHeight(icon: string): string {
-  // First row (Ритуалы + Обучение) taller
-  if (icon === "candle" || icon === "book") return "min-h-[280px] lg:min-h-[320px]";
+  // Широкие карточки чуть выше
+  if (icon === "candle" || icon === "cards" || icon === "book") return "min-h-[280px] lg:min-h-[320px]";
   return "min-h-[280px]";
 }
 

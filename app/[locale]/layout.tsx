@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer";
 import { MotionProviders } from "@/app/providers";
 import { Preloader } from "@/components/ui/preloader";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import "../globals.css";
 
 type Props = {
@@ -63,6 +64,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         >
           <NextIntlClientProvider>
             <MotionProviders>
+              <ScrollToTop />
               <Preloader />
               <CustomCursor />
               <Header />
