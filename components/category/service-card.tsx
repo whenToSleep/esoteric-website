@@ -53,14 +53,14 @@ export function ServiceCard({
 
       {/* Price + Duration */}
       {(price || duration) && (
-        <div className="mt-4 flex items-center justify-between border-t border-overlay/50 pt-4">
+        <div className="mt-4 flex flex-col gap-1 border-t border-overlay/50 pt-4">
           {price && (
-            <span className="text-small font-medium text-gold-500">
+            <span className="text-small font-medium leading-snug text-gold-500">
               {price}
             </span>
           )}
           {duration && (
-            <span className="text-small text-text-muted">
+            <span className="text-xs leading-snug text-text-muted">
               {duration}
             </span>
           )}
