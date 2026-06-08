@@ -5,7 +5,6 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutBioSections } from "@/components/about/about-bio-sections";
-import { AboutTimeline } from "@/components/about/about-timeline";
 import { CTASection } from "@/components/home/cta-section";
 import { RichTextRenderer } from "@/components/rich-text-renderer";
 import { generatePersonJsonLd } from "@/lib/json-ld";
@@ -90,8 +89,6 @@ export default async function AboutPage({ params }: Props) {
       </AboutHero>
 
       <AboutBioSections />
-
-      <AboutTimeline locale={locale} items={page.timeline} />
 
       <CTASection namespace="about.cta" />
     </>

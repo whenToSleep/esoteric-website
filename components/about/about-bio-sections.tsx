@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { ScrollReveal } from "@/components/animations";
 
-const bioItems = ["01", "02", "03", "04"] as const;
+const bioItems = ["01", "02", "03", "04", "05", "06", "07", "08"] as const;
 
 export function AboutBioSections() {
   const t = useTranslations("about");
@@ -18,43 +18,52 @@ export function AboutBioSections() {
         </ScrollReveal>
 
         <div className="space-y-0">
-          {bioItems.map((num, index) => (
-            <div key={num}>
-              <ScrollReveal direction="up" delay={index * 0.08}>
-                {/* Mobile: number above text */}
-                <div className="py-8 md:hidden">
-                  <span className="mb-3 block font-heading text-5xl font-semibold text-gold-500 opacity-20">
-                    {num}
-                  </span>
-                  <h3 className="font-heading text-xl font-medium text-text-primary">
-                    {t(`bio_${num}_title`)}
-                  </h3>
-                  <p className="mt-2 font-body leading-relaxed text-text-secondary">
-                    {t(`bio_${num}_text`)}
-                  </p>
-                </div>
+          {bioItems.map((num, index) => {
+            const text = t(`bio_${num}_text`);
+            const paragraphs = text.split("\n\n").filter(Boolean);
 
-                {/* Desktop: grid with fixed number column */}
-                <div className="hidden py-8 md:grid md:grid-cols-[5rem_1fr] md:gap-6 lg:grid-cols-[6rem_1fr] lg:gap-8">
-                  <span className="font-heading text-6xl font-semibold text-gold-500 opacity-20 lg:text-8xl">
-                    {num}
-                  </span>
-                  <div>
+            return (
+              <div key={num}>
+                <ScrollReveal direction="up" delay={index * 0.08}>
+                  {/* Mobile: number above text */}
+                  <div className="py-8 md:hidden">
+                    <span className="mb-3 block font-heading text-5xl font-semibold text-gold-500 opacity-20">
+                      {num}
+                    </span>
                     <h3 className="font-heading text-xl font-medium text-text-primary">
                       {t(`bio_${num}_title`)}
                     </h3>
-                    <p className="mt-2 font-body leading-relaxed text-text-secondary">
-                      {t(`bio_${num}_text`)}
-                    </p>
+                    <div className="mt-2 space-y-3 font-body leading-relaxed text-text-secondary">
+                      {paragraphs.map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </ScrollReveal>
 
-              {index < bioItems.length - 1 && (
-                <div className="h-px bg-linear-to-r from-transparent via-gold-500/20 to-transparent" />
-              )}
-            </div>
-          ))}
+                  {/* Desktop: grid with fixed number column */}
+                  <div className="hidden py-8 md:grid md:grid-cols-[5rem_1fr] md:gap-6 lg:grid-cols-[6rem_1fr] lg:gap-8">
+                    <span className="font-heading text-6xl font-semibold text-gold-500 opacity-20 lg:text-8xl">
+                      {num}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-xl font-medium text-text-primary">
+                        {t(`bio_${num}_title`)}
+                      </h3>
+                      <div className="mt-2 space-y-3 font-body leading-relaxed text-text-secondary">
+                        {paragraphs.map((para, i) => (
+                          <p key={i}>{para}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                {index < bioItems.length - 1 && (
+                  <div className="h-px bg-linear-to-r from-transparent via-gold-500/20 to-transparent" />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

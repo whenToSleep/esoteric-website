@@ -70,32 +70,6 @@ export const Pages: CollectionConfig = {
       ],
     },
     {
-      name: 'timeline',
-      type: 'array',
-      admin: {
-        description: 'Таймлайн «Мой путь». Отображается на странице «Обо мне» в виде вертикальной линии с событиями.',
-      },
-      fields: [
-        {
-          name: 'year',
-          type: 'text',
-          required: true,
-          admin: {
-            description: 'Год или период. Например: «2018» или «2020-2022»',
-          },
-        },
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-          localized: true,
-          admin: {
-            description: 'Краткое описание события. Например: «Начало пути в эзотерике»',
-          },
-        },
-      ],
-    },
-    {
       name: 'status',
       type: 'select',
       defaultValue: 'published',
