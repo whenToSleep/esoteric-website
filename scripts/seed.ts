@@ -161,6 +161,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Tarot Consultation',
+        price: '200 €',
+        duration: '60 minutes',
         shortDescription: 'Deep analysis of the key events in your life through Tarot archetypes. Mantic assistance in finding answers to the most important questions.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'A Tarot consultation is an effective tool for resolving internal and external conflicts, as well as clarifying non-obvious aspects of life. Working with the master helps you emerge from uncertainty, view your situation from a new angle, and find a firm foundation for decision-making.' },
@@ -180,6 +182,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Таро-консультація',
+        price: '200 €',
+        duration: '60 хвилин',
         shortDescription: 'Глибокий аналіз ключових подій вашого життя через архетипи Таро. Мантична допомога у пошуку відповідей на найважливіші питання.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Таро-консультація — це ефективний інструмент для вирішення внутрішніх та зовнішніх конфліктів, а також прояснення неочевидних аспектів життя. Робота з майстром допомагає вийти зі стану невизначеності, поглянути на ситуацію під новим кутом та знайти тверду опору для прийняття рішень.' },
@@ -230,6 +234,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Diagnosis of Magical Abilities',
+        price: '200 €',
+        duration: '60 minutes',
         shortDescription: 'A comprehensive study of your magical potential, ancestral connections and destiny. Identification of power keys and the entities that stand behind your shoulder.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'The diagnosis of magical abilities is a deep immersion into the structure of your soul and heritage. This is not simply a "reading of the future", but the identification of the fundamental potential with which you came into this incarnation. The study allows you to determine your personal "keys of power", your predisposition to specific directions of the craft, and identify the resources embedded in you by birthright.' },
@@ -252,6 +258,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Діагностика магічних здібностей',
+        price: '200 €',
+        duration: '60 хвилин',
         shortDescription: 'Комплексне дослідження вашого магічного потенціалу, родових зв\'язків та призначення. Визначення ключів сили та тих сутностей, що стоять за вашим плечем.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Діагностика магічних здібностей — це глибоке занурення у структуру вашої душі та спадщини. Це не просто «перегляд майбутнього», а виявлення фундаментального потенціалу, з яким ви прийшли у це втілення. Дослідження дозволяє визначити ваші особисті «ключі сили», схильність до конкретних напрямів ремесла та виявити ті ресурси, які закладені у вас від народження.' },
@@ -308,6 +316,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Cleansing from Everyday Negativity',
+        price: 'from 500 €',
+        duration: 'Individual cleansing cycle',
         shortDescription: 'Deep liberation from draining connections, energy thieves and mental clutter. A complete reboot of the energy system and consciousness to break out of stagnation and reclaim personal power.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This work represents a large-scale "revision" and restoration of your energy structure. We eliminate not only surface-level contamination, but also deep destructive mechanisms that block your development. In the process, a complete renewal of the subtle bodies occurs, allowing healthy energy circulation to be restored in all areas of life.' },
@@ -331,6 +341,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Чистка від побутового негативу',
+        price: 'від 500 €',
+        duration: 'Індивідуальний цикл очищення',
         shortDescription: 'Глибоке звільнення від виснажливих зв\'язків, крадників та ментального сміття. Повне перезавантаження енергетичної системи та свідомості для виходу із застою та повернення особистої сили.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Ця робота являє собою масштабну «ревізію» та відновлення вашої енергоструктури. Ми усуваємо не лише поверхневі забруднення, але й глибокі деструктивні механізми, які блокують ваш розвиток. У процесі роботи відбувається повне оновлення тонких тіл, що дозволяє відновити здорову циркуляцію енергії в усіх сферах життя.' },
@@ -387,6 +399,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Cleansing from Heavy Destructive Programs & Fate Restoration',
+        price: 'from 1500 € (price includes the full ritual cycle and rehabilitation period)',
+        duration: '',
         shortDescription: 'Uncompromising elimination of ancestral curses, professional hexes and necrotic attachments. Complete severing of destructive contracts and restoration of rights to life, luck and the continuation of the Kin.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Working with severe magical afflictions is a multi-level process that goes beyond standard cleansings. This involves intervening in the deep structures of existence where ancestral scenarios and karmic knots are recorded. This service is aimed at those whose life is blocked by forces of the highest order or a professionally executed destructive ritual.' },
@@ -411,6 +425,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Очищення від важких деструктивних програм та реставрація долі',
+        price: 'від 1500 € (вартість включає повний цикл обрядів та період реабілітації)',
+        duration: '',
         shortDescription: 'Безкомпромісне усунення родових прокльонів, професійних псувань та некротичних прив\'язок. Повний розрив деструктивних контрактів та відновлення прав на життя, удачу та продовження Роду.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Робота з важкими магічними ураженнями — це багаторівневий процес, що виходить за межі стандартних чисток. Тут йдеться про втручання у глибокі структури буття, де записані родові сценарії та кармічні вузли. Ця послуга спрямована на тих, чиє життя заблоковане силами вищого порядку або професійно виконаним деструктивним ритуалом.' },
@@ -468,6 +484,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Supreme Cemetery Protection',
+        price: '3000 €',
+        duration: '5 years (protection duration)',
         shortDescription: 'An absolute energy shield erected through the Forces of the Cemetery. An impenetrable barrier protecting from magical aggression, fatal blows of fate and physical threats for 5 years.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This is an elite form of magical protection that involves placing a Death Sentinel at the client\'s shoulder. Unlike standard charms, this protection relies on the inexhaustible power of the Graveyard Forces and the support of the Guardians of Death. The work is constructed so that any aggression directed at you — whether professional sorcery or everyday hatred — is absorbed by the earth without reaching your energy structure.' },
@@ -492,6 +510,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Цвинтарний захист вищого порядку',
+        price: '3000 €',
+        duration: '5 років (термін дії захисту)',
         shortDescription: 'Абсолютний енергетичний щит, що зводиться через Сили Цвинтаря. Непробивний бар\'єр, що закриває від магічної агресії, фатальних ударів долі та фізичних загроз терміном на 5 років.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Це елітарна форма магічного захисту, що передбачає постановку Смертної варти за плечем клієнта. На відміну від стандартних оберегів, даний захист спирається на невичерпну міць Погостних Сил та підтримку Вартових Смерті. Робота вибудовується таким чином, щоб будь-яка спрямована на вас агресія — чи то професійне чаклунство, чи то побутова ненависть — поглиналась землею, не досягаючи вашої енергоструктури.' },
@@ -549,6 +569,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Opening the Roads',
+        price: '1500 €',
+        duration: 'The foundation of new events is laid within a lunar cycle after the ritual',
         shortDescription: 'Global elimination of blockages preventing your development. The ritual releases stagnant energy and builds new event branches for realization in finances, career and personal life.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'The "Opening the Roads" ritual is a fundamental work for transforming your reality. If you feel that you are hitting a "glass ceiling" and your efforts are not bearing the expected fruits, then your event paths are blocked — mentally, energetically or through external influence.' },
@@ -573,6 +595,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Відкриття доріг',
+        price: '1500 €',
+        duration: 'Закладення фундаменту нових подій відбувається протягом місячного циклу після проведення ритуалу',
         shortDescription: 'Глобальне усунення блокувань, що перешкоджають вашому розвитку. Ритуал вивільняє застійну енергію та вибудовує нові подієві гілки для реалізації у фінансах, кар\'єрі та особистому житті.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Ритуал «Відкриття доріг» — це фундаментальна робота з трансформації вашої реальності. Якщо ви відчуваєте, що б\'єтесь у «скляну стелю», а ваші зусилля не приносять очікуваних плодів, значить ваші подієві шляхи заблоковані — ментально, енергетично або через сторонній вплив.' },
@@ -625,6 +649,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Love Binding',
+        price: 'from 2,000 € to 30,000 € (varies depending on the hierarchical status of the subject and the complexity of the ritual protocol)',
+        duration: 'Calculated individually after opening the subject\'s fields',
         shortDescription: 'Radical breaking of the subject\'s natural defenses followed by dismantling of will centers. Complete rewriting of a person\'s inner code: creation of an unconditional dominance of infatuation and dependence on the client in place of destroyed resistance programs.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This work is the highest form of necromantic influence aimed at forced restructuring of the destiny and psyche of the subject. The method is applied in situations of critical resistance, when all other methods of influence have been exhausted.' },
@@ -644,6 +670,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Приворот',
+        price: 'від 2 000 € до 30 000 € (варіюється залежно від ієрархічного статусу об\'єкта та складності ритуального протоколу)',
+        duration: 'Розраховується індивідуально після розкриття полів об\'єкта',
         shortDescription: 'Радикальний злам природних захистів об\'єкта з подальшим демонтажем вольових центрів. Повне перезаписування внутрішнього коду людини: створення безумовної домінанти закоханості та залежності від клієнта на місці знищених програм опору.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Дана робота — це вища форма некромагічного впливу, спрямована на примусову перебудову долі та психіки об\'єкта. Метод застосовується у ситуаціях критичного опору, коли будь-які інші методи впливу вичерпані.' },
@@ -695,6 +723,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Supreme Destructive Curses',
+        price: 'from 1,500 € to unlimited budget (depends on the target\'s status, presence of protections and severity of the chosen outcome)',
+        duration: '',
         shortDescription: 'Uncompromising destruction of any spheres of the target\'s life. Directed destruction of health, finances, social connections or complete liquidation of personality. Work with a guarantee of impossibility of removal.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Destructive magic in my execution is not temporary troubles for your opponent, but an irreversible process of dismantling their reality. Each work is individually tailored to your request: from total financial ruin and social isolation to critical health damage and complete life deadlock.' },
@@ -718,6 +748,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Деструктивні впливи вищого порядку (Псування)',
+        price: 'від 1 500 € до необмеженого бюджету (залежить від статусу цілі, наявності захистів та тяжкості обраного фіналу)',
+        duration: '',
         shortDescription: 'Безкомпромісне знищення будь-яких сфер життя цілі. Спрямоване руйнування здоров\'я, фінансів, соціальних зв\'язків або повна ліквідація особистості. Робота з гарантією неможливості зняття.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Деструктивна магія у моєму виконанні — це не тимчасові неприємності для вашого опонента, а незворотній процес демонтажу його реальності. Кожна робота вибудовується індивідуально під ваш запит: від тотального фінансового краху та соціальної ізоляції до критичного ураження здоров\'я та повного життєвого глухого кута.' },
@@ -772,6 +804,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Golden Allure: Absolute Attractiveness',
+        price: '3000 €',
+        duration: 'Long-term maintenance of the allure structure with a gentle entry into the event series',
         shortDescription: 'Creation of an ultra-powerful field of attraction and aesthetic enchantment. An elite ritual that transforms you into a center of attraction for those around you, evoking genuine admiration and a desire to be near.',
         fullDescription: lexical([
           { type: 'paragraph', text: '"Golden Allure" is a jeweler\'s work with your social and energetic image. Unlike standard glamour workings, this ritual does not simply overlay a temporary mask, but changes the very radiation of your subtle bodies. You become like "sacred honey": people subconsciously gravitate toward you, seeking your attention, approval or simply to be in your field.' },
@@ -794,6 +828,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Золотий Морок: Абсолютна атрактивність',
+        price: '3000 €',
+        duration: 'Довгострокове утримання структури мороку з м\'яким входом у подієвий ряд',
         shortDescription: 'Створення надпотужного поля тяжіння та естетичного чарування. Елітарний ритуал, що перетворює вас на центр тяжіння для оточуючих, викликаючи щире захоплення та бажання бути поруч.',
         fullDescription: lexical([
           { type: 'paragraph', text: '«Золотий Морок» — це ювелірна робота з вашим соціальним та енергетичним виглядом. На відміну від стандартних оморочок, даний ритуал не просто накладає тимчасову маску, а змінює саме випромінювання ваших тонких тіл. Ви стаєте подібними до «сакрального меду»: люди підсвідомо тягнуться до вас, прагнучи отримати вашу увагу, схвалення або просто перебувати у вашому полі.' },
@@ -847,6 +883,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Situational Illusion: Perception Control',
+        price: 'from 1,500 € to 3,500 € (depends on the scale of the audience and the complexity of the concealed event)',
+        duration: 'Adapted to the specific task of the client',
         shortDescription: 'Creation of a controlled illusion for solving specific tasks. Allows hiding undesirable facts, events or forming a strictly defined image of the client in the minds of those around them.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'The Situational Illusion is a jeweler\'s work with others\' attention and perception of reality. The ritual is intended for cases when it is necessary to direct the thoughts and gazes of those around you down a false trail, or conversely, to make them believe in a legend you have created. This is the ideal tool for protecting reputation, preserving secrets and strategically influencing the opinions of people important to you.' },
@@ -869,6 +907,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Ситуативний Морок: Управління сприйняттям',
+        price: 'від 1 500 € до 3 500 € (залежить від масштабу аудиторії та складності події, що приховується)',
+        duration: 'Адаптується під конкретне завдання замовника',
         shortDescription: 'Створення контрольованої ілюзії для вирішення конкретних завдань. Дозволяє приховати небажані факти, події або сформувати у оточуючих суворо визначений образ замовника.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Ситуативний Морок — це ювелірна робота з чужою увагою та сприйняттям реальності. Ритуал призначений для тих випадків, коли необхідно спрямувати думки та погляди оточуючих хибним слідом або, навпаки, змусити їх повірити у створену вами легенду. Це ідеальний інструмент для захисту репутації, збереження таємниць та стратегічного впливу на думку важливих для вас людей.' },
@@ -923,6 +963,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Exorcism and Supreme Entity Banishment',
+        price: 'from 5000 € (price reflects the high risk to the master and the complexity of protection protocols)',
+        duration: 'The full cycle includes preparation, the main banishment rite and a rehabilitation period under the master\'s supervision',
         shortDescription: 'Unconditional extraction and liquidation of foreign structures, intrusions and parasitic entities from a person\'s energy-informational field. Radical liberation of consciousness and body.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This is the most complex and dangerous type of magical work, aimed at eliminating direct threats to your spiritual and physical integrity. Banishment is conducted in cases of deep affliction by entities of various nature: from unquiet dead and demonic intrusions to ancient parasitic structures and entities of hierarchical order.' },
@@ -946,6 +988,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Екзорцизм та вигнання сутностей вищого порядку',
+        price: 'від 5000 € (вартість обумовлена високим ризиком для майстра та складністю протоколів захисту)',
+        duration: 'Весь цикл включає підготовку, основний обряд вигнання та період реабілітації під наглядом майстра',
         shortDescription: 'Безоглядне вилучення та ліквідація чужорідних структур, підселень та паразитуючих сутностей із енергоінформаційного поля людини. Радикальне звільнення свідомості та тіла.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Це найскладніший та небезпечний вид магічної роботи, спрямований на усунення прямих загроз вашій духовній та фізичній цілісності. Вигнання проводиться у випадках глибокого ураження сутностями різної природи: від неупокоєних мерців та бісівських підселень до давніх паразитарних структур та сутностей ієрархічного порядку.' },
@@ -1004,6 +1048,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Energy Revival and Death Deflection',
+        price: 'from 3,000 €',
+        duration: 'Individual support cycle until condition stabilizes',
         shortDescription: 'Extreme work for restoring life resources in serious illnesses. Magical support of the organism aimed at blocking the departure program and redirecting critical blows of fate.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This complex is aimed at working with the most delicate and dangerous edge of human existence. In situations where the physical body is exhausted by illness (including oncological processes), magical assistance concentrates on holding the life spark and restoring the will to live.' },
@@ -1030,6 +1076,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Енергетична реанімація та Відведення смерті',
+        price: 'від 3 000 €',
+        duration: 'Індивідуальний цикл супроводу до стабілізації стану',
         shortDescription: 'Екстремальна робота з відновлення життєвого ресурсу при важких захворюваннях. Магічна підтримка організму, спрямована на блокування програми відходу та перенаправлення критичних ударів долі.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Даний комплекс спрямований на роботу з найтоншою та найнебезпечнішою гранню людського буття. У ситуаціях, коли фізичне тіло виснажене хворобою (у тому числі онкологічними процесами), магічна допомога концентрується на утриманні життєвої іскри та відновленні волі до життя.' },
@@ -1091,6 +1139,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Personal Magical Support: Total Control',
+        price: '15,000 € / month',
+        duration: '1 month (availability: no more than 1–2 people per month)',
         shortDescription: 'A month of exclusive management of your life by the master. Complete outsourcing of magical security and the event series. Resolution of any tasks in real time and round-the-clock support.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This is a format of highest trust and maximum efficiency. Within the framework of personal support, you transfer control over energetic and event security into the master\'s hands. This is not simply a set of rituals, but continuous work on building your reality, protecting your interests and eliminating any obstacles at the moment they arise.' },
@@ -1115,6 +1165,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Персональний магічний супровід: Total Control',
+        price: '15 000 € / місяць',
+        duration: '1 місяць (доступність: не більше 1–2 осіб на місяць)',
         shortDescription: 'Місяць ексклюзивного ведення вашого життя майстром. Повний аутсорсинг магічної безпеки та подієвого ряду. Вирішення будь-яких завдань у режимі реального часу та цілодобова підтримка.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Це формат вищої довіри та максимальної ефективності. У рамках персонального супроводу ви передаєте контроль над енергетичною та подієвою безпекою до рук майстра. Це не просто набір ритуалів, а безперервна робота з вибудовування вашої реальності, захисту ваших інтересів та усунення будь-яких перешкод у момент їх виникнення.' },
@@ -1180,6 +1232,8 @@ const seed = async (payload: Payload) => {
       },
       en: {
         title: 'Personal Mentorship. The Master\'s Path',
+        price: '3000 € / month',
+        duration: 'from 3 to 6 months (depends on learning ability and pace of material absorption)',
         shortDescription: 'Fundamental training in practical magic and sorcery "hand to hand". Transfer of knowledge from the basics of energetics to the highest ceremonial rituals. Direct mentoring of your development as a practitioner.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'This training is not just lectures, but a deep immersion in tradition and individual shaping of your magical gift. The task of the mentor is not only to transfer theory, but to awaken your personal power, build a magical worldview and teach you to safely and effectively interact with the Forces.' },
@@ -1210,6 +1264,8 @@ const seed = async (payload: Payload) => {
       },
       uk: {
         title: 'Особисте наставництво. Шлях Майстра',
+        price: '3000 € / місяць',
+        duration: 'від 3 до 6 місяців (залежить від навченості та швидкості засвоєння матеріалу)',
         shortDescription: 'Фундаментальне навчання практичній магії та чаклунству «з рук у руки». Передача знань від основ енергетики до вищих церемоніальних ритуалів. Пряме курування вашого становлення як практика.',
         fullDescription: lexical([
           { type: 'paragraph', text: 'Це навчання — не просто лекції, це глибоке занурення у традицію та індивідуальне огранювання вашого магічного дару. Завдання наставника — не лише передати теорію, але й пробудити вашу особисту силу, вибудувати магічний світогляд та навчити вас безпечно та ефективно взаємодіяти з Силами.' },
@@ -1269,6 +1325,8 @@ const seed = async (payload: Payload) => {
           shortDescription: svc[locale].shortDescription,
           fullDescription: svc[locale].fullDescription,
           faq: svc[locale].faq,
+          price: svc[locale].price,
+          duration: svc[locale].duration,
         },
         locale,
       })
