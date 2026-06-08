@@ -29,12 +29,19 @@
 - Дисклеймер про кладбище → оставлен в fullDescription обеих услуг (#5, #7) через тип `quote`
 - #14 Наставничество → format: online, slug: personal-mentorship-masters-path
 
+### Деплой
+- Ветка `upd-description` запушена и смёрджена в `main`
+- Vercel задеплоит изменения автоматически с `main`
+- После деплоя запустить seed против продакшн-БД (переменные из Vercel → Settings → Env Vars):
+  `DATABASE_URI="..." PAYLOAD_SECRET="..." npm run seed`
+
 ### Примечание
-- `node_modules` отсутствует → требуется `npm install` перед `npm run seed`
+- `node_modules` отсутствует локально → требуется `npm install` перед `npm run seed`
 - `next.config.ts` (pre-existing issue) — блокирует `npm run build`
 
 ### Файлы изменены
 - `scripts/seed.ts` — полная замена servicesData + расширение lexical-хелпера
+- `docs/content-update-services-2026-06.md` — добавлен как источник контента
 
 ---
 
