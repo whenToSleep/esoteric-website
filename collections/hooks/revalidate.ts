@@ -4,14 +4,14 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 export const revalidateAfterChange: CollectionAfterChangeHook = ({ collection }) => {
   const paths = getPathsForCollection(collection.slug)
   for (const p of paths) {
-    revalidatePath(p, 'layout')
+    try { revalidatePath(p, 'layout') } catch { /* outside Next.js request context (e.g. seed script) */ }
   }
 }
 
 export const revalidateAfterDelete: CollectionAfterDeleteHook = ({ collection }) => {
   const paths = getPathsForCollection(collection.slug)
   for (const p of paths) {
-    revalidatePath(p, 'layout')
+    try { revalidatePath(p, 'layout') } catch { /* outside Next.js request context (e.g. seed script) */ }
   }
 }
 
