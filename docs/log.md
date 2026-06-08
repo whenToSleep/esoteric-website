@@ -6,6 +6,38 @@
 
 ---
 
+## Сессия 53 — 2026-06-08 — Контент-обновление: 14 реальных услуг
+
+### Что сделано
+- Заменены все 10 тестовых услуг в `scripts/seed.ts` на 14 реальных из `docs/content-update-services-2026-06.md`
+- Расширен Lexical-хелпер: добавлен тип `list` (bullet-список) — теперь поддерживается `heading | paragraph | quote | list`
+- Каждая услуга получила: `slug`, `price`, `duration`, `format`, `shortDescription` (ru), `fullDescription` (Lexical, ru), `faq` (где применимо), `isActive`, `order`
+- Локали `en`/`uk` не заполнены — fallback на `ru` (переводы добавит владелец позже)
+- Цикл создания услуг обновлён: теперь передаёт `fullDescription` и `faq`
+
+### Распределение услуг по категориям
+| Категория | Кол-во | Slug'и |
+|-----------|--------|--------|
+| tarot | 2 | tarot-consultation, magic-abilities-diagnostics |
+| rituals | 10 | everyday-negativity-cleansing, heavy-curse-removal-fate-restoration, cemetery-protection-supreme, opening-the-roads, privorot, destructive-curses-supreme, golden-allure-absolute-attractiveness, situational-illusion-perception-control, exorcism-entity-banishment-supreme, energy-revival-death-deflection |
+| support | 1 | personal-magical-support-total-control |
+| education | 1 | personal-mentorship-masters-path |
+
+### Решения по 🟡-вопросам из документа
+- #2 Диагностика → tarot, #12 Реанимация → rituals (как предложено)
+- #7 Приворот и #8 Порчи → isActive: true
+- Дисклеймер про кладбище → оставлен в fullDescription обеих услуг (#5, #7) через тип `quote`
+- #14 Наставничество → format: online, slug: personal-mentorship-masters-path
+
+### Примечание
+- `node_modules` отсутствует → требуется `npm install` перед `npm run seed`
+- `next.config.ts` (pre-existing issue) — блокирует `npm run build`
+
+### Файлы изменены
+- `scripts/seed.ts` — полная замена servicesData + расширение lexical-хелпера
+
+---
+
 ## Сессия 52 — 2026-03-10 — Polish: Preloader, Custom Cursor, Noise Overlay, Blog Loading
 
 ### Что сделано
