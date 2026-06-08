@@ -11,7 +11,7 @@
     "lint": "eslint",
     "seed": "npx tsx --require ./scripts/patch-next-env.cjs scripts/seed.ts",
     "analyze": "ANALYZE=true next build",
-    "ci": "npx payload generate:importmap && next build && npx tsx --require ./scripts/patch-next-env.cjs scripts/seed.ts"
+    "ci": "npx payload generate:importmap && npx tsx --require ./scripts/patch-next-env.cjs scripts/seed.ts && next build"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
