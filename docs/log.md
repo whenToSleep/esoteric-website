@@ -31,9 +31,9 @@
 
 ### Деплой
 - Ветка `upd-description` запушена и смёрджена в `main`
-- Vercel задеплоит изменения автоматически с `main`
-- После деплоя запустить seed против продакшн-БД (переменные из Vercel → Settings → Env Vars):
-  `DATABASE_URI="..." PAYLOAD_SECRET="..." npm run seed`
+- Добавлен `postbuild` скрипт в `package.json` — seed запускается автоматически после каждого `next build` на Vercel
+- ⚠️ Каждый деплой полностью перезаписывает БД (услуги, посты, отзывы, страницы)
+- Vercel должен иметь `DATABASE_URI` и `PAYLOAD_SECRET` доступными во время **билда** (не только в рантайме): Vercel → Settings → Environment Variables → отметить "Available at Build Time"
 
 ### Примечание
 - `node_modules` отсутствует локально → требуется `npm install` перед `npm run seed`
