@@ -10,7 +10,7 @@ const socialIcons: Record<string, React.ComponentType<{ size?: number; className
   youtube: Youtube,
 };
 
-const serviceKeys = ["tarot", "rituals", "support", "education", "regress"] as const;
+const serviceKeys = ["tarot", "rituals", "support", "education"] as const;
 
 export async function Footer() {
   const t = await getTranslations("footer");

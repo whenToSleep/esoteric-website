@@ -6,7 +6,6 @@ import config from "@payload-config";
 import { HeroSection } from "@/components/home/hero-section";
 import { ServiceCategoriesSection } from "@/components/home/service-categories-section";
 import { AboutBriefSection } from "@/components/home/about-brief-section";
-import { LatestPostsSection } from "@/components/home/latest-posts-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { CTASection } from "@/components/home/cta-section";
 import { GradientDivider } from "@/components/ui/gradient-divider";
@@ -53,21 +52,13 @@ export default async function HomePage({ params }: Props) {
 
   const payload = await getPayload({ config });
 
-  const [categoriesResult, postsResult, testimonialsResult, aboutResult] =
+  const [categoriesResult, testimonialsResult, aboutResult] =
     await Promise.all([
       payload.find({
         collection: "service-categories",
         locale: locale as "ru" | "en" | "uk",
         sort: "order",
         limit: 10,
-      }),
-      payload.find({
-        collection: "posts",
-        locale: locale as "ru" | "en" | "uk",
-        where: { status: { equals: "published" } },
-        sort: "-publishedAt",
-        limit: 3,
-        depth: 2,
       }),
       payload.find({
         collection: "testimonials",
@@ -94,18 +85,6 @@ export default async function HomePage({ params }: Props) {
   }));
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  const posts = postsResult.docs.map((post: any) => ({
-    id: String(post.id),
-    title: (post.title as string) || "",
-    slug: (post.slug as string) || "",
-    excerpt: (post.excerpt as string) || "",
-    featuredImageUrl: post.featuredImage?.url || null,
-    featuredImageAlt: post.featuredImage?.alt || null,
-    categoryTitle: post.category?.title || null,
-    publishedAt: post.publishedAt || null,
-    readingTime: post.readingTime || null,
-  }));
-
   const testimonials = testimonialsResult.docs.map((t: any) => ({
     clientName: (t.clientName as string) || "",
     text: (t.text as string) || "",
@@ -133,9 +112,6 @@ export default async function HomePage({ params }: Props) {
       <ServiceCategoriesSection categories={categories} />
       <SectionDivider variant="moon" />
       <AboutBriefSection {...aboutData} />
-      <GradientDivider from="#131316" to="#0B0B0F" />
-      <LatestPostsSection posts={posts} />
-      <SectionDivider variant="moon" />
       <TestimonialsSection testimonials={testimonials} />
       <SectionDivider variant="moon" />
       <CTASection />

@@ -11,8 +11,8 @@ interface Category {
   icon: string;
 }
 
-// Desired bento order: Ритуалы (2col) | Обучение | Сопровождение | Таро | Регресс
-const bentoOrder = ["candle", "book", "compass", "cards", "spiral"];
+// Bento order: Ритуалы (2col) | Обучение | Сопровождение | Таро
+const bentoOrder = ["candle", "book", "compass", "cards"];
 
 function getGridClasses(icon: string): string {
   // Ритуалы: spans 2 columns on desktop (first, large card)

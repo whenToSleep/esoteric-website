@@ -14,7 +14,7 @@ const fallbackData: Record<string, { year: string; title: Record<string, string>
     { year: "2018", title: { ru: "Начало пути в эзотерике", en: "Started the esoteric journey", uk: "Початок шляху в езотериці" } },
     { year: "2019", title: { ru: "Первые клиенты и консультации", en: "First clients and consultations", uk: "Перші клієнти та консультації" } },
     { year: "2020", title: { ru: "Переход к онлайн-практике", en: "Transition to online practice", uk: "Перехід до онлайн-практики" } },
-    { year: "2022", title: { ru: "Расширение направлений: ритуалистика, регресс", en: "Expanded services: rituals, regression", uk: "Розширення напрямків: ритуалістика, регрес" } },
+    { year: "2022", title: { ru: "Расширение направлений: ритуалистика и сопровождение", en: "Expanded services: rituals and guidance", uk: "Розширення напрямків: ритуалістика та супровід" } },
     { year: "2024", title: { ru: "Полный спектр эзотерических услуг", en: "Full spectrum of esoteric services", uk: "Повний спектр езотеричних послуг" } },
   ],
 };

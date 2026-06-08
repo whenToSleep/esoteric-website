@@ -23,10 +23,6 @@ function getPathsForCollection(slug: string): string[] {
       return ['/[locale]/[categorySlug]', '/[locale]/[categorySlug]/[serviceSlug]', '/[locale]']
     case 'service-categories':
       return ['/[locale]/[categorySlug]', '/[locale]']
-    case 'posts':
-      return ['/[locale]/blog', '/[locale]/blog/[slug]', '/[locale]']
-    case 'post-categories':
-      return ['/[locale]/blog']
     case 'testimonials':
       return ['/[locale]']
     case 'media':

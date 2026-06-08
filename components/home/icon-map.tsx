@@ -1,4 +1,4 @@
-import { Layers, Flame, Compass, BookOpen, Eye } from "lucide-react";
+import { Layers, Flame, Compass, BookOpen } from "lucide-react";
 
 const iconMap: Record<
   string,
@@ -8,7 +8,6 @@ const iconMap: Record<
   candle: Flame,
   compass: Compass,
   book: BookOpen,
-  spiral: Eye,
 };
 
 export interface AccentConfig {
@@ -67,17 +66,6 @@ const accentMap: Record<string, AccentConfig> = {
     iconBg: "bg-emerald-950/20",
     iconBorder: "border-emerald-950/30",
     linkColor: "text-emerald-400",
-  },
-  // Регресс — amethyst
-  spiral: {
-    iconColor: "text-[#9F7AEA]",
-    borderGlow: "rgba(159,122,234,0.3)",
-    shadowGlow:
-      "0 0 30px -5px rgba(159,122,234,0.25), 0 0 60px -15px rgba(159,122,234,0.1)",
-    bgTint: "rgba(159,122,234,0.03)",
-    iconBg: "bg-[rgba(159,122,234,0.08)]",
-    iconBorder: "border-[rgba(159,122,234,0.15)]",
-    linkColor: "text-[#9F7AEA]",
   },
 };
 

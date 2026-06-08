@@ -27,7 +27,7 @@ function localizedEntry(
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload = await getPayload({ config });
 
-  const [categories, services, posts, pages] = await Promise.all([
+  const [categories, services, pages] = await Promise.all([
     payload.find({
       collection: "service-categories",
       limit: 100,
@@ -40,12 +40,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       depth: 1,
     }),
     payload.find({
-      collection: "posts",
-      limit: 500,
-      where: { status: { equals: "published" } },
-      sort: "-publishedAt",
-    }),
-    payload.find({
       collection: "pages",
       limit: 100,
       where: { status: { equals: "published" } },
@@ -56,9 +50,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Home
   entries.push(localizedEntry("", undefined, 1.0, "daily"));
-
-  // Blog list
-  entries.push(localizedEntry("/blog", undefined, 0.6, "daily"));
 
   // Static pages (about, etc.)
   for (const page of pages.docs) {
@@ -100,18 +91,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
   /* eslint-enable @typescript-eslint/no-explicit-any */
-
-  // Blog posts
-  for (const post of posts.docs) {
-    entries.push(
-      localizedEntry(
-        `/blog/${post.slug}`,
-        post.updatedAt,
-        0.6,
-        "monthly",
-      ),
-    );
-  }
 
   return entries;
 }

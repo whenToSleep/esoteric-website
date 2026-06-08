@@ -6,6 +6,43 @@
 
 ---
 
+## Сессия 54 — 2026-06-08 — Удаление категории Регресс + полное удаление Блога
+
+### Что сделано (блог)
+**Удалены файлы:**
+- `app/[locale]/blog/` — весь каталог (page.tsx, loading.tsx, [slug]/page.tsx, rss.xml/route.ts)
+- `components/blog/` — весь каталог (7 компонентов)
+- `components/home/latest-posts-section.tsx`
+- `components/home/blog-card.tsx`
+- `collections/Posts.ts`
+- `collections/PostCategories.ts`
+
+**Изменены файлы:**
+- `lib/navigation.ts` — убран пункт `blog`
+- `payload.config.ts` — убраны импорты и коллекции Posts/PostCategories, убран `posts` из seoPlugin
+- `app/[locale]/page.tsx` — убраны запрос постов, импорт и рендер `<LatestPostsSection>`
+- `app/sitemap.ts` — убраны запрос постов, блог-листинг и посты из карты сайта
+- `collections/hooks/revalidate.ts` — убраны кейсы `posts` и `post-categories`
+- `lib/json-ld.ts` — удалена функция `generateBlogPostingJsonLd`
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json` — убраны `nav.blog` и секция `blog`
+- `scripts/seed.ts` — убраны PostCategories, postsData, цикл создания постов, очистка коллекций posts/post-categories
+
+---
+
+## Сессия 54 — 2026-06-08 — Удаление категории Регресс
+
+### Что сделано
+- Полностью удалена категория "Регресс" (`slug: regress`) из проекта
+- `lib/navigation.ts` — убран пункт `{ key: "regress", href: "/regress" }`
+- `components/footer.tsx` — убран `"regress"` из serviceKeys
+- `components/home/icon-map.tsx` — удалён акцент `spiral` (amethyst), убран импорт `Eye` из lucide-react
+- `components/home/service-categories-section.tsx` — убран `"spiral"` из bentoOrder (теперь 4 карточки)
+- `messages/ru.json`, `messages/en.json`, `messages/uk.json` — убран ключ `nav.regress`, обновлены мета-описания
+- `components/about/about-timeline.tsx` — убрано упоминание "регресс" в записи 2022 года
+- `scripts/seed.ts` — удалены: категория `regress`, пост-блог `past-lives-regression`, отзыв категории `regress`, пункт PostCategories `regress`
+
+---
+
 ## Сессия 53 — 2026-06-08 — Контент-обновление: 14 реальных услуг
 
 ### Что сделано

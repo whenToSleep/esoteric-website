@@ -12,8 +12,6 @@ import { Pages } from './collections/Pages.ts'
 import { Media } from './collections/Media.ts'
 import { ServiceCategories } from './collections/ServiceCategories.ts'
 import { Services } from './collections/Services.ts'
-import { Posts } from './collections/Posts.ts'
-import { PostCategories } from './collections/PostCategories.ts'
 import { Testimonials } from './collections/Testimonials.ts'
 
 const filename = fileURLToPath(import.meta.url)
@@ -31,8 +29,6 @@ export default buildConfig({
     Users,
     ServiceCategories,
     Services,
-    Posts,
-    PostCategories,
     Pages,
     Media,
     Testimonials,
@@ -66,7 +62,7 @@ export default buildConfig({
         })]
       : []),
     seoPlugin({
-      collections: ['service-categories', 'services', 'posts', 'pages'],
+      collections: ['service-categories', 'services', 'pages'],
       generateTitle: ({ doc }) =>
         `${(doc as Record<string, unknown>).title ?? ''} — Mori Norman`,
       generateDescription: ({ doc }) => {

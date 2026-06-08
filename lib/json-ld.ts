@@ -14,39 +14,6 @@ export function generateWebSiteJsonLd(locale: string) {
   };
 }
 
-export function generateBlogPostingJsonLd(
-  post: {
-    title: string;
-    excerpt?: string;
-    slug: string;
-    publishedAt?: string;
-    featuredImageUrl?: string;
-    readingTime?: number;
-  },
-  locale: string,
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt || "",
-    url: `${BASE_URL}/${locale}/blog/${post.slug}`,
-    datePublished: post.publishedAt || undefined,
-    image: post.featuredImageUrl || undefined,
-    author: {
-      "@type": "Person",
-      name: "Mori Norman",
-    },
-    publisher: {
-      "@type": "Person",
-      name: "Mori Norman",
-    },
-    inLanguage: locale,
-    ...(post.readingTime && {
-      timeRequired: `PT${post.readingTime}M`,
-    }),
-  };
-}
 
 export function generatePersonJsonLd(locale: string) {
   return {
